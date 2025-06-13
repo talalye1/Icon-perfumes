@@ -99,21 +99,32 @@
                 </div>
             </div>
         </section>
-	    <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ac.png?v8" alt="Messaging Icon" width="32" height="32">
- <h2>إضافة تعليق او استفسار</h2>
- <div id="chat-window">
-  <div id="chat-output"></div>
-  <input type="text" id="message" placeholder="ضع تعليقك هنا..." />
-  <button onclick="sendMessage()">ارسال</button>
- </div>
- <script>
-  function sendMessage() {
-    var message = document.getElementById('message').value;
-    document.getElementById('chat-output').innerHTML += '<p>انت: ' + message + '</p>';
-    document.getElementById('message').value = '';
-  }
-	    </script>
-        <!-- Call to Action and Contacts -->
+    <!-- Messenger Chat Button -->
+    <div id="messengerChatButton" class="messenger-button">
+        <div class="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg flex items-center justify-center transform transition-transform duration-300 ease-in-out">
+            <i class="fab fa-facebook-messenger text-4xl"></i>
+        </div>
+    </div>
+
+    <script>
+        // Get the Messenger chat button element
+        const messengerButton = document.getElementById('messengerChatButton');
+
+        // Define the Messenger URL
+        const messengerUrl = 'https://m.me/alayqwnt.ll.twr';
+
+        // Add a click event listener to the button
+        messengerButton.addEventListener('click', () => {
+            // Open the Messenger chat URL in a new tab/window
+            window.open(messengerUrl, '_blank');
+        });
+
+        // Ensure the layout is responsive on resize
+        window.addEventListener('resize', () => {
+            // You can add more complex responsiveness here if needed,
+            // but Tailwind's utility classes already handle most of it.
+        });
+    </script>        <!-- Call to Action and Contacts -->
         <footer class="mt-16 border-t border-gray-700 pt-8 text-center">
             <h3 class="text-2xl font-bold text-gold">للطلب والاستفسار</h3>
             <p class="text-gray-40 mt-2 mb-4">تواصل معنا عبر قنواتنا</p>
