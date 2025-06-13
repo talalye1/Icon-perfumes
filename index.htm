@@ -17,6 +17,258 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أيقونة الدردشة التفاعلية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* أنماط الأيقونة ونافذة الدردشة فقط */
+        .chat-icon {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        .chat-icon i {
+            color: white;
+            font-size: 32px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* نافذة الدردشة */
+        .chat-container {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        
+        .chat-container.open {
+            display: flex;
+            transform: scale(1);
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .chat-header h3 {
+            font-size: 1.3rem;
+            margin: 0;
+        }
+        
+        .close-btn {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .welcome-message {
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 15px;
+            border-bottom-right-radius: 0;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #495057;
+        }
+        
+        .chat-question {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid #dee2e6;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-align: right;
+            font-weight: 500;
+        }
+        
+        .chat-question:hover {
+            background: #1a2a6c;
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .chat-answer {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 15px;
+            border-bottom-left-radius: 0;
+            margin-top: -10px;
+            display: none;
+            animation: fadeIn 0.3s;
+            text-align: right;
+            line-height: 1.5;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .active-answer {
+            display: block;
+        }
+        
+        @media (max-width: 600px) {
+            .chat-container {
+                width: 90%;
+                right: 5%;
+                bottom: 100px;
+            }
+            
+            .chat-icon {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- أيقونة الدردشة العائمة -->
+    <div class="chat-icon" id="chatIcon">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+    
+    <!-- نافذة الدردشة -->
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <button class="close-btn" id="closeChat"><i class="fas fa-times"></i></button>
+            <h3>مركز المساعدة - خدمة العملاء</h3>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="welcome-message">
+                مرحباً! كيف يمكننا مساعدتك اليوم؟ الرجاء اختيار أحد الأسئلة أدناه:
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // بيانات الأسئلة والأجوبة
+        const faqData = [
+            {
+                question: "ما هي ساعات العمل لديكم؟",
+                answer: "ساعات العمل لدينا من الأحد إلى الخميس، من الساعة 8:00 صباحاً حتى 5:00 مساءً."
+            },
+            {
+                question: "كيف يمكنني تتبع طلبي؟",
+                answer: "عند الطلب سيتم ارسال لك رقم الهاتف الخاص بنا لتتمكن من مراسلتنا او الاتصال بنا."
+            },
+            {
+                question: "ما هي طرق الدفع المتاحة؟",
+                answer: " نحن نقبل الدفع عن طريق: بنك الكريمي، اوالحوالات المصرفية والبنكيه المتوفره."
+            },
+            {
+                question: "هل لديكم خدمة التوصيل السريع؟",
+                answer: "نعم، لدينا خدمة التوصيل السريع خلال 24 ساعة داخل المدينة وضمن مناطق محددة. الرجاء التحقق من توفر الخدمة في منطقتك عند إتمام الطلب."
+            },
+            {
+                question: "ما هي سياسة الاستبدال والاسترجاع؟",
+                answer: "يمكنك استبدال أو استرجاع المنتجات خلال اسبوع واحد من تاريخ الشراء، بشرط أن يكون المنتج بحالته الأصلية   ."
+            },
+            {
+                question: "كيف يمكنني التواصل مع خدمة العملاء؟",
+                answer: "من خلال نموذج الاتصال على موقعنا"
+            }
+        ];        // عناصر DOM
+        const chatIcon = document.getElementById('chatIcon');
+        const chatContainer = document.getElementById('chatContainer');
+        const chatBody = document.getElementById('chatBody');
+        const closeChat = document.getElementById('closeChat');
+        
+        // إظهار نافذة الدردشة
+        chatIcon.addEventListener('click', () => {
+            chatContainer.classList.add('open');
+        });
+        
+        // إغلاق نافذة الدردشة
+        closeChat.addEventListener('click', () => {
+            chatContainer.classList.remove('open');
+        });
+        
+        // إنشاء الأسئلة وإضافتها إلى الدردشة
+        faqData.forEach(item => {
+            const questionElement = document.createElement('div');
+            questionElement.className = 'chat-question';
+            questionElement.textContent = item.question;
+            
+            const answerElement = document.createElement('div');
+            answerElement.className = 'chat-answer';
+            answerElement.textContent = item.answer;
+            
+            questionElement.addEventListener('click', () => {
+                // إخفاء جميع الإجابات
+                document.querySelectorAll('.chat-answer').forEach(ans => {
+                    ans.classList.remove('active-answer');
+                });
+                
+                // إظهار الإجابة المحددة
+                answerElement.classList.add('active-answer');
+            });
+            
+            chatBody.appendChild(questionElement);
+            chatBody.appendChild(answerElement);
+        });
+        
+        // إغلاق النافذة عند النقر خارجها
+        document.addEventListener('click', (e) => {
+            if (chatContainer.classList.contains('open') && 
+                !chatContainer.contains(e.target) && 
+                e.target !== chatIcon) {
+                chatContainer.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
     <style>
         body {
             font-family: 'Tajawal', sans-serif;
@@ -133,255 +385,5 @@
             <p class="text-gray-50 text-sm mt-10"></p>            
         </footer>
     </div>
-    <style>
-        /* أنماط الأيقونة ونافذة الدردشة فقط */
-        .chat-icon {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            animation: pulse 2s infinite;
-        }
-        
-        .chat-icon i {
-            color: white;
-            font-size: 32px;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        /* نافذة الدردشة */
-        .chat-container {
-            position: fixed;
-            bottom: 120px;
-            right: 30px;
-            width: 350px;
-            height: 500px;
-            background-color: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            z-index: 1001;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            transform: scale(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease-out;
-        }
-        
-        .chat-container.open {
-            display: flex;
-            transform: scale(1);
-        }
-        
-        .chat-header {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .chat-header h3 {
-            font-size: 1.3rem;
-            margin: 0;
-        }
-        
-        .close-btn {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .chat-body {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background: #495057;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .welcome-message {
-            background: #495057;
-            padding: 15px;
-            border-radius: 15px;
-            border-bottom-right-radius: 0;
-            text-align: center;
-            font-size: 0.95rem;
-            color: #e9ecef;
-        }
-        
-        .chat-question {
-            background: white;
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px solid #495057;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            text-align: right;
-            font-weight: 500;
-        }
-        
-        .chat-question:hover {
-            background: #495057;
-            color: white;
-            transform: translateX(-5px);
-        }
-        
-        .chat-answer {
-            background: #495057;
-            padding: 15px;
-            border-radius: 15px;
-            border-bottom-left-radius: 0;
-            margin-top: -10px;
-            display: none;
-            animation: fadeIn 0.3s;
-            text-align: right;
-            line-height: 1.5;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .active-answer {
-            display: block;
-        }
-        
-        @media (max-width: 600px) {
-            .chat-container {
-                width: 90%;
-                right: 5%;
-                bottom: 100px;
-            }
-            
-            .chat-icon {
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- أيقونة الدردشة العائمة -->
-    <div class="chat-icon" id="chatIcon">
-        <i class="fas fa-comment-dots"></i>
-    </div>
-    
-    <!-- نافذة الدردشة -->
-    <div class="chat-container" id="chatContainer">
-        <div class="chat-header">
-            <button class="close-btn" id="closeChat"><i class="fas fa-times"></i></button>
-            <h3>مركز المساعدة - خدمة العملاء</h3>
-              <h3>الأيقونة للعطور - اصالة وتميز</h3>          
-        </div>
-        <div class="chat-body" id="chatBody">
-            <div class="welcome-message">
-                مرحباً! كيف يمكننا مساعدتك اليوم؟ الرجاء اختيار أحد الأسئلة أدناه:
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // بيانات الأسئلة والأجوبة
-        const faqData = [
-            {
-                question: "ما هي ساعات العمل لديكم؟",
-                answer: "ساعات العمل لدينا من الأحد إلى الخميس، من الساعة 8:00 صباحاً حتى 5:00 مساءً."
-            },
-            {
-                question: "كيف يمكنني تتبع طلبي؟",
-                answer: "عند الطلب سيتم ارسال لك رقم الهاتف الخاص بنا لتتمكن من مراسلتنا او الاتصال بنا."
-            },
-            {
-                question: "ما هي طرق الدفع المتاحة؟",
-                answer: " نحن نقبل الدفع عن طريق: بنك الكريمي، اوالحوالات المصرفية والبنكيه المتوفره."
-            },
-            {
-                question: "هل لديكم خدمة التوصيل السريع؟",
-                answer: "نعم، لدينا خدمة التوصيل السريع خلال 24 ساعة داخل المدينة وضمن مناطق محددة. الرجاء التحقق من توفر الخدمة في منطقتك عند إتمام الطلب."
-            },
-            {
-                question: "ما هي سياسة الاستبدال والاسترجاع؟",
-                answer: "يمكنك استبدال أو استرجاع المنتجات خلال اسبوع واحد من تاريخ الشراء، بشرط أن يكون المنتج بحالته الأصلية   ."
-            },
-            {
-                question: "كيف يمكنني التواصل مع خدمة العملاء؟",
-                answer: "من خلال نموذج الاتصال على موقعنا"
-            }
-        ];
-        
-        // عناصر DOM
-        const chatIcon = document.getElementById('chatIcon');
-        const chatContainer = document.getElementById('chatContainer');
-        const chatBody = document.getElementById('chatBody');
-        const closeChat = document.getElementById('closeChat');
-        
-        // إظهار نافذة الدردشة
-        chatIcon.addEventListener('click', () => {
-            chatContainer.classList.add('open');
-        });
-        
-        // إغلاق نافذة الدردشة
-        closeChat.addEventListener('click', () => {
-            chatContainer.classList.remove('open');
-        });
-        
-        // إنشاء الأسئلة وإضافتها إلى الدردشة
-        faqData.forEach(item => {
-            const questionElement = document.createElement('div');
-            questionElement.className = 'chat-question';
-            questionElement.textContent = item.question;
-            
-            const answerElement = document.createElement('div');
-            answerElement.className = 'chat-answer';
-            answerElement.textContent = item.answer;
-            
-            questionElement.addEventListener('click', () => {
-                // إخفاء جميع الإجابات
-                document.querySelectorAll('.chat-answer').forEach(ans => {
-                    ans.classList.remove('active-answer');
-                });
-                
-                // إظهار الإجابة المحددة
-                answerElement.classList.add('active-answer');
-            });
-            
-            chatBody.appendChild(questionElement);
-            chatBody.appendChild(answerElement);
-        });
-        
-        // إغلاق النافذة عند النقر خارجها
-        document.addEventListener('click', (e) => {
-            if (chatContainer.classList.contains('open') && 
-                !chatContainer.contains(e.target) && 
-                e.target !== chatIcon) {
-                chatContainer.classList.remove('open');
-            }
-        });
-    </script>
 </body>
 </html>
