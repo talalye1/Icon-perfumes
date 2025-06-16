@@ -792,16 +792,8 @@
     <div class="container">
         <h1>الأيقونة للعطور - جودة وأصالة</h1>
         <p class="description">
-      <!-- أزرار التثبيت والمتابعة -->
-            </button>
-            <a href="https://facebook.com/@alayqwnt.ll.twr" class="follow-btn" target="_blank">
-                <span class="follower-count">24.5K</span>
-                <i class="fab fa-facebook-f"></i> متابعة الفيسبوك
-            </a>
-            <a href="https://www.instagram.com/lyqwn_lltwr" class="follow-btn" target="_blank">
-                <span class="follower-count">18.3K</span>
-                <i class="fab fa-instagram"></i> متابعة الإنستجرام
-            </a>            
+      
+                        
             تقدم لكم <span class="gold-text">الأيقونة للعطور</span> مجموعة مميزة من العطور الرجالية والنسائية وأجود أنواع البخور. 
            جربوا منتجاتنا واختبروا الفرق
         </p>
@@ -810,7 +802,15 @@
         <div class="top-buttons">
             <button class="install-btn" id="installButton">
                 <i class="fas fa-download"></i> تثبيت التطبيق
-
+             </button>
+            <a href="https://facebook.com/@alayqwnt.ll.twr" class="follow-btn" target="_blank">
+                <span class="follower-count">24.5K</span>
+                <i class="fab fa-facebook-f"></i> متابعة الفيسبوك
+            </a>
+            <a href="https://www.instagram.com/lyqwn_lltwr" class="follow-btn" target="_blank">
+                <span class="follower-count">18.3K</span>
+                <i class="fab fa-instagram"></i> متابعة الإنستجرام
+            </a>
         </div>
         
         <img src="https://talalye1.github.io/Icon-perfumes/moan4.jpg" alt="عطور أيقونة" class="product-image">
@@ -1141,7 +1141,7 @@
     
     <script>
         // نص المشاركة المطلوب
-        const shareText = `لأيقونة للعطور - جودة وأصالة
+        const shareText = `
 https://talalye1.github.io/Icon-perfumes/
 عطور رجاليه ونسائيه واجود انواع البخور
 يوجد لدينا التوصيل الى جميع المحافظات اليمنيه
@@ -1428,10 +1428,13 @@ https://m.me/alayqwnt.ll.twr`;
         function openMessenger(product) {
             const message = `العميل: الاخوه مبيعات الأيقونة للعطور
 السلام عليكم ورحمة الله وبركاته
-أريد معلومات عن منتج: ${product}، هل من الممكن تزويدي بالأسعار لديكم؟
+
+أريد معلومات عن هذا المنتج: ${product}، هل من الممكن تزويدي بالأسعار لديكم؟ لقد رأيت منتجاتكم على موقعكم :
 
 الأيقونة للعطور:
-اهلاً بك سنقوم بتزويدك بما تريد في اسرع وقت ممكن فقط ضع اسمك رقم هاتفك ونوع المنتج اللذي تريده`;
+https://talalye1.github.io/Icon-perfumes/
+اهلاً بك سنقوم بتزويدك بما تريد في اسرع وقت ممكن.
+فقط ضع اسمك ورقم هاتفك اذ امكن ومكان اقامتك او اسم المحافظة التي تريدنا إرسال طلبك اليها `;
             
             // تشفير النص للرابط
             const encodedMessage = encodeURIComponent(message);
@@ -1445,7 +1448,7 @@ https://m.me/alayqwnt.ll.twr`;
         const installButton = document.getElementById('installButton');
         
         window.addEventListener('beforeinstallprompt', (e) => {
-            // منع المتصفح من عرض التثبيت التلقائي
+            // السماح للمتصفح من عرض التثبيت التلقائي
             e.preventDefault();
             // تخزين الحدث لاستخدامه لاحقاً
             deferredPrompt = e;
@@ -1481,5 +1484,3 @@ https://m.me/alayqwnt.ll.twr`;
 </body>
 
 </html>
-
-<!-- Make sure you download Bootstrap from https://getbootstrap.com and place the files in the correct directories -->
