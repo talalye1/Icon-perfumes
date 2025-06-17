@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="الأيقونة للعطور - جودة وأصالة">
-    <meta property="og:description" content="عطور رجاليه ونسائيه واجود انواع البخور">
+    <meta property="og:description" content="تقدم لكم الأيقونة للعطور مجموعة مميزة من العطور الرجالية والنسائية وأجود أنواع البخور. جربوا منتجاتنا واختبروا الفرق">
     <meta property="og:image" content="https://talalye1.github.io/Icon-perfumes/moan4.jpg">
     <meta property="og:url" content="https://talalye1.github.io/Icon-perfumes/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="الأيقونة للعطور">
     <title>الأيقونة للعطور - جودة وأصالة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="manifest" href="/manifest.json">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -41,7 +44,7 @@
         }
         
         h1 {
-            color: #D4AF37; /* اللون الذهبي */
+            color: #D4AF37;
             margin-bottom: 20px;
             font-size: 2.5rem;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
@@ -79,7 +82,6 @@
             color: #fff;
         }
         
-        /* أزرار التثبيت والمتابعة */
         .top-buttons {
             display: flex;
             justify-content: center;
@@ -141,8 +143,6 @@
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
-        
-        /* أزرار المشاركة الثابتة في الأسفل */
         .share-container {
             position: fixed;
             bottom: 0;
@@ -185,15 +185,11 @@
             box-shadow: 0 0 15px currentColor;
         }
         
-        /* ألوان الشعارات فقط */
         .facebook { background: #3b5998; }
         .instagram { background: #e1306c; }
         .whatsapp { background: #25d366; }
-        .twitter { background: #25d366; }
+        .x-twitter { background: #000000; }
         .share-all { color: #D4AF37; }
-        }
-    
-
         
         .features ul {
             list-style: none;
@@ -249,6 +245,7 @@
         .facebook-btn { background: #3b5998; color: white; }
         .instagram-btn { background: #e1306c; color: white; }
         .messenger-btn { background: #006AFF; color: white; }
+        .whatsapp-btn { background: #25D366; color: white; }
         
         footer {
             margin-top: 40px;
@@ -265,7 +262,6 @@
             font-weight: bold;
         }
         
-        /* أيقونة الدردشة العائمة */
         .chat-icon {
             position: fixed;
             bottom: 100px;
@@ -294,7 +290,6 @@
             100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
         
-        /* نافذة الدردشة */
         .chat-window {
             position: fixed;
             bottom: 180px;
@@ -412,7 +407,6 @@
             cursor: pointer;
         }
         
-        /* قسم المنتجات */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -482,7 +476,6 @@
             color: #e1306c;
         }
         
-        /* أزرار مشاركة المنتج */
         .product-share {
             display: flex;
             justify-content: center;
@@ -516,8 +509,6 @@
         .ps-twitter { background: #000000; }
         .ps-share-all { color: #D4AF37; }
 
-        
-        /* الشريط المتحرك للمنتجات */
         .thumbnail-slider {
             display: flex;
             overflow-x: auto;
@@ -564,7 +555,6 @@
             object-fit: cover;
         }
         
-        /* قسم التعليقات */
         .comments-section {
             margin-top: 50px;
             text-align: right;
@@ -602,7 +592,6 @@
             margin-left: 10px;
         }
         
-        /* زر الإعجاب على التعليقات */
         .comment-like {
             position: absolute;
             top: 15px;
@@ -681,7 +670,6 @@
             font-weight: bold;
         }
         
-        /* نافذة أسئلة العملاء */
         .user-questions-modal {
             position: fixed;
             top: 0;
@@ -741,6 +729,139 @@
             font-weight: bold;
             margin-top: 5px;
         }
+
+        /* أنماط جديدة مضافة */
+        .product-rating {
+            margin: 10px 0;
+            color: #D4AF37;
+        }
+        
+        .rating-count {
+            color: #ccc;
+            font-size: 0.9rem;
+            margin-right: 5px;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 30px 0 0 30px;
+            border: none;
+            background: rgba(255,255,255,0.9);
+        }
+        
+        .search-bar button {
+            padding: 0 20px;
+            background: #D4AF37;
+            color: #000;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+        }
+        
+        .product-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            background: rgba(30,30,30,0.7);
+            color: #fff;
+            border: 1px solid #D4AF37;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: #D4AF37;
+            color: #000;
+        }
+        
+        .filter-btn:hover {
+            background: rgba(50,50,50,0.7);
+        }
+        
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lazy-load.loaded {
+            opacity: 1;
+        }
+        
+        .ai-loading {
+            text-align: center;
+            padding: 10px;
+            color: #D4AF37;
+        }
+        
+        .user-message {
+            background: rgba(30,30,30,0.7);
+            padding: 10px;
+            border-radius: 10px;
+            align-self: flex-end;
+            max-width: 80%;
+        }
+        
+        .ai-message {
+            background: rgba(212,175,55,0.2);
+            padding: 10px;
+            border-radius: 10px;
+            align-self: flex-start;
+            max-width: 80%;
+        }
+        
+        .reply {
+            background: rgba(20,20,20,0.7);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 2px solid #D4AF37;
+        }
+        
+        .reply-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .reply-btn {
+            background: transparent;
+            border: none;
+            color: #D4AF37;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .reply-form {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .reply-form input,
+        .reply-form textarea {
+            padding: 8px;
+            background: rgba(20,20,20,0.8);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 5px;
+            color: #fff;
+        }
         
         @media (max-width: 768px) {
             .container {
@@ -792,11 +913,23 @@
     <div class="container">
         <h1>الأيقونة للعطور - جودة وأصالة</h1>
         <p class="description">
-      
-                        
             تقدم لكم <span class="gold-text">الأيقونة للعطور</span> مجموعة مميزة من العطور الرجالية والنسائية وأجود أنواع البخور. 
-           جربوا منتجاتنا واختبروا الفرق
+            جربوا منتجاتنا واختبروا الفرق
         </p>
+        
+        <!-- شريط البحث -->
+        <div class="search-bar">
+            <input type="text" placeholder="ابحث عن منتج...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        
+        <!-- فلترة المنتجات -->
+        <div class="product-filters">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="men">عطور رجالية</button>
+            <button class="filter-btn" data-filter="women">عطور نسائية</button>
+            <button class="filter-btn" data-filter="incense">بخور وعود</button>
+        </div>
         
         <!-- أزرار التثبيت والمتابعة -->
         <div class="top-buttons">
@@ -829,7 +962,7 @@
         <h2>منتجاتنا المميزة</h2>
         <div class="products-grid">
             <!-- المنتج 1: عطور رجالية -->
-            <div class="product-card">
+            <div class="product-card" data-category="men">
                 <img src="https://talalye1.github.io/Icon-perfumes/men.png" alt="عطور رجالية" class="product-main-image">
                 
                 <!-- شريط الصور المصغرة للعطور الرجالية -->
@@ -853,6 +986,14 @@
                 
                 <div class="product-info">
                     <h3>عطور رجالية فاخرة</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span class="rating-count">(42 تقييم)</span>
+                    </div>
                     <p>اكتشف مجموعة من العطور التي تعكس القوة والأناقة. ثبات يدوم طويلاً ورائحة تأسر الحواس.</p>
                     <div class="product-buttons">
                         <button class="order-btn" onclick="openMessenger('عطور رجالية فاخرة')">اطلب الآن</button>
@@ -862,9 +1003,9 @@
                     </div>
                     
                     <!-- أزرار مشاركة المنتج -->
-                        <div class="product-share">
+                    <div class="product-share">
                         <div class="share-button facebook" title="مشاركة على فيسبوك" onclick="shareProduct('عطور رجالية فاخرة', 'facebook')">
-                       <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-facebook-f"></i>
                         </div>
                         <div class="share-button instagram" title="مشاركة على إنستجرام" onclick="shareProduct('عطور رجالية فاخرة', 'instagram')">
                             <i class="fab fa-instagram"></i>
@@ -872,14 +1013,15 @@
                         <div class="share-button whatsapp" title="مشاركة على واتساب" onclick="shareProduct('عطور رجالية فاخرة', 'whatsapp')">
                             <i class="fab fa-whatsapp"></i>
                         </div>
-                       <div class="share-button share-all" title="مشاركة عبر التطبيقات" onclick="shareProduct('عطور رجالية فاخرة', 'shareToAll')">
-                           <i class="fas fa-share-alt"></i>
+                        <div class="share-button share-all" title="مشاركة عبر التطبيقات" onclick="shareProduct('عطور رجالية فاخرة', 'shareToAll')">
+                            <i class="fas fa-share-alt"></i>
                         </div>
                     </div>
                 </div>
             </div>            
+            
             <!-- المنتج 2: عطور نسائية -->
-            <div class="product-card">
+            <div class="product-card" data-category="women">
                 <img src="https://talalye1.github.io/Icon-perfumes/female.png" alt="عطور نسائية" class="product-main-image">
                 
                 <!-- شريط الصور المصغرة للعطور النسائية -->
@@ -903,6 +1045,14 @@
                 
                 <div class="product-info">
                     <h3>عطور نسائية ساحرة</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <i class="far fa-star"></i>
+                        <span class="rating-count">(38 تقييم)</span>
+                    </div>
                     <p>كوني أيقونة الأنوثة مع تشكيلتنا الراقية. عطور ناعمة وجذابة لكل مناسباتك.</p>
                     <div class="product-buttons">
                         <button class="order-btn" onclick="openMessenger('عطور نسائية ساحرة')">اطلب الآن</button>
@@ -914,23 +1064,23 @@
                     <!-- أزرار مشاركة المنتج -->
                     <div class="product-share">
                         <div class="share-button facebook" title="مشاركة على فيسبوك" onclick="shareProduct('عطور نسائية ساحرة', 'facebook')">
-                       <i class="fab fa-facebook-f"></i>
+                            <i class="fab fa-facebook-f"></i>
                         </div>
                         <div class="share-button instagram" title="مشاركة على إنستجرام" onclick="shareProduct('عطور نسائية ساحرة', 'instagram')">
                             <i class="fab fa-instagram"></i>
                         </div>
                         <div class="share-button whatsapp" title="مشاركة على واتساب" onclick="shareProduct('عطور نسائية ساحرة', 'whatsapp')">
                             <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div class="share-button share-all" title="مشاركة عبر التطبيقات" onclick="shareProduct('عطور نسائية ساحرة', 'shareToAll')">
-                           <i class="fas fa-share-alt"></i>
+                        </div>
+                        <div class="share-button share-all" title="مشاركة عبر التطبيقات" onclick="shareProduct('عطور نسائية ساحرة', 'shareToAll')">
+                            <i class="fas fa-share-alt"></i>
                         </div>
                     </div>
                 </div>
             </div>
             
             <!-- المنتج 3: بخور وعود -->
-            <div class="product-card">
+            <div class="product-card" data-category="incense">
                 <img src="https://talalye1.github.io/Icon-perfumes/moan.png" alt="بخور وعود" class="product-main-image">
                 
                 <!-- شريط الصور المصغرة للبخور والعود -->
@@ -954,6 +1104,14 @@
                 
                 <div class="product-info">
                     <h3>بخور وعود أصيل</h3>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="rating-count">(35 تقييم)</span>
+                    </div>
                     <p>أضف لمسة من الفخامة والروحانية إلى منزلك. أجود أنواع البخور والعود لرائحة تملأ المكان بالهدوء والدفء.</p>
                     <div class="product-buttons">
                         <button class="order-btn" onclick="openMessenger('بخور وعود أصيل')">اطلب الآن</button>
@@ -974,7 +1132,7 @@
                             <i class="fab fa-whatsapp"></i>
                         </div>
                         <div class="share-button share-all" title="مشاركة عبر التطبيقات" onclick="shareProduct('بخور وعود أصيل', 'shareToAll')">
-                           <i class="fas fa-share-alt"></i>
+                            <i class="fas fa-share-alt"></i>
                         </div>
                     </div>
                 </div>
@@ -984,69 +1142,11 @@
         <!-- قسم التعليقات -->
         <div class="comments-section">
             <h2>آراء عملائنا</h2>
-            <div class="comments-grid">
-                <!-- تعليق 1 -->
-                <div class="comment">
-                    <div class="comment-like">
-                        <button class="comment-like-btn" onclick="toggleCommentLike(this)">
-                            <i class="far fa-heart"></i>
-                        </button>
-                        <span class="comment-like-count">24</span>
-                    </div>
-                    <div class="comment-header">
-                        <div class="user-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <strong>محمد أحمد</strong>
-                            <p>منذ 3 أيام</p>
-                        </div>
-                    </div>
-                    <p>تجربة رائعة مع الأيقونة للعطور! العطور ممتازة والخدمة سريعة. أنصح الجميع بالتجربة.</p>
-                </div>
-                
-                <!-- تعليق 2 -->
-                <div class="comment">
-                    <div class="comment-like">
-                        <button class="comment-like-btn" onclick="toggleCommentLike(this)">
-                            <i class="far fa-heart"></i>
-                        </button>
-                        <span class="comment-like-count">18</span>
-                    </div>
-                    <div class="comment-header">
-                        <div class="user-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <strong>سارة يوسف</strong>
-                            <p>منذ 5 أيام</p>
-                        </div>
-                    </div>
-                    <p>اشتريت عطر نسائي من تشكيلة الأيقونة، الرائحة تدوم طويلاً والناس تمدحه دائمًا. شكرًا لكم!</p>
-                </div>
-                
-                <!-- تعليق 3 -->
-                <div class="comment">
-                    <div class="comment-like">
-                        <button class="comment-like-btn" onclick="toggleCommentLike(this)">
-                            <i class="far fa-heart"></i>
-                        </button>
-                        <span class="comment-like-count">15</span>
-                    </div>
-                    <div class="comment-header">
-                        <div class="user-icon">
-                            <i class="fas fa-user"></i>
-                        </div>
-                        <div>
-                            <strong>علي حسن</strong>
-                            <p>منذ أسبوع</p>
-                        </div>
-                    </div>
-                    <p>البخور والعود المقدم من الأيقونة ذو جودة عالية ورائحة مميزة. التوصيل كان سريعًا رغم الظروف الصعبة.</p>
-                </div>
+            <div class="comments-grid" id="commentsContainer">
+                <!-- سيتم تحميل التعليقات هنا بواسطة JavaScript -->
             </div>
             
-            <a href="#" class="view-all">عرض جميع التعليقات</a>
+            <a href="#" class="view-all" onclick="loadMoreComments()">عرض جميع التعليقات</a>
             
             <div class="comment-form">
                 <h3>أضف تعليقك</h3>
@@ -1061,6 +1161,7 @@
                 <button class="submit-btn" onclick="addComment()">نشر التعليق</button>
             </div>
         </div>
+        
         <h2>تواصل مع المبيعات</h2>
         <!-- أزرار التواصل -->
         <div class="contact">
@@ -1073,15 +1174,19 @@
             <a href="#" class="contact-button messenger-btn" onclick="openMessenger('استفسار عام')">
                 <i class="fab fa-facebook-messenger"></i> ماسنجر
             </a>
-        </div>
-<!-- أتصميم طلال سليمان المٓقطٓري-->
-        <footer>
-       <a href="https://api.whatsapp.com/send?text=%D9%85%D8%B5%D9%85%D9%85%20%D8%A7%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9%20%0a%0a%20%20%20%D8%B7%D9%84%D8%A7%D9%84%20%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86%20%D8%A7%D9%84%D9%85%D9%82%D8%B7%D8%B1%D9%8A%20%0a%0a%20https://www.facebook.com/talalye2024%20%0a%0a%D8%A7%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%83%20%0a%20%D8%A7%D9%86%D8%AA%20%D9%82%D8%A7%D8%AF%D9%85%20%D9%85%D9%86%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D8%A3%D9%8A%D9%82%D9%88%D9%86%D8%A9%20%D9%84%D9%84%D8%B9%D8%B7%D9%88%D8%B1%20%0a%20%D9%87%D9%84%20%D9%84%D8%AF%D9%8A%D9%83%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%A7%D9%88%20%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%0a%0a%20%D8%A7%D9%83%D8%AA%D8%A8%20%D9%85%D8%A7%20%D9%87%D9%88%20%D9%86%D9%88%D8%B9%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%A7%D9%88%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D9%87%D9%86%D8%A7%F0%9F%91%88:&phone=+967774662666" class="contact-button whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i>تصميم طلال سليمان المٓقطٓري تواصل مع المصمم
+            <a href="https://api.whatsapp.com/send?phone=YOUR_PHONE_NUMBER" class="contact-button whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> واتساب
             </a>
-        <p>جميع الحقوق محفوظة &copy; 2023 <span class="gold-text">الأيقونة للعطور</span></p>
-    </footer>
+        </div>
+
+        <footer>
+            <a href="https://api.whatsapp.com/send?text=%D9%85%D8%B5%D9%85%D9%85%20%D8%A7%D9%84%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D9%85%D9%88%D8%A7%D9%82%D8%B9%20%0a%0a%20%20%20%D8%B7%D9%84%D8%A7%D9%84%20%D8%B3%D9%84%D9%8A%D9%85%D8%A7%D9%86%20%D8%A7%D9%84%D9%85%D9%82%D8%B7%D8%B1%D9%8A%20%0a%0a%20https://www.facebook.com/talalye2024%20%0a%0a%D8%A7%D9%87%D9%84%D8%A7%D9%8B%20%D8%A8%D9%83%20%0a%20%D8%A7%D9%86%D8%AA%20%D9%82%D8%A7%D8%AF%D9%85%20%D9%85%D9%86%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A7%D9%84%D8%A3%D9%8A%D9%82%D9%88%D9%86%D8%A9%20%D9%84%D9%84%D8%B9%D8%B7%D9%88%D8%B1%20%0a%20%D9%87%D9%84%20%D9%84%D8%AF%D9%8A%D9%83%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%A7%D9%88%20%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%0a%0a%20%D8%A7%D9%83%D8%AA%D8%A8%20%D9%85%D8%A7%20%D9%87%D9%88%20%D9%86%D9%88%D8%B9%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%A7%D9%88%20%D8%A7%D9%84%D8%B7%D9%84%D8%A8%20%D9%87%D9%86%D8%A7%F0%9F%91%88:&phone=+967774662666" class="contact-button whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i>تصميم طلال سليمان المقطري تواصل مع المصمم
+            </a>
+            <p>جميع الحقوق محفوظة &copy; 2023 <span class="gold-text">الأيقونة للعطور</span></p>
+        </footer>
     </div>
+    
     <!-- أزرار المشاركة الثابتة في الأسفل -->
     <div class="share-container">
         <div class="share-buttons">
@@ -1094,8 +1199,8 @@
             <div class="share-button whatsapp" title="مشاركة على واتساب" onclick="shareOnWhatsApp()">
                 <i class="fab fa-whatsapp"></i>
             </div>
-            <div class="share-button x-twitter" title="مشاركة على إكس" onclick="shareOnTwitter(X)">
-                <i class="fab fa-x-twitter">X</i>
+            <div class="share-button x-twitter" title="مشاركة على إكس" onclick="shareOnTwitter()">
+                <i class="fab fa-x-twitter"></i>
             </div>
             <div class="share-button share-all" title="مشاركة عبر التطبيقات" onclick="shareToAll()">
                 <i class="fas fa-share-alt"></i>
@@ -1139,7 +1244,15 @@
         </div>
     </div>
     
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // تهيئة مكتبة الرسوم المتحركة
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
         // نص المشاركة المطلوب
         const shareText = `
 https://talalye1.github.io/Icon-perfumes/
@@ -1161,12 +1274,11 @@ https://m.me/alayqwnt.ll.twr`;
         
         // وظائف المشاركة
         function shareOnFacebook() {
-            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`;
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}&quote=${encodeURIComponent(shareText)}`;
             window.open(url, '_blank', 'width=600,height=400');
         }
         
         function shareOnInstagram() {
-            // Instagram doesn't have direct share, so we open the profile
             window.open('https://www.instagram.com/lyqwn_lltwr', '_blank');
         }
         
@@ -1210,6 +1322,9 @@ https://m.me/alayqwnt.ll.twr`;
                 case 'whatsapp':
                     const waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(productText)}`;
                     window.open(waUrl, '_blank');
+                    break;
+                case 'shareToAll':
+                    shareToAll();
                     break;
             }
         }
@@ -1318,27 +1433,55 @@ https://m.me/alayqwnt.ll.twr`;
             const question = userInput.value.trim();
             
             if (question) {
-                // إضافة السؤال إلى القائمة
-                const newQuestion = {
-                    id: Date.now(),
-                    question: question,
-                    answer: "سنقوم بالرد على سؤالك في أقرب وقت ممكن. شكراً لصبرك!",
-                    answeredBy: "إدارة الأيقونة للعطور"
-                };
-                
-                userQuestions.push(newQuestion);
-                localStorage.setItem('userQuestions', JSON.stringify(userQuestions));
-                
-                // عرض الرد الفوري
                 const chatBody = document.getElementById('chatBody');
-                chatBody.innerHTML = `
-                    <div class="user-message">
-                        <strong>أنت:</strong> ${question}
-                    </div>
-                    <div class="ai-message">
-                        <strong>إدارة الأيقونة للعطور:</strong> ${newQuestion.answer}
-                    </div>
-                `;
+                
+                // إضافة سؤال المستخدم
+                const userMessage = document.createElement('div');
+                userMessage.className = 'user-message';
+                userMessage.innerHTML = `<strong>أنت:</strong> ${question}`;
+                chatBody.appendChild(userMessage);
+                
+                // إنشاء عنصر تحميل
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'ai-loading';
+                loadingDiv.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> جاري البحث عن إجابة...';
+                chatBody.appendChild(loadingDiv);
+                
+                // محاكاة وقت الانتظار للذكاء الاصطناعي
+                setTimeout(() => {
+                    chatBody.removeChild(loadingDiv);
+                    
+                    // البحث عن أفضل إجابة
+                    const lowerQuestion = question.toLowerCase();
+                    let answer = "شكراً لسؤالك. سيقوم فريق خدمة العملاء بالرد عليك في أقرب وقت.";
+                    
+                    // البحث عن الكلمات المفتاحية
+                    for (const [keyword, response] of Object.entries(faqResponses)) {
+                        if (lowerQuestion.includes(keyword)) {
+                            answer = response;
+                            break;
+                        }
+                    }
+                    
+                    // إضافة إجابة الذكاء الاصطناعي
+                    const aiMessage = document.createElement('div');
+                    aiMessage.className = 'ai-message';
+                    aiMessage.innerHTML = `<strong>مساعد الأيقونة:</strong> ${answer}`;
+                    chatBody.appendChild(aiMessage);
+                    
+                    // حفظ السؤال والجواب
+                    userQuestions.push({
+                        id: Date.now(),
+                        question: question,
+                        answer: answer,
+                        answeredBy: "مساعد الأيقونة"
+                    });
+                    
+                    localStorage.setItem('userQuestions', JSON.stringify(userQuestions));
+                    
+                    // التمرير إلى الأسفل
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }, 1500);
                 
                 userInput.value = '';
             }
@@ -1372,6 +1515,20 @@ https://m.me/alayqwnt.ll.twr`;
             document.getElementById('userQuestionsModal').style.display = 'none';
         }
         
+        // ردود الذكاء الاصطناعي
+        const faqResponses = {
+            "دفع": "نحن نقدم عدة طرق للدفع: التحويل البنكي، الدفع عند الاستلام (في بعض المناطق)، والدفع عبر المحافظ الإلكترونية.",
+            "توصيل": "مدة التوصيل تتراوح بين 1-3 أيام في المدن الكبرى، و3-7 أيام لباقي المناطق.",
+            "جودة": "جميع منتجاتنا أصلية وذات جودة عالية مع ضمان استرجاع في حال عدم الرضا.",
+            "عروض": "لدينا عروض دورية. تابعونا على صفحات التواصل الاجتماعي لمعرفة أحدث العروض.",
+            "سعر": "الأسعار تختلف حسب نوع المنتج. يمكنك الاطلاع على الأسعار في صفحة المنتج أو التواصل مع خدمة العملاء.",
+            "أصلية": "نضمن لكم أن جميع منتجاتنا أصلية 100% مع شهادات ضمان الجودة.",
+            "استبدال": "نقدم خدمة استبدال المنتج خلال 7 أيام من الاستلام في حال وجود عيب مصنعي.",
+            "رجوع": "يمكنك إرجاع المنتج خلال 7 أيام من الاستلام مع الحفاظ على العبوة الأصلية.",
+            "بخور": "لدينا تشكيلة واسعة من البخور والعود بجودة عالية وأسعار تنافسية.",
+            "عود": "نقدم أجود أنواع العود الطبيعي والمخلط بأسعار مناسبة للجميع."
+        };
+        
         // وظائف زر الإعجاب للمنتجات
         function toggleLike(button) {
             const likeCount = button.querySelector('.like-count');
@@ -1387,40 +1544,193 @@ https://m.me/alayqwnt.ll.twr`;
                 button.querySelector('i').className = 'fas fa-heart';
             }
             
-            // تحديث العدد مع التأكد من عدم تجاوز 5000
-            likeCount.textContent = Math.min(200, count);
-        }
-        
-        // وظائف زر الإعجاب للتعليقات
-        function toggleCommentLike(button) {
-            const likeContainer = button.closest('.comment-like');
-            const likeCount = likeContainer.querySelector('.comment-like-count');
-            let count = parseInt(likeCount.textContent);
-            
-            if (button.classList.contains('liked')) {
-                count--;
-                button.classList.remove('liked');
-                button.querySelector('i').className = 'far fa-heart';
-            } else {
-                count++;
-                button.classList.add('liked');
-                button.querySelector('i').className = 'fas fa-heart';
-            }
-            
             likeCount.textContent = count;
         }
         
-        // وظائف التعليقات
+        // نظام التعليقات
+        let comments = JSON.parse(localStorage.getItem('comments')) || [
+            {
+                id: 1,
+                name: "محمد أحمد",
+                date: "منذ 3 أيام",
+                content: "تجربة رائعة مع الأيقونة للعطور! العطور ممتازة والخدمة سريعة. أنصح الجميع بالتجربة.",
+                likes: 24,
+                replies: []
+            },
+            {
+                id: 2,
+                name: "سارة يوسف",
+                date: "منذ 5 أيام",
+                content: "اشتريت عطر نسائي من تشكيلة الأيقونة، الرائحة تدوم طويلاً والناس تمدحه دائمًا. شكرًا لكم!",
+                likes: 18,
+                replies: []
+            },
+            {
+                id: 3,
+                name: "علي حسن",
+                date: "منذ أسبوع",
+                content: "البخور والعود المقدم من الأيقونة ذو جودة عالية ورائحة مميزة. التوصيل كان سريعًا رغم الظروف الصعبة.",
+                likes: 15,
+                replies: []
+            }
+        ];
+        
+        function loadComments() {
+            const commentsContainer = document.getElementById('commentsContainer');
+            commentsContainer.innerHTML = '';
+            
+            comments.slice(0, 3).forEach(comment => {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.innerHTML = `
+                    <div class="comment-like">
+                        <button class="comment-like-btn" onclick="toggleCommentLike(${comment.id})">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        <span class="comment-like-count">${comment.likes}</span>
+                    </div>
+                    <div class="comment-header">
+                        <div class="user-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <strong>${comment.name}</strong>
+                            <p>${comment.date}</p>
+                        </div>
+                    </div>
+                    <p>${comment.content}</p>
+                    <div class="comment-replies" id="replies-${comment.id}"></div>
+                    <button class="reply-btn" onclick="showReplyForm(${comment.id})">رد</button>
+                    <div class="reply-form" id="reply-form-${comment.id}" style="display: none;">
+                        <input type="text" id="reply-name-${comment.id}" placeholder="اسمك">
+                        <textarea id="reply-content-${comment.id}" placeholder="اكتب ردك..."></textarea>
+                        <button onclick="addReply(${comment.id})">إرسال الرد</button>
+                    </div>
+                `;
+                commentsContainer.appendChild(commentDiv);
+                
+                loadReplies(comment.id);
+            });
+        }
+        
+        function loadMoreComments() {
+            const commentsContainer = document.getElementById('commentsContainer');
+            comments.forEach(comment => {
+                if (!document.getElementById(`comment-${comment.id}`)) {
+                    const commentDiv = document.createElement('div');
+                    commentDiv.className = 'comment';
+                    commentDiv.id = `comment-${comment.id}`;
+                    commentDiv.innerHTML = `
+                        <div class="comment-like">
+                            <button class="comment-like-btn" onclick="toggleCommentLike(${comment.id})">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <span class="comment-like-count">${comment.likes}</span>
+                        </div>
+                        <div class="comment-header">
+                            <div class="user-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <strong>${comment.name}</strong>
+                                <p>${comment.date}</p>
+                            </div>
+                        </div>
+                        <p>${comment.content}</p>
+                        <div class="comment-replies" id="replies-${comment.id}"></div>
+                        <button class="reply-btn" onclick="showReplyForm(${comment.id})">رد</button>
+                        <div class="reply-form" id="reply-form-${comment.id}" style="display: none;">
+                            <input type="text" id="reply-name-${comment.id}" placeholder="اسمك">
+                            <textarea id="reply-content-${comment.id}" placeholder="اكتب ردك..."></textarea>
+                            <button onclick="addReply(${comment.id})">إرسال الرد</button>
+                        </div>
+                    `;
+                    commentsContainer.appendChild(commentDiv);
+                    loadReplies(comment.id);
+                }
+            });
+            
+            document.querySelector('.view-all').style.display = 'none';
+        }
+        
+        function loadReplies(commentId) {
+            const comment = comments.find(c => c.id === commentId);
+            if (!comment) return;
+            
+            const repliesDiv = document.getElementById(`replies-${commentId}`);
+            repliesDiv.innerHTML = '';
+            
+            comment.replies.forEach(reply => {
+                const replyDiv = document.createElement('div');
+                replyDiv.className = 'reply';
+                replyDiv.innerHTML = `
+                    <div class="reply-header">
+                        <strong>${reply.name}</strong>
+                        <span>${reply.date}</span>
+                    </div>
+                    <p>${reply.content}</p>
+                `;
+                repliesDiv.appendChild(replyDiv);
+            });
+        }
+        
+        function showReplyForm(commentId) {
+            const form = document.getElementById(`reply-form-${commentId}`);
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        function addReply(commentId) {
+            const name = document.getElementById(`reply-name-${commentId}`).value;
+            const content = document.getElementById(`reply-content-${commentId}`).value;
+            
+            if (name && content) {
+                const comment = comments.find(c => c.id === commentId);
+                if (comment) {
+                    comment.replies.push({
+                        id: Date.now(),
+                        name: name,
+                        date: "الآن",
+                        content: content
+                    });
+                    
+                    localStorage.setItem('comments', JSON.stringify(comments));
+                    loadReplies(commentId);
+                    document.getElementById(`reply-form-${commentId}`).style.display = 'none';
+                }
+            } else {
+                alert('الرجاء إدخال الاسم والرد');
+            }
+        }
+        
         function addComment() {
             const name = document.getElementById('name').value;
             const comment = document.getElementById('comment').value;
             
             if (name && comment) {
-                alert(`تم إضافة تعليقك بنجاح:\n\n${name}\n${comment}`);
+                comments.unshift({
+                    id: Date.now(),
+                    name: name,
+                    date: "الآن",
+                    content: comment,
+                    likes: 0,
+                    replies: []
+                });
+                
+                localStorage.setItem('comments', JSON.stringify(comments));
                 document.getElementById('name').value = '';
                 document.getElementById('comment').value = '';
+                loadComments();
             } else {
                 alert('الرجاء إدخال الاسم والتعليق');
+            }
+        }
+        
+        function toggleCommentLike(commentId) {
+            const comment = comments.find(c => c.id === commentId);
+            if (comment) {
+                comment.likes++;
+                localStorage.setItem('comments', JSON.stringify(comments));
+                loadComments();
             }
         }
         
@@ -1448,34 +1758,76 @@ https://talalye1.github.io/Icon-perfumes/
         const installButton = document.getElementById('installButton');
         
         window.addEventListener('beforeinstallprompt', (e) => {
-            // السماح للمتصفح من عرض التثبيت التلقائي
             e.preventDefault();
-            // تخزين الحدث لاستخدامه لاحقاً
             deferredPrompt = e;
-            // إظهار زر التثبيت
             installButton.style.display = 'flex';
-        });
-        
-        installButton.addEventListener('click', () => {
-            if (deferredPrompt) {
-                // عرض نافذة التثبيت
-                deferredPrompt.prompt();
-                // انتظار اختيار المستخدم
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') {
-                        console.log('وافق المستخدم على تثبيت التطبيق');
-                    } else {
-                        console.log('رفض المستخدم تثبيت التطبيق');
+            
+            installButton.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        console.log('تم قبول التثبيت');
+                        installButton.style.display = 'none';
                     }
                     deferredPrompt = null;
-                });
-            }
+                }
+            });
         });
         
-        // تحميل الأسئلة عند فتح الصفحة
+        window.addEventListener('appinstalled', () => {
+            console.log('تم تثبيت التطبيق بنجاح');
+            installButton.style.display = 'none';
+            deferredPrompt = null;
+        });
+        
+        // تسجيل service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+        
+        // فلترة المنتجات
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // تحميل التعليقات عند فتح الصفحة
         window.onload = function() {
-            // تحميل الأسئلة عند فتح الدردشة
+            loadComments();
             loadFAQ();
+            
+            // Lazy loading للصور
+            const lazyImages = document.querySelectorAll('.lazy-load');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(img => imageObserver.observe(img));
         };
     </script>
 </body>
