@@ -2,24 +2,25 @@
   "name": "الأيقونة للعطور",
   "short_name": "الأيقونة",
   "description": "تطبيق الأيقونة للعطور - جودة وأصالة",
-  "start_url": "/",
+  "start_url": "/Icon-perfumes/index.htm",  // تحديث المسار
+  "scope": "/Icon-perfumes/",  // إضافة scope
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#D4AF37",
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/talalye1/Icon-perfumes/icons/icon-192x192.png",
+      "src": "icons/icon-192x192.png",  // تغيير إلى مسار نسبي
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
-      "src": "https://raw.githubusercontent.com/talalye1/Icon-perfumes/icons/icon-512x512.png",
+      "src": "icons/icon-512x512.png",  // تغيير إلى مسار نسبي
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
-  ],
+  ]
+}
+],
   "orientation": "portrait",
   "lang": "ar",
   "dir": "rtl",
