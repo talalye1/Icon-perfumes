@@ -1849,6 +1849,70 @@ https://talalye1.github.io/Icon-perfumes/
             
             lazyImages.forEach(img => imageObserver.observe(img));
         };
+
+        // استبدال localStorage بـ sessionStorage
+function saveComments(comments) {
+  sessionStorage.setItem('comments', JSON.stringify(comments));
+}
+
+function loadComments() {
+  return JSON.parse(sessionStorage.getItem('comments')) || [];
+}
+
+        if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/Icon-perfumes/sw.js', { 
+      scope: '/Icon-perfumes/' 
+    }).then(function(registration) {
+      console.log('ServiceWorker registration successful');
+    }).catch(function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+        }
+
+        // إنشاء modal للصور
+let currentModal = null;
+
+function openModal(imgSrc) {
+  // إغلاق المودال الموجود إذا كان مفتوحاً
+  if (currentModal) {
+    document.body.removeChild(currentModal);
+  }
+
+  // إنشاء عنصر المودال
+  currentModal = document.createElement('div');
+  currentModal.style.position = 'fixed';
+  currentModal.style.top = '0';
+  currentModal.style.left = '0';
+  currentModal.style.width = '100%';
+  currentModal.style.height = '100%';
+  currentModal.style.backgroundColor = 'rgba(0,0,0,0.9)';
+  currentModal.style.display = 'flex';
+  currentModal.style.justifyContent = 'center';
+  currentModal.style.alignItems = 'center';
+  currentModal.style.zIndex = '2000';
+  
+  // إنشاء عنصر الصورة
+  const img = document.createElement('img');
+  img.src = imgSrc;
+  img.style.maxWidth = '90%';
+  img.style.maxHeight = '90%';
+  img.style.border = '3px solid #D4AF37';
+  img.style.borderRadius = '10px';
+  
+  // إضافة الصورة للمودال
+  currentModal.appendChild(img);
+  
+  // إضافة حدث لإغلاق المودال عند النقر
+  currentModal.onclick = function() {
+    document.body.removeChild(currentModal);
+    currentModal = null;
+  };
+  
+  // إضافة المودال للصفحة
+  document.body.appendChild(currentModal);
+}
     </script>
 </body>
 </html>
