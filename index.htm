@@ -1466,7 +1466,7 @@ https://m.me/alayqwnt.ll.twr`;
                     // إضافة إجابة الذكاء الاصطناعي
                     const aiMessage = document.createElement('div');
                     aiMessage.className = 'ai-message';
-                    aiMessage.innerHTML = `<strong>مساعد الأيقونة:</strong> ${answer}`;
+                    aiMessage.innerHTML = `<strong>إدارة الأيقونة:</strong> ${answer}`;
                     chatBody.appendChild(aiMessage);
                     
                     // حفظ السؤال والجواب
@@ -1474,7 +1474,7 @@ https://m.me/alayqwnt.ll.twr`;
                         id: Date.now(),
                         question: question,
                         answer: answer,
-                        answeredBy: "مساعد الأيقونة"
+                        answeredBy: "إدارة الأيقونة"
                     });
                     
                     localStorage.setItem('userQuestions', JSON.stringify(userQuestions));
