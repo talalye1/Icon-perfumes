@@ -4,8 +4,8 @@ const PRECACHE_URLS = [
   '/',
   '/index.htm',
   '/offline.html',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
+  'https://raw.githubusercontent.com/talalye1/Icon-perfumes/icons/icon-192x192.png',
+  'https://raw.githubusercontent.com/talalye1/Icon-perfumes/icons/icon-512x512.png',
   'https://talalye1.github.io/Icon-perfumes/moan4.jpg',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
   'https://unpkg.com/aos@2.3.1/dist/aos.css'
@@ -110,8 +110,8 @@ self.addEventListener('push', event => {
   const data = event.data.json();
   const options = {
     body: data.body,
-    icon: '/icons/icon-192x192.png',
-    badge: '/icons/icon-192x192.png',
+    icon: 'https://raw.githubusercontent.com/talalye1/Icon-perfumes/icons/icon-192x192.png',
+    badge: 'https://raw.githubusercontent.com/talalye1/Icon-perfumes/icons/icon-192x192.png',
     vibrate: [200, 100, 200],
     data: {
       url: data.url
