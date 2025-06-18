@@ -131,3 +131,34 @@ self.addEventListener('notificationclick', event => {
   );
 });
 
+// تحديث PRECACHE_URLS
+const PRECACHE_URLS = [
+  '/Icon-perfumes/',
+  '/Icon-perfumes/index.htm',
+  '/Icon-perfumes/offline.html',
+  '/Icon-perfumes/icons/icon-192x192.png',
+  '/Icon-perfumes/icons/icon-512x512.png',
+  '/Icon-perfumes/manifest.json'
+];
+
+// تحديث معالجة fetch
+self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
+
+  // معالجة طلبات الصور بشكل منفصل
+  if (event.request.url.match(/\.(jpe?g|png|gif|webp)$/)) {
+    event.respondWith(
+      caches.match(event.request).then(cachedResponse => {
+        return cachedResponse || fetch(event.request).then(response => {
+          return caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, response.clone());
+            return response;
+          });
+        });
+      })
+    );
+    return;
+  }
+
+  // باقي المعالجة...
+});
