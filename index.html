@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- معلومات التعريف والروابط الخارجية -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+
+    <!-- معلومات المشاركة (Open Graph) -->
+    <meta property="og:title" content="الأيقونة للعطور - جودة وأصالة">
+    <meta property="og:description" content="تقدم لكم الأيقونة للعطور مجموعة مميزة من العطور الرجالية والنسائية وأجود أنواع البخور. توصيل لجميع المحافظات اليمنيه">
+    <meta property="og:image" content="https://talalye1.github.io/Icon-perfumes/moan4.jpg">
+    <meta property="og:url" content="https://talalye1.github.io/Icon-perfumes/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="الأيقونة للعطور">
+
+    <title>الأيقونة للعطور - جودة وأصالة</title>
+
+    <!-- ربط ملف الأنماط CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- ربط ملف Manifest لتطبيق PWA -->
+    <link rel="manifest" href="manifest.json">
+    <!-- أيقونة الموقع -->
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+
+    <!-- ربط مكتبة Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- رسالة تثبيت التطبيق PWA -->
+    <div id="pwa-install-banner" class="pwa-banner">
+        <div class="pwa-content">
+            <img src="icon-192x192.png" alt="شعار المتجر" class="pwa-logo">
+            <div class="pwa-text">
+                <h3>ثبّت متجر الأيقونة للعطور</h3>
+                <p>أضف المتجر إلى شاشتك الرئيسية للوصول السريع.</p>
+            </div>
+            <div class="pwa-buttons">
+                <button id="pwa-install-btn" class="pwa-button install">تثبيت</button>
+                <button id="pwa-details-btn" class="pwa-button details">تفاصيل</button>
+                <button id="pwa-close-btn" class="pwa-button close">إغلاق</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- نافذة تفاصيل التطبيق PWA -->
+    <div id="pwa-details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="pwa-details-close">&times;</span>
+            <h2>لقطات شاشة من التطبيق</h2>
+            <div class="screenshot-gallery">
+                <img src="screenshot1.png" alt="لقطة شاشة 1">
+                <img src="screenshot2.png" alt="لقطة شاشة 2">
+                <img src="screenshot3.png" alt="لقطة شاشة 3">
+                <img src="screenshot4.png" alt="لقطة شاشة 4">
+                <img src="screenshot5.png" alt="لقطة شاشة 5">
+                <img src="screenshot6.png" alt="لقطة شاشة 6">
+                <img src="screenshot7.png" alt="لقطة شاشة 7">
+                <img src="screenshot8.png" alt="لقطة شاشة 8">
+                <img src="screenshot9.png" alt="لقطة شاشة 9">
+                <img src="screenshot10.png" alt="لقطة شاشة 10">
+            </div>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+        <!-- قسم الرأس -->
+        <header class="header">
+            <img src="moan4.jpg" alt="الأيقونة للعطور" class="header-image">
+            <div class="header-content">
+                <h1>الأيقونة للعطور - جودة وأصالة</h1>
+                <p>لأجود أنواع العطور الرجالية والنسائية والبخور</p>
+            </div>
+        </header>
+
+        <!-- مميزات المتجر -->
+        <section class="features">
+            <div class="feature">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>توصيل سريع</h3>
+                <p>توصيل إلى جميع المحافظات اليمنية</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-check-circle"></i>
+                <h3>جودة عالية</h3>
+                <p>منتجات أصلية بجودة عالية</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-undo"></i>
+                <h3>ضمان الاستبدال</h3>
+                <p>استبدال أو إرجاع خلال 7 أيام</p>
+            </div>
+        </section>
+
+        <!-- قسم المنتجات -->
+        <section class="products">
+            <h2>منتجاتنا المميزة</h2>
+
+            <!-- المنتج 1: عطور رجالية -->
+            <div class="product" id="product1">
+                <h3>عطور رجالية فاخرة</h3>
+                <div class="product-main">
+                    <div class="product-image">
+                        <img src="men.png" alt="عطور رجالية" id="mainImage1" onclick="openImageModal('mainImage1')">
+                        <div class="thumbnails">
+                            <img src="men1.png" alt="صورة مصغرة 1" class="active" onclick="showImage(this, 'mainImage1')">
+                            <img src="men2.png" alt="صورة مصغرة 2" onclick="showImage(this, 'mainImage1')">
+                            <img src="men3.png" alt="صورة مصغرة 3" onclick="showImage(this, 'mainImage1')">
+                            <img src="men4.png" alt="صورة مصغرة 4" onclick="showImage(this, 'mainImage1')">
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <p id="product-desc-1">اكتشف مجموعة من العطور التي تعكس القوة والأناقة. ثبات يدوم طويلاً ورائحة تأسر الحواس.</p>
+                        <button class="gemini-btn" onclick="generateProductDescription('عطور رجالية فاخرة', 'product-desc-1')">✨ اقترح وصفًا للمنتج</button>
+                        <div class="product-rating">
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                                <span class="rating-count">(42 تقييم)</span>
+                            </div>
+                            <button class="like-btn" onclick="toggleLike(this)"><i class="far fa-heart"></i> <span class="like-count">42</span></button>
+                        </div>
+                        <button class="order-btn" onclick="orderProduct('عطور رجالية فاخرة')">اطلب الآن</button>
+                        <div class="product-share">
+                            <a href="#" class="share-btn facebook" onclick="shareProduct('facebook', 'عطور رجالية فاخرة')"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="share-btn instagram" onclick="shareProduct('instagram', 'عطور رجالية فاخرة')"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="share-btn twitter" onclick="shareProduct('twitter', 'عطور رجالية فاخرة')"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="share-btn whatsapp" onclick="shareProduct('whatsapp', 'عطور رجالية فاخرة')"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" class="share-btn share-all" onclick="shareProduct('all', 'عطور رجالية فاخرة')"><i class="fas fa-share-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المنتج 2: عطور نسائية -->
+            <div class="product" id="product2">
+                <h3>عطور نسائية ساحرة</h3>
+                <div class="product-main">
+                     <div class="product-image">
+                        <img src="female.png" alt="عطور نسائية" id="mainImage2" onclick="openImageModal('mainImage2')">
+                        <div class="thumbnails">
+                            <img src="female1.png" alt="صورة مصغرة 1" class="active" onclick="showImage(this, 'mainImage2')">
+                            <img src="female2.png" alt="صورة مصغرة 2" onclick="showImage(this, 'mainImage2')">
+                            <img src="female3.png" alt="صورة مصغرة 3" onclick="showImage(this, 'mainImage2')">
+                            <img src="female4.png" alt="صورة مصغرة 4" onclick="showImage(this, 'mainImage2')">
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <p id="product-desc-2">كوني أيقونة الأنوثة مع تشكيلتنا الراقية. عطور ناعمة وجذابة لكل مناسباتك.</p>
+                        <button class="gemini-btn" onclick="generateProductDescription('عطور نسائية ساحرة', 'product-desc-2')">✨ اقترح وصفًا للمنتج</button>
+                        <div class="product-rating">
+                            <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                <span class="rating-count">(55 تقييم)</span>
+                            </div>
+                            <button class="like-btn" onclick="toggleLike(this)"><i class="far fa-heart"></i> <span class="like-count">68</span></button>
+                        </div>
+                        <button class="order-btn" onclick="orderProduct('عطور نسائية ساحرة')">اطلب الآن</button>
+                         <div class="product-share">
+                            <a href="#" class="share-btn facebook" onclick="shareProduct('facebook', 'عطور نسائية ساحرة')"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="share-btn instagram" onclick="shareProduct('instagram', 'عطور نسائية ساحرة')"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="share-btn twitter" onclick="shareProduct('twitter', 'عطور نسائية ساحرة')"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="share-btn whatsapp" onclick="shareProduct('whatsapp', 'عطور نسائية ساحرة')"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" class="share-btn share-all" onclick="shareProduct('all', 'عطور نسائية ساحرة')"><i class="fas fa-share-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- المنتج 3: بخور وعود -->
+            <div class="product" id="product3">
+                <h3>بخور وعود أصيل</h3>
+                <div class="product-main">
+                     <div class="product-image">
+                        <img src="moan.png" alt="بخور وعود" id="mainImage3" onclick="openImageModal('mainImage3')">
+                        <div class="thumbnails">
+                            <img src="moan1.png" alt="صورة مصغرة 1" class="active" onclick="showImage(this, 'mainImage3')">
+                            <img src="moan2.png" alt="صورة مصغرة 2" onclick="showImage(this, 'mainImage3')">
+                            <img src="moan3.png" alt="صورة مصغرة 3" onclick="showImage(this, 'mainImage3')">
+                            <img src="moan4.png" alt="صورة مصغرة 4" onclick="showImage(this, 'mainImage3')">
+                        </div>
+                    </div>
+                    <div class="product-details">
+                        <p id="product-desc-3">أضف لمسة من الفخامة والروحانية إلى منزلك. أجود أنواع البخور والعود لرائحة تملأ المكان بالهدوء والدفء.</p>
+                        <button class="gemini-btn" onclick="generateProductDescription('بخور وعود أصيل', 'product-desc-3')">✨ اقترح وصفًا للمنتج</button>
+                        <div class="product-rating">
+                           <div class="rating">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                <span class="rating-count">(71 تقييم)</span>
+                            </div>
+                            <button class="like-btn" onclick="toggleLike(this)"><i class="far fa-heart"></i> <span class="like-count">95</span></button>
+                        </div>
+                        <button class="order-btn" onclick="orderProduct('بخور وعود أصيل')">اطلب الآن</button>
+                         <div class="product-share">
+                            <a href="#" class="share-btn facebook" onclick="shareProduct('facebook', 'بخور وعود أصيل')"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="share-btn instagram" onclick="shareProduct('instagram', 'بخور وعود أصيل')"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="share-btn twitter" onclick="shareProduct('twitter', 'بخور وعود أصيل')"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="share-btn whatsapp" onclick="shareProduct('whatsapp', 'بخور وعود أصيل')"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" class="share-btn share-all" onclick="shareProduct('all', 'بخور وعود أصيل')"><i class="fas fa-share-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- نافذة عرض الصورة المكبرة -->
+        <div id="imageModal" class="modal">
+            <span class="close-btn" id="imageModalClose">&times;</span>
+            <img class="modal-content" id="modalImage">
+        </div>
+
+        <!-- قسم التعليقات -->
+        <section class="comments-section">
+            <div class="comments-header">
+                <h2>آراء عملاء الأيقونة للعطور</h2>
+                <button id="analyze-comments-btn" class="gemini-btn">✨ تحليل آراء العملاء</button>
+            </div>
+            <div id="comment-analysis-result" class="analysis-result"></div>
+            <div id="comments-list">
+                <!-- التعليقات سيتم تحميلها هنا عبر JavaScript -->
+            </div>
+            <button id="load-more-comments" class="btn-load-more">عرض كل التعليقات</button>
+
+            <div class="add-comment">
+                <h3>أضف تعليقك</h3>
+                <input type="text" id="comment-name" placeholder="أدخل اسمك (إلزامي)" required>
+                <textarea id="comment-text" placeholder="اكتب تعليقك هنا..." required></textarea>
+                <button id="submit-comment">نشر التعليق</button>
+            </div>
+        </section>
+
+
+        <!-- تذييل الصفحة -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="follow-us">
+                    <h3>تابعنا على</h3>
+                    <div class="social-links">
+                        <a href="https://facebook.com/@alayqwnt.ll.twr" target="_blank" class="social-btn facebook"><i class="fab fa-facebook-f"></i> فيسبوك</a>
+                        <a href="https://www.instagram.com/lyqwn_lltwr" target="_blank" class="social-btn instagram"><i class="fab fa-instagram"></i> انستجرام</a>
+                        <a href="https://chat.whatsapp.com/your_group_invite" target="_blank" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i> واتساب</a>
+                    </div>
+                </div>
+                <div class="contact-us">
+                    <h3>تواصل معنا</h3>
+                     <p>تواصل مع خدمة العملاء</p>
+                    <a href="https://m.me/alayqwnt.ll.twr" target="_blank" class="contact-btn">خدمة العملاء</a>
+                    <div class="designer-info">
+                        <p>تم التصميم بواسطة</p>
+                        <h4>المصمم طلال سليمان المقطري</h4>
+                        <a href="#" id="designer-contact-btn" class="contact-btn">اطلب تصميم</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- أزرار المشاركة الثابتة -->
+    <div class="fixed-share-buttons">
+        <a href="#" class="fixed-share-btn facebook" onclick="sharePage('facebook')"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="fixed-share-btn instagram" onclick="sharePage('instagram')"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="fixed-share-btn twitter" onclick="sharePage('twitter')"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="fixed-share-btn whatsapp" onclick="sharePage('whatsapp')"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" class="fixed-share-btn share-all" onclick="sharePage('all')"><i class="fas fa-share-alt"></i></a>
+    </div>
+
+    <!-- نافذة الدردشة التفاعلية -->
+    <div id="chat-widget">
+        <div id="chat-icon-container">
+            <div id="chat-icon">
+                <i class="fas fa-comments"></i>
+            </div>
+            <div id="chat-welcome-popup">
+                أهلاً بك! أنا هنا لمساعدتك.
+            </div>
+        </div>
+        <div id="chat-window">
+            <div class="chat-header">
+                <p>كيف يمكنني مساعدتك؟</p>
+                <span>لسماع الأغاني أرسل (تشغيل) أو (إيقاف)</span>
+            </div>
+            <div id="chat-body">
+                <!-- رسائل الدردشة هنا -->
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chat-input" placeholder="اكتب سؤالك...">
+                <button id="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- نافذة إدخال الاسم للدردشة -->
+    <div id="name-prompt-modal" class="modal">
+        <div class="modal-content name-prompt-content">
+            <h2>مرحباً بك في متجر الأيقونة!</h2>
+            <p>الرجاء إدخال اسمك لبدء المحادثة.</p>
+            <input type="text" id="chat-user-name" placeholder="أدخل اسمك هنا" required>
+            <button id="submit-chat-name">بدء الدردشة</button>
+        </div>
+    </div>
+    
+    <!-- عنصر الصوت لتشغيل الموسيقى -->
+    <audio id="background-music" src="http://stream.zeno.fm/ae32e025wp8uv" loop></audio>
+
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+
+    <!-- ربط ملف JavaScript الرئيسي -->
+    <script src="script.js"></script>
+</body>
+</html>
