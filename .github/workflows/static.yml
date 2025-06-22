@@ -41,3 +41,23 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+        - name: Firebase Markdown Update
+  uses: cianyyz/firebase_fetch@bd996d3
+
+  name: Run tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v2
+    
+    - name: Start Firestore
+      uses: mickfeech/firestore-emulator-action@0.0.12
+      with: 
+        fireStoreProjectID: project-test
