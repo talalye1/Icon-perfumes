@@ -1,320 +1,481 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <!-- معلومات التعريف والروابط الخارجية -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#000000">
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Marhey:wght@400;700&display=swap');
 
-    <!-- معلومات المشاركة (Open Graph) -->
-    <meta property="og:title" content="الأيقونة للعطور - جودة وأصالة">
-    <meta property="og:description" content="تقدم لكم الأيقونة للعطور مجموعة مميزة من العطور الرجالية والنسائية وأجود أنواع البخور. توصيل لجميع المحافظات اليمنيه">
-    <meta property="og:image" content="https://talalye1.github.io/Icon-perfumes/moan4.jpg">
-    <meta property="og:url" content="https://talalye1.github.io/Icon-perfumes/">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="الأيقونة للعطور">
+/* متغيرات الألوان الرئيسية */
+:root {
+    --gold-color: #D4AF37;
+    --dark-gold-color: #b8860b;
+    --light-gold-color: #f0e68c;
+    --black-color: #121212;
+    --dark-gray: #1E1E1E;
+    --light-gray: #333;
+    --white-color: #FFFFFF;
+    --text-color: #E0E0E0;
+    --facebook-color: #1877F2;
+    --instagram-color: #E4405F;
+    --twitter-color: #1DA1F2;
+    --whatsapp-color: #25D366;
+    --gemini-btn-bg: linear-gradient(45deg, #4285F4, #9B59B6, #F4B400, #0F9D58);
+}
 
-    <title>الأيقونة للعطور - جودة وأصالة</title>
+/* التنسيق العام للصفحة */
+body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--black-color);
+    color: var(--text-color);
+    direction: rtl;
+    line-height: 1.8;
+}
 
-    <!-- ربط ملف الأنماط CSS -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- ربط ملف Manifest لتطبيق PWA -->
-    <link rel="manifest" href="manifest.json">
-    <!-- أيقونة الموقع -->
-    <link rel="icon" href="icon.png" type="image/png">
-    <link rel="apple-touch-icon" href="icon-192x192.png">
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--dark-gray);
+    border-left: 2px solid var(--gold-color);
+    border-right: 2px solid var(--gold-color);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
 
-    <!-- ربط مكتبة Font Awesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
-<body>
+h1, h2, h3 {
+    font-family: 'Marhey', sans-serif;
+    color: var(--gold-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
 
-    <!-- رسالة تثبيت التطبيق PWA -->
-    <div id="pwa-install-banner" class="pwa-banner">
-        <div class="pwa-content">
-            <img src="icon-192x192.png" alt="شعار المتجر" class="pwa-logo">
-            <div class="pwa-text">
-                <h3>ثبّت متجر الأيقونة للعطور</h3>
-                <p>أضف المتجر إلى شاشتك الرئيسية للوصول السريع.</p>
-            </div>
-            <div class="pwa-buttons">
-                <button id="pwa-install-btn" class="pwa-button install">تثبيت</button>
-                <button id="pwa-details-btn" class="pwa-button details">تفاصيل</button>
-                <button id="pwa-close-btn" class="pwa-button close">إغلاق</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- نافذة تفاصيل التطبيق PWA -->
-    <div id="pwa-details-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" id="pwa-details-close">&times;</span>
-            <h2>لقطات شاشة من التطبيق</h2>
-            <div class="screenshot-gallery">
-                <img src="screenshot1.png" alt="لقطة شاشة 1">
-                <img src="screenshot2.png" alt="لقطة شاشة 2">
-                <img src="screenshot3.png" alt="لقطة شاشة 3">
-                <img src="screenshot4.png" alt="لقطة شاشة 4">
-                <img src="screenshot5.png" alt="لقطة شاشة 5">
-                <img src="screenshot6.png" alt="لقطة شاشة 6">
-                <img src="screenshot7.png" alt="لقطة شاشة 7">
-                <img src="screenshot8.png" alt="لقطة شاشة 8">
-                <img src="screenshot9.png" alt="لقطة شاشة 9">
-                <img src="screenshot10.png" alt="لقطة شاشة 10">
-            </div>
-        </div>
-    </div>
+/* قسم الرأس */
+.header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--light-gray);
+}
 
-    <!-- المحتوى الرئيسي -->
-    <div class="container">
-        <!-- قسم الرأس -->
-        <header class="header">
-            <img src="moan4.jpg" alt="الأيقونة للعطور" class="header-image">
-            <div class="header-content">
-                <h1>الأيقونة للعطور - جودة وأصالة</h1>
-                <p>لأجود أنواع العطور الرجالية والنسائية والبخور</p>
-            </div>
-        </header>
+.header-image {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid var(--gold-color);
+}
 
-        <!-- مميزات المتجر -->
-        <section class="features">
-            <div class="feature">
-                <i class="fas fa-shipping-fast"></i>
-                <h3>توصيل سريع</h3>
-                <p>توصيل إلى جميع المحافظات اليمنية</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-check-circle"></i>
-                <h3>جودة عالية</h3>
-                <p>منتجات أصلية بجودة عالية</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-undo"></i>
-                <h3>ضمان الاستبدال</h3>
-                <p>استبدال أو إرجاع خلال 7 أيام</p>
-            </div>
-        </section>
+.header-content h1 {
+    font-size: 2.8rem;
+    margin: 20px 0 10px;
+}
 
-        <!-- قسم المنتجات -->
-        <section class="products">
-            <h2>منتجاتنا المميزة</h2>
+.header-content p {
+    font-size: 1.2rem;
+}
 
-            <!-- المنتج 1: عطور رجالية -->
-            <div class="product" id="product1">
-                <h3>عطور رجالية فاخرة</h3>
-                <div class="product-main">
-                    <div class="product-image">
-                        <img src="men.png" alt="عطور رجالية" id="mainImage1" onclick="openImageModal('mainImage1')">
-                        <div class="thumbnails">
-                            <img src="men.png" alt="صورة مصغرة 1" class="active" onclick="showImage(this, 'mainImage1')">
-                            <img src="men1.png" alt="صورة مصغرة 2" onclick="showImage(this, 'mainImage1')">
-                            <img src="men2.png" alt="صورة مصغرة 3" onclick="showImage(this, 'mainImage1')">
-                            <img src="men3.png" alt="صورة مصغرة 4" onclick="showImage(this, 'mainImage1')">
-                            <img src="men4.png" alt="صورة مصغرة 5" onclick="showImage(this, 'mainImage1')">
-                            <img src="men5.png" alt="صورة مصغرة 6" onclick="showImage(this, 'mainImage1')">
-                        </div>
-                    </div>
-                    <div class="product-details">
-                        <p id="product-desc-1">اكتشف مجموعة من العطور التي تعكس القوة والأناقة. ثبات يدوم طويلاً ورائحة تأسر الحواس.</p>
-                        <div class="product-rating">
-                            <div class="rating">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-                                <span class="rating-count">(42 تقييم)</span>
-                            </div>
-                            <button class="like-btn" onclick="toggleLike(this)"><i class="far fa-heart"></i> <span class="like-count">42</span></button>
-                        </div>
-                        <button class="order-btn" onclick="orderProduct('عطور رجالية فاخرة')">اطلب الآن</button>
-                        <div class="product-share">
-                            <a href="#" class="share-btn facebook" onclick="shareProduct('facebook', 'عطور رجالية فاخرة')"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="share-btn instagram" onclick="shareProduct('instagram', 'عطور رجالية فاخرة')"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="share-btn twitter" onclick="shareProduct('twitter', 'عطور رجالية فاخرة')"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="share-btn whatsapp" onclick="shareProduct('whatsapp', 'عطور رجالية فاخرة')"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#" class="share-btn share-all" onclick="shareProduct('all', 'عطور رجالية فاخرة')"><i class="fas fa-share-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+/* قسم المميزات */
+.features {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--light-gray);
+}
 
-            <!-- المنتج 2: عطور نسائية -->
-            <div class="product" id="product2">
-                <h3>عطور نسائية ساحرة</h3>
-                <div class="product-main">
-                     <div class="product-image">
-                        <img src="female.png" alt="عطور نسائية" id="mainImage2" onclick="openImageModal('mainImage2')">
-                        <div class="thumbnails">
-                            <img src="female.png" alt="صورة مصغرة 1" class="active" onclick="showImage(this, 'mainImage2')">
-                            <img src="female1.png" alt="صورة مصغرة 2" onclick="showImage(this, 'mainImage2')">
-                            <img src="female2.png" alt="صورة مصغرة 3" onclick="showImage(this, 'mainImage2')">
-                            <img src="female3.png" alt="صورة مصغرة 4" onclick="showImage(this, 'mainImage2')">
-                            <img src="female4.png" alt="صورة مصغرة 5" onclick="showImage(this, 'mainImage2')">
-                            <img src="female5.png" alt="صورة مصغرة 6" onclick="showImage(this, 'mainImage2')">
-                        </div>
-                    </div>
-                    <div class="product-details">
-                        <p id="product-desc-2">كوني أيقونة الأنوثة مع تشكيلتنا الراقية. عطور ناعمة وجذابة لكل مناسباتك.</p>
-                        <div class="product-rating">
-                            <div class="rating">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-                                <span class="rating-count">(55 تقييم)</span>
-                            </div>
-                            <button class="like-btn" onclick="toggleLike(this)"><i class="far fa-heart"></i> <span class="like-count">68</span></button>
-                        </div>
-                        <button class="order-btn" onclick="orderProduct('عطور نسائية ساحرة')">اطلب الآن</button>
-                         <div class="product-share">
-                            <a href="#" class="share-btn facebook" onclick="shareProduct('facebook', 'عطور نسائية ساحرة')"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="share-btn instagram" onclick="shareProduct('instagram', 'عطور نسائية ساحرة')"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="share-btn twitter" onclick="shareProduct('twitter', 'عطور نسائية ساحرة')"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="share-btn whatsapp" onclick="shareProduct('whatsapp', 'عطور نسائية ساحرة')"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#" class="share-btn share-all" onclick="shareProduct('all', 'عطور نسائية ساحرة')"><i class="fas fa-share-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+.feature i {
+    font-size: 3rem;
+    color: var(--gold-color);
+    margin-bottom: 15px;
+}
 
-            <!-- المنتج 3: بخور وعود -->
-            <div class="product" id="product3">
-                <h3>بخور وعود أصيل</h3>
-                <div class="product-main">
-                     <div class="product-image">
-                        <img src="moan.png" alt="بخور وعود" id="mainImage3" onclick="openImageModal('mainImage3')">
-                        <div class="thumbnails">
-                            <img src="moan.png" alt="صورة مصغرة 1" class="active" onclick="showImage(this, 'mainImage3')">
-                            <img src="moan1.png" alt="صورة مصغرة 2" onclick="showImage(this, 'mainImage3')">
-                            <img src="moan2.png" alt="صورة مصغرة 3" onclick="showImage(this, 'mainImage3')">
-                            <img src="moan3.png" alt="صورة مصغرة 4" onclick="showImage(this, 'mainImage3')">
-                            <img src="moan4.png" alt="صورة مصغرة 5" onclick="showImage(this, 'mainImage3')">
-                            <img src="moan5.png" alt="صورة مصغرة 6" onclick="showImage(this, 'mainImage3')">
-                        </div>
-                    </div>
-                    <div class="product-details">
-                        <p id="product-desc-3">أضف لمسة من الفخامة والروحانية إلى منزلك. أجود أنواع البخور والعود لرائحة تملأ المكان بالهدوء والدفء.</p>
-                        <div class="product-rating">
-                           <div class="rating">
-                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                <span class="rating-count">(71 تقييم)</span>
-                            </div>
-                            <button class="like-btn" onclick="toggleLike(this)"><i class="far fa-heart"></i> <span class="like-count">95</span></button>
-                        </div>
-                        <button class="order-btn" onclick="orderProduct('بخور وعود أصيل')">اطلب الآن</button>
-                         <div class="product-share">
-                            <a href="#" class="share-btn facebook" onclick="shareProduct('facebook', 'بخور وعود أصيل')"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="share-btn instagram" onclick="shareProduct('instagram', 'بخور وعود أصيل')"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="share-btn twitter" onclick="shareProduct('twitter', 'بخور وعود أصيل')"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="share-btn whatsapp" onclick="shareProduct('whatsapp', 'بخور وعود أصيل')"><i class="fab fa-whatsapp"></i></a>
-                            <a href="#" class="share-btn share-all" onclick="shareProduct('all', 'بخور وعود أصيل')"><i class="fas fa-share-alt"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- نافذة عرض الصورة المكبرة -->
-        <div id="imageModal" class="modal">
-            <span class="close-btn" id="imageModalClose">&times;</span>
-            <img class="modal-content-image" id="modalImage">
-        </div>
+/* قسم المنتجات */
+.products {
+    padding: 40px 0;
+}
 
-        <!-- قسم التعليقات -->
-        <section class="comments-section">
-            <div class="comments-header-container">
-                <h2>آراء عملاء الأيقونة للعطور</h2>
-                <button id="analyze-comments-btn" class="gemini-btn">✨ تحليل آراء العملاء</button>
-            </div>
-            <div id="comment-analysis-result" class="analysis-result"></div>
-            <div id="comments-list">
-                <!-- التعليقات سيتم تحميلها هنا عبر JavaScript -->
-            </div>
-            <button id="load-more-comments" class="btn-load-more">عرض المزيد من التعليقات</button>
+.products h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
 
-            <div class="add-comment">
-                <h3>أضف تعليقك</h3>
-                <input type="text" id="comment-name" placeholder="أدخل اسمك (إلزامي)" required>
-                <textarea id="comment-text" placeholder="اكتب تعليقك هنا..." required></textarea>
-                <button id="submit-comment">نشر التعليق</button>
-            </div>
-        </section>
+.product {
+    background-color: var(--black-color);
+    margin-bottom: 40px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--gold-color);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
+    transition: transform 0.3s ease;
+}
 
+.product:hover {
+    transform: translateY(-5px);
+}
 
-        <!-- تذييل الصفحة -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="follow-us">
-                    <h3>تابعنا على</h3>
-                    <div class="social-links">
-                        <a href="https://facebook.com/@alayqwnt.ll.twr" target="_blank" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/lyqwn_lltwr" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://chat.whatsapp.com/your_group_invite" target="_blank" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="contact-us">
-                    <h3>تواصل معنا</h3>
-                     <p>تواصل مع خدمة العملاء</p>
-                    <a href="https://m.me/alayqwnt.ll.twr" target="_blank" class="contact-btn">خدمة العملاء</a>
-                    <div class="designer-info">
-                        <p>تم التصميم بواسطة</p>
-                        <h4>المصمم طلال سليمان المقطري</h4>
-                        <a href="#" id="designer-contact-btn" class="contact-btn">اطلب تصميم</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
+.product h3 {
+    background-color: var(--gold-color);
+    color: var(--black-color);
+    padding: 15px;
+    margin: 0;
+    font-size: 1.8rem;
+    text-align: center;
+}
 
-    <!-- أزرار المشاركة الثابتة -->
-    <div class="fixed-share-buttons">
-        <a href="#" class="fixed-share-btn facebook" onclick="sharePage('facebook')"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="fixed-share-btn instagram" onclick="sharePage('instagram')"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="fixed-share-btn twitter" onclick="sharePage('twitter')"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="fixed-share-btn whatsapp" onclick="sharePage('whatsapp')"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="fixed-share-btn share-all" onclick="sharePage('all')"><i class="fas fa-share-alt"></i></a>
-    </div>
+.product-main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+}
 
-    <!-- نافذة الدردشة التفاعلية -->
-    <div id="chat-widget">
-        <div id="chat-icon-container">
-            <div id="chat-icon">
-                <i class="fas fa-comments"></i>
-            </div>
-            <div id="chat-welcome-popup">
-                أهلاً بك! أنا هنا لمساعدتك.
-            </div>
-        </div>
-        <div id="chat-window">
-            <div class="chat-header">
-                <p>كيف يمكنني مساعدتك؟</p>
-                <span>لسماع الأغاني أرسل (تشغيل) أو (إيقاف)</span>
-                <button id="close-chat-btn">&times;</button>
-            </div>
-            <div id="chat-body">
-                <!-- رسائل الدردشة هنا -->
-            </div>
-            <div class="chat-footer">
-                <input type="text" id="chat-input" placeholder="اكتب سؤالك...">
-                <button id="chat-send-btn"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- نافذة إدخال الاسم للدردشة -->
-    <div id="name-prompt-modal" class="modal">
-        <div class="modal-content name-prompt-content">
-            <h2>مرحباً بك في متجر الأيقونة!</h2>
-            <p>الرجاء إدخال اسمك لبدء المحادثة.</p>
-            <input type="text" id="chat-user-name" placeholder="أدخل اسمك هنا" required>
-            <button id="submit-chat-name">بدء الدردشة</button>
-        </div>
-    </div>
-    
-    <!-- عنصر الصوت لتشغيل الموسيقى -->
-    <audio id="background-music" src="http://stream.zeno.fm/ae32e025wp8uv" loop></audio>
+.product-image {
+    flex: 1;
+    min-width: 300px;
+    padding-left: 20px; /* Changed from padding-right */
+}
 
+.product-image > img {
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid var(--light-gray);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+.product-image > img:hover {
+    transform: scale(1.03);
+}
 
-    <!-- ربط ملف JavaScript الرئيسي -->
-    <script src="script.js"></script>
-</body>
-</html>
+.thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.thumbnails img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.thumbnails img:hover, .thumbnails img.active {
+    border-color: var(--gold-color);
+    transform: scale(1.1);
+}
+
+.product-details {
+    flex: 1.5;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.product-details p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* أزرار Gemini */
+.gemini-btn {
+    background: var(--gemini-btn-bg);
+    color: var(--white-color);
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-family: 'Cairo', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: auto;
+    background-size: 200% 200%;
+    animation: gradient-animation 4s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.gemini-btn:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+.gemini-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.rating .fa-star, .rating .fa-star-half-alt {
+    color: #FFD700;
+}
+
+.order-btn {
+    background-color: var(--gold-color);
+    color: var(--black-color);
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    font-family: 'Marhey', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.order-btn:hover {
+    background-color: var(--dark-gold-color);
+}
+
+.product-share {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.share-btn {
+    color: var(--white-color);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+.share-btn:hover {
+    transform: scale(1.1);
+}
+
+.share-btn.facebook { background-color: var(--facebook-color); }
+.share-btn.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.share-btn.twitter { background-color: var(--twitter-color); }
+.share-btn.whatsapp { background-color: var(--whatsapp-color); }
+.share-btn.share-all { background-color: #555; }
+
+/* قسم التعليقات */
+.comments-section {
+    padding: 40px 20px;
+    background-color: var(--black-color);
+    border-radius: 10px;
+    border: 1px solid var(--gold-color);
+}
+.comments-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.analysis-result {
+    background-color: var(--light-gray);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: none;
+    border-left: 4px solid var(--gemini-btn-bg);
+    animation: fadeIn 0.5s;
+}
+.analysis-result h3 {
+    color: var(--gold-color);
+    margin-top: 0;
+}
+.comment {
+    background-color: var(--light-gray);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-right: 4px solid var(--gold-color);
+}
+
+/* التذييل */
+.footer {
+    background-color: var(--black-color);
+    padding: 30px 20px;
+    margin-top: 30px;
+    border-top: 2px solid var(--gold-color);
+    text-align: center;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.social-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    color: var(--white-color);
+    font-size: 22px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+.social-icon:hover {
+    transform: scale(1.15) rotate(10deg);
+}
+.social-icon.facebook { background-color: var(--facebook-color); }
+.social-icon.instagram { background-color: var(--instagram-color); }
+.social-icon.whatsapp { background-color: var(--whatsapp-color); }
+
+/* أزرار المشاركة الثابتة (التصميم الجديد) */
+.fixed-share-buttons {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+.fixed-share-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    text-decoration: none;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+.fixed-share-btn:hover {
+    transform: scale(1.1);
+}
+.fixed-share-btn.facebook { background-color: var(--facebook-color); }
+.fixed-share-btn.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.fixed-share-btn.twitter { background-color: var(--twitter-color); }
+.fixed-share-btn.whatsapp { background-color: var(--whatsapp-color); }
+.fixed-share-btn.share-all { background-color: #555; }
+
+/* نافذة الدردشة (إصلاحات الجوال) */
+#chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1010;
+}
+#chat-icon {
+    animation: pulse 2s infinite;
+}
+#chat-window {
+    width: 350px;
+    height: 500px;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    display: none; /* Changed initial display */
+    flex-direction: column;
+}
+#chat-window.open {
+    display: flex;
+}
+.chat-header {
+    position: relative;
+}
+#close-chat-btn {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--black-color);
+    cursor: pointer;
+}
+
+/* النوافذ المنبثقة (Modal) وإصلاح نافذة الصور */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.modal.show {
+    display: flex;
+}
+.modal-content-image {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 5px;
+    border: 3px solid var(--gold-color);
+}
+#imageModal .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+#imageModal .close-btn:hover,
+#imageModal .close-btn:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        border-left: none;
+        border-right: none;
+        padding: 10px;
+    }
+    .product-main {
+        flex-direction: column;
+    }
+    .product-image {
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+    .fixed-share-buttons {
+        bottom: 85px; /* Adjust to not overlap chat icon */
+        left: 10px;
+    }
+    /* إصلاح نافذة الدردشة على الجوال */
+    #chat-window.open {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        border-radius: 0;
+        z-index: 2020;
+    }
+}
