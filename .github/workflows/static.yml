@@ -108,3 +108,6 @@ jobs:
 
 - name: Firebase Markdown Update
   uses: cianyyz/firebase_fetch@bd996d3
+
+  - name: gemini-action
+  uses: ktKongTong/gemini-action@v0.2.2
