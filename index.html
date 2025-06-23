@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ to { opacity: 1<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,7 @@
     <title>الأيقونة للعطور - جودة وأصالة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="manifest" href="app.webmanifest">
+    <link rel="icon" href="icon-192x192.png">
     <style>
         :root {
             --gold: #D4AF37;
@@ -205,6 +206,17 @@
             padding: 10px;
             background: rgba(0, 0, 0, 0.7);
             gap: 5px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold) transparent;
+        }
+        
+        .thumbnails::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .thumbnails::-webkit-scrollbar-thumb {
+            background-color: var(--gold);
+            border-radius: 3px;
         }
         
         .thumbnail {
@@ -1016,28 +1028,13 @@
                 كيف يمكنني مساعدتك؟ أرسل سؤالاً وسنجيب عليك الآن. لسماع الأغاني أرسل كلمة (تشغيل) أو (إيقاف).
             </div>
         </div>
-        <div class="chat-footer">
-            <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
-            <button class="send-btn" id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+        <div class="chat-footer" id="chatFooter">
+            <!-- سيتم تعبئة هذا القسم ديناميكياً -->
         </div>
     </div>
 
-    <!-- داخل نافذة الدردشة -->
-<div class="chat-window" id="chatWindow">
-    <div class="chat-header">
-        <img src="icon.png" alt="خدمة العملاء">
-        <span>خدمة العملاء</span>
-        <button class="close-chat" id="closeChat">&times;</button>
-    </div>
-    <div class="chat-body" id="chatBody">
-        <div class="chat-message bot-message">
-            كيف يمكنني مساعدتك؟ أرسل سؤالاً وسنجيب عليك الآن. لسماع الأغاني أرسل كلمة (تشغيل) أو (إيقاف).
-        </div>
-    </div>
-    <div class="chat-footer" id="chatFooter">
-        <!-- سيتم تغيير هذا القسم ديناميكياً -->
-    </div>
-</div>
+    <!-- مشغل الموسيقى المخفي -->
+    <audio id="backgroundMusic" src="http://stream.zeno.fm/ae32e025wp8uv" loop style="display:none;"></audio>
 
     <div class="container">
         <!-- الترويسة -->
@@ -1221,7 +1218,7 @@
         <section class="comments-section">
             <h2 class="section-title">آراء عملاء الأيقونة للعطور</h2>
             <div class="comments-container">
-                <div class="comment">
+                <div class="comment" id="comment1">
                     <div class="comment-header">
                         <div class="comment-author">محمد أحمد</div>
                         <div class="comment-date" id="comment1Date"></div>
@@ -1230,12 +1227,23 @@
                         تجربة رائعة مع الأيقونة للعطور! العطور ممتازة والخدمة سريعة. أنصح الجميع بالتجربة.
                     </div>
                     <div class="comment-actions">
-                        <button class="comment-action"><i class="far fa-heart"></i> أعجبني <span>24</span></button>
-                        <button class="comment-action"><i class="fas fa-reply"></i> رد</button>
+                        <button class="comment-action like-comment" onclick="likeComment('comment1')">
+                            <i class="far fa-heart"></i> أعجبني <span class="like-count">24</span>
+                        </button>
+                        <button class="comment-action reply-btn" onclick="toggleReplyForm('comment1')">
+                            <i class="fas fa-reply"></i> رد
+                        </button>
                     </div>
+                    <!-- نموذج الرد -->
+                    <div class="reply-form" id="replyForm1" style="display:none; margin-top:15px;">
+                        <textarea class="form-control" id="replyContent1" placeholder="اكتب ردك..."></textarea>
+                        <button class="submit-btn" style="margin-top:10px;" onclick="postReply('comment1', 'replyContent1')">نشر الرد</button>
+                    </div>
+                    <!-- قائمة الردود -->
+                    <div class="replies-container" id="replies1"></div>
                 </div>
 
-                <div class="comment">
+                <div class="comment" id="comment2">
                     <div class="comment-header">
                         <div class="comment-author">سارة يوسف</div>
                         <div class="comment-date" id="comment2Date"></div>
@@ -1244,12 +1252,23 @@
                         اشتريت عطر نسائي من تشكيلة الأيقونة، الرائحة تدوم طويلاً والناس تمدحه دائمًا. شكرًا لكم!
                     </div>
                     <div class="comment-actions">
-                        <button class="comment-action"><i class="far fa-heart"></i> أعجبني <span>18</span></button>
-                        <button class="comment-action"><i class="fas fa-reply"></i> رد</button>
+                        <button class="comment-action like-comment" onclick="likeComment('comment2')">
+                            <i class="far fa-heart"></i> أعجبني <span class="like-count">18</span>
+                        </button>
+                        <button class="comment-action reply-btn" onclick="toggleReplyForm('comment2')">
+                            <i class="fas fa-reply"></i> رد
+                        </button>
                     </div>
+                    <!-- نموذج الرد -->
+                    <div class="reply-form" id="replyForm2" style="display:none; margin-top:15px;">
+                        <textarea class="form-control" id="replyContent2" placeholder="اكتب ردك..."></textarea>
+                        <button class="submit-btn" style="margin-top:10px;" onclick="postReply('comment2', 'replyContent2')">نشر الرد</button>
+                    </div>
+                    <!-- قائمة الردود -->
+                    <div class="replies-container" id="replies2"></div>
                 </div>
 
-                <div class="comment">
+                <div class="comment" id="comment3">
                     <div class="comment-header">
                         <div class="comment-author">علي حسن</div>
                         <div class="comment-date" id="comment3Date"></div>
@@ -1258,9 +1277,20 @@
                         البخور والعود المقدم من الأيقونة ذو جودة عالية ورائحة مميزة. التوصيل كان سريعًا رغم الظروف الصعبة.
                     </div>
                     <div class="comment-actions">
-                        <button class="comment-action"><i class="far fa-heart"></i> أعجبني <span>15</span></button>
-                        <button class="comment-action"><i class="fas fa-reply"></i> رد</button>
+                        <button class="comment-action like-comment" onclick="likeComment('comment3')">
+                            <i class="far fa-heart"></i> أعجبني <span class="like-count">15</span>
+                        </button>
+                        <button class="comment-action reply-btn" onclick="toggleReplyForm('comment3')">
+                            <i class="fas fa-reply"></i> رد
+                        </button>
                     </div>
+                    <!-- نموذج الرد -->
+                    <div class="reply-form" id="replyForm3" style="display:none; margin-top:15px;">
+                        <textarea class="form-control" id="replyContent3" placeholder="اكتب ردك..."></textarea>
+                        <button class="submit-btn" style="margin-top:10px;" onclick="postReply('comment3', 'replyContent3')">نشر الرد</button>
+                    </div>
+                    <!-- قائمة الردود -->
+                    <div class="replies-container" id="replies3"></div>
                 </div>
 
                 <div class="add-comment">
@@ -1309,8 +1339,12 @@
         }
         
         function formatDate(date) {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return `منذ ${Math.floor((new Date() - date) / (1000 * 60 * 60 * 24))} أيام`;
+            const diffDays = Math.floor((new Date() - date) / (1000 * 60 * 60 * 24));
+            if (diffDays === 0) return "اليوم";
+            if (diffDays === 1) return "أمس";
+            if (diffDays < 7) return `منذ ${diffDays} أيام`;
+            if (diffDays < 30) return `منذ ${Math.floor(diffDays/7)} أسابيع`;
+            return `منذ ${Math.floor(diffDays/30)} أشهر`;
         }
         
         // تغيير الصورة الرئيسية عند النقر على الصورة المصغرة
@@ -1457,16 +1491,108 @@ https://m.me/alayqwnt.ll.twr `;
             document.getElementById('commentContent').value = '';
         }
         
+        // الإعجاب بالتعليق
+        function likeComment(commentId) {
+            const comment = document.getElementById(commentId);
+            const likeBtn = comment.querySelector('.like-comment');
+            const heartIcon = likeBtn.querySelector('i');
+            const likeCount = likeBtn.querySelector('.like-count');
+            
+            if (likeBtn.classList.contains('liked')) {
+                likeBtn.classList.remove('liked');
+                heartIcon.classList.remove('fas');
+                heartIcon.classList.add('far');
+                likeCount.textContent = parseInt(likeCount.textContent) - 1;
+            } else {
+                likeBtn.classList.add('liked');
+                heartIcon.classList.remove('far');
+                heartIcon.classList.add('fas');
+                likeCount.textContent = parseInt(likeCount.textContent) + 1;
+            }
+        }
+        
+        // عرض/إخفاء نموذج الرد
+        function toggleReplyForm(commentId) {
+            const form = document.getElementById('replyForm' + commentId.substring(7));
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+        
+        // نشر رد على التعليق
+        function postReply(commentId, replyContentId) {
+            const content = document.getElementById(replyContentId).value;
+            if (!content) {
+                alert('الرجاء إدخال نص الرد');
+                return;
+            }
+            
+            const repliesContainer = document.getElementById('replies' + commentId.substring(7));
+            const replyDiv = document.createElement('div');
+            replyDiv.className = 'reply';
+            replyDiv.innerHTML = `
+                <div class="reply-header">
+                    <div class="reply-author">أنت</div>
+                    <div class="reply-date">الآن</div>
+                </div>
+                <div class="reply-content">${content}</div>
+            `;
+            repliesContainer.appendChild(replyDiv);
+            
+            // إخفاء النموذج وإفراغ المحتوى
+            document.getElementById(replyContentId).value = '';
+            document.getElementById('replyForm' + commentId.substring(7)).style.display = 'none';
+        }
+        
         // الدردشة التفاعلية
         let chatOpen = false;
         let userName = '';
-        let audioContext = null;
-        let audioSource = null;
         let isMusicPlaying = false;
+        
+        // إعداد واجهة الدردشة
+        function setupChatFooter() {
+            const chatFooter = document.getElementById('chatFooter');
+            chatFooter.innerHTML = '';
+            
+            if (!userName) {
+                // إذا لم يدخل المستخدم اسمه، نعرض حقل الاسم
+                chatFooter.innerHTML = `
+                    <input type="text" class="chat-input" id="userNameInput" placeholder="ادخل اسمك...">
+                    <button class="send-btn" id="setUserNameBtn"><i class="fas fa-check"></i></button>
+                `;
+                document.getElementById('setUserNameBtn').addEventListener('click', setUserName);
+                document.getElementById('userNameInput').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        setUserName();
+                    }
+                });
+            } else {
+                // إذا كان الاسم معروفاً، نعرض حقل الرسالة العادي
+                chatFooter.innerHTML = `
+                    <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
+                    <button class="send-btn" id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                `;
+                document.getElementById('sendBtn').addEventListener('click', sendMessage);
+                document.getElementById('chatInput').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMessage();
+                    }
+                });
+            }
+        }
+        
+        function setUserName() {
+            const nameInput = document.getElementById('userNameInput');
+            userName = nameInput.value.trim();
+            if (userName) {
+                addMessageToChat(`اسمي: ${userName}`, 'user');
+                addMessageToChat(`مرحباً ${userName}! كيف يمكنني مساعدتك؟`, 'bot');
+                setupChatFooter(); // تحديث واجهة الدردشة
+            }
+        }
         
         document.getElementById('chatIcon').addEventListener('click', function() {
             document.getElementById('chatWindow').classList.toggle('active');
             chatOpen = !chatOpen;
+            setupChatFooter(); // تهيئة واجهة الدردشة
         });
         
         document.getElementById('closeChat').addEventListener('click', function() {
@@ -1476,13 +1602,6 @@ https://m.me/alayqwnt.ll.twr `;
         
         document.getElementById('closeWelcome').addEventListener('click', function() {
             document.getElementById('welcomeMessage').style.display = 'none';
-        });
-        
-        document.getElementById('sendBtn').addEventListener('click', sendMessage);
-        document.getElementById('chatInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
         });
         
         function sendMessage() {
@@ -1520,14 +1639,6 @@ https://m.me/alayqwnt.ll.twr `;
             if (message.toLowerCase() === 'إيقاف') {
                 stopMusic();
                 addMessageToChat('تم إيقاف الموسيقى', 'bot');
-                return;
-            }
-            
-            // إذا لم يقم المستخدم بإدخال اسمه بعد
-            if (!userName) {
-                userName = message;
-                addMessageToChat(`مرحباً ${userName}! كيف يمكنني مساعدتك اليوم؟`, 'bot');
-                speak(`مرحباً ${userName}! كيف يمكنني مساعدتك اليوم؟`);
                 return;
             }
             
@@ -1596,50 +1707,51 @@ https://m.me/alayqwnt.ll.twr `;
         }
         
         function playMusic() {
-            if (!audioContext) {
-                audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                audioSource = audioContext.createBufferSource();
-                
-                // في الواقع، سيتم استخدام هذا الرابط: http://stream.zeno.fm/ae32e025wp8uv
-                // هنا سنضع مثال فقط
-                
-                isMusicPlaying = true;
-                addMessageToChat('جاري تشغيل الموسيقى...', 'bot');
-            }
+            const music = document.getElementById('backgroundMusic');
+            music.play();
+            isMusicPlaying = true;
         }
         
         function stopMusic() {
-            if (audioContext && isMusicPlaying) {
-                audioSource.stop();
-                audioContext.close();
-                audioContext = null;
-                isMusicPlaying = false;
-            }
+            const music = document.getElementById('backgroundMusic');
+            music.pause();
+            music.currentTime = 0;
+            isMusicPlaying = false;
         }
         
         // PWA Installation
-        document.getElementById('installBtn').addEventListener('click', installPWA);
-        document.getElementById('detailsBtn').addEventListener('click', showScreenshots);
-        document.getElementById('closePwa').addEventListener('click', closePwaPrompt);
-        document.getElementById('closeScreenshots').addEventListener('click', closeScreenshots);
+        let deferredPrompt;
         
-        function installPWA() {
-            // في الواقع، سيكون هنا كود تثبيت PWA
-            alert('سيتم تثبيت التطبيق على جهازك. شكراً لثقتك بنا!');
-            closePwaPrompt();
-        }
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            document.querySelector('.pwa-install').style.display = 'flex';
+        });
         
-        function showScreenshots() {
-            document.getElementById('screenshotsModal').style.display = 'block';
-        }
-        
-        function closeScreenshots() {
-            document.getElementById('screenshotsModal').style.display = 'none';
-        }
-        
-        function closePwaPrompt() {
+        document.getElementById('installBtn').addEventListener('click', () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
             document.querySelector('.pwa-install').style.display = 'none';
-        }
+        });
+        
+        document.getElementById('detailsBtn').addEventListener('click', () => {
+            document.getElementById('screenshotsModal').style.display = 'flex';
+        });
+        
+        document.getElementById('closePwa').addEventListener('click', () => {
+            document.querySelector('.pwa-install').style.display = 'none';
+        });
+        
+        document.getElementById('closeScreenshots').addEventListener('click', () => {
+            document.getElementById('screenshotsModal').style.display = 'none';
+        });
         
         // تهيئة الصفحة عند التحميل
         window.addEventListener('DOMContentLoaded', function() {
@@ -1649,6 +1761,9 @@ https://m.me/alayqwnt.ll.twr `;
             setTimeout(function() {
                 document.getElementById('welcomeMessage').style.display = 'block';
             }, 3000);
+            
+            // تهيئة واجهة الدردشة
+            setupChatFooter();
         });
     </script>
 </body>
