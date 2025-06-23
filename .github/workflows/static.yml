@@ -72,6 +72,24 @@ jobs:
 
 on: [push]
 
+- name: Jest testing (including firestore rules)
+  uses: IIIMPACT/firebase-firestore-testing-action@v3.1.1
+
+  name: Jest
+
+on: [pull_request]
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Run Jest
+        uses: IIIMPACT/firebase-firestore-testing-action@v3.1.1
+
 jobs:
   build:
     runs-on: ubuntu-latest
