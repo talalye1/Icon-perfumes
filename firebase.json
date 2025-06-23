@@ -19,3 +19,21 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 </script>
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAcOLUzUULR6HYcJKdPCFvhJJHT4gKnczU",
+  authDomain: "icon-for-perfumes-5ccd6.firebaseapp.com",
+  projectId: "icon-for-perfumes-5ccd6",
+  storageBucket: "icon-for-perfumes-5ccd6.firebasestorage.app",
+  messagingSenderId: "942406140856",
+  appId: "1:942406140856:web:ff4729e3f3a7653a56454d"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
