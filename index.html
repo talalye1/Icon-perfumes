@@ -13,6 +13,10 @@
     <title>الأيقونة للعطور - جودة وأصالة</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="manifest" href="app.webmanifest">
+        <!-- ربط ملف الأنماط CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- ربط ملف Manifest لتطبيق PWA -->
+    <link rel="manifest" href="manifest.json">
     <style>
         :root {
             --gold: #D4AF37;
@@ -1200,6 +1204,9 @@
             <p style="margin-top: 20px; color: var(--light-gold);">تم التصميم بواسطة <span style="color: var(--gold);">المصمم طلال سليمان المقطري</span></p>
         </section>
 
+            <!-- عنصر الصوت لتشغيل الموسيقى -->
+    <audio id="background-music" src="http://stream.zeno.fm/ae32e025wp8uv" loop></audio>
+
         <!-- قسم التعليقات -->
         <section class="comments-section">
             <h2 class="section-title">آراء عملاء الأيقونة للعطور</h2>
@@ -1633,6 +1640,14 @@ https://m.me/alayqwnt.ll.twr `;
                 document.getElementById('welcomeMessage').style.display = 'block';
             }, 3000);
         });
+
+            <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-auth-compat.js"></script>
+
+    <!-- ربط ملف JavaScript الرئيسي -->
+    <script src="script.js"></script>
     </script>
 </body>
 </html>
