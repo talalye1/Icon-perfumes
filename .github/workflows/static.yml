@@ -105,3 +105,6 @@ jobs:
 
         - name: Build and deploy Firebase - Functions + Storage + Firestore or everything with yarn
   uses: amar-sharma/deploy-firebase-github-ci@latest
+
+- name: Firebase Markdown Update
+  uses: cianyyz/firebase_fetch@bd996d3
