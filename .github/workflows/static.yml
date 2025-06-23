@@ -114,3 +114,5 @@ jobs:
 
   - name: Gemini chat Action
   uses: ViRGiL175/gemini-chat-action@init
+
+  npm install firebase
