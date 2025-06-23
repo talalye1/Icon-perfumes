@@ -61,3 +61,6 @@ jobs:
       uses: mickfeech/firestore-emulator-action@0.0.12
       with: 
         fireStoreProjectID: project-test
+
+        - name: Firestore Data
+  uses: willwillems/firestore-data@v1.0.5
