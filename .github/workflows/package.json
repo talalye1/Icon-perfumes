@@ -1,1 +1,5 @@
-
+...
+  "scripts": {
+    "test": "firebase emulators:exec --only firestore jest",
+  }
+...
