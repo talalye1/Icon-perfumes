@@ -64,3 +64,23 @@ jobs:
 
         - name: Firestore Data
   uses: willwillems/firestore-data@v1.0.5
+
+  - name: Firestore Emulator
+  uses: mickfeech/firestore-emulator-action@0.0.12
+
+  name: Run tests
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Git checkout
+      uses: actions/checkout@v2
+    
+    - name: Start Firestore
+      uses: mickfeech/firestore-emulator-action@0.0.12
+      with: 
+        fireStoreProjectID: project-test
