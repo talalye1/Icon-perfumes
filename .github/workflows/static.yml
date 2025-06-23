@@ -111,3 +111,6 @@ jobs:
 
   - name: gemini-action
   uses: ktKongTong/gemini-action@v0.2.2
+
+  - name: Gemini chat Action
+  uses: ViRGiL175/gemini-chat-action@init
