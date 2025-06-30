@@ -629,7 +629,7 @@
         .fixed-menu { 
             position: fixed; 
             left: 5px; 
-            bottom: 700px; 
+            bottom: 650px; 
             display: flex; 
             flex-direction: column; 
             gap: 5px; 
