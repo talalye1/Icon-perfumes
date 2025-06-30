@@ -622,7 +622,7 @@
         .fixed-menu { 
             position: fixed; 
             left: 0px; 
-            bottom: 680px; 
+            bottom: 600px; 
             display: flex; 
             flex-direction: column; 
             gap: 0px; 
