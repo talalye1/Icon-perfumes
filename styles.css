@@ -621,17 +621,17 @@
       /* Fixed Menu Buttons */
         .fixed-menu { 
             position: fixed; 
-            left: 5px; 
+            left: 0px; 
             bottom: 680px; 
             display: flex; 
             flex-direction: column; 
-            gap: 5px; 
+            gap: 0px; 
             z-index: 999; 
         }
         .fixed-menu-btn { 
             width: 100%; 
             height: 100%; 
-            border-radius: 50%; 
+            border-radius: 0%; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
