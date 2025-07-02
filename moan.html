@@ -6,29 +6,799 @@
     
     <meta property="og:url"           content="https://talalye1.github.io/Icon-perfumes/moan.html" />
     <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="الأيقونة للعطور - جودة وأصالة">
-    <meta property="og:description"   content="تقدم لكم الأيقونة للعطور مجموعة مميزة من العطور الرجالية والنسائية وأجود أنواع البخور. توصيل لجميع المحافظات اليمنيه">
+    <meta property="og:title"         content="بخور وعود - أصيل">
+    <meta property="og:description"   content="تقدم لكم الأيقونة للعطور مجموعة مميزة من أجود أنواع البخور. توصيل لجميع المحافظات اليمنيه">
     <meta property="og:image"         content="https://talalye1.github.io/Icon-perfumes/moan.jpg">
     <meta property="og:site_name"     content="الأيقونة للعطور">
 
     
+    <link rel="manifest" href="manifest.json">
     <link rel="icon" href="icon.png" type="image/png">
     <link rel="apple-touch-icon" href="icon-192x192.png">
     <meta name="theme-color" content="#000000">
-    <title>الأيقونة للعطور - جودة وأصالة</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>بخور وعود - أصيل</title>
     <link rel="offline" href="offline.html">
-        <link rel="index" href="index.html">
+    <link rel="index" href="index.html">
     <link rel="men" href="men.html">
     <link rel="female" href="female.html">
     <link rel="moan" href="moan.html">
-    <link rel="script" href="script.js">
-    <link rel="manifest" href="manifest.json">
+    <link rel="sw" href="sw.js">
+    <link rel="service-worker" href="service-worker.js">
     <link rel="manifes" href="manifes.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --light-gold: #F5DEB3;
+            --black: #000000;
+            --white: #FFFFFF;
+            --dark-gray: #1A1A1A;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 100px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23D4AF37" stroke-width="0.5"/></svg>');
+            background-size: 200px;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 00px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            border: 1px solid var(--gold);
+            pointer-events: none;
+            z-index: 1000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        
+        .logo {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 5%;
+            overflow: hidden;
+            border: 4px solid var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            background: linear-gradient(45deg, var(--black), var(--dark-gray));
+        }
 
+        .logo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .header-content h1 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 20px 0 10px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        
+        .header-content p {
+            font-size: 1.2rem;
+            color: var(--light-gold);
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .header-content .fb-like {
+            margin-bottom: 20px;
+        }
+        
+        #installApkBtn {
+             margin: 0 auto 10px;
+        }
+
+        #downloadProgressContainer {
+            width: 80%;
+            max-width: 400px;
+            margin: 0 auto 20px;
+            text-align: center;
+        }
+
+        #downloadProgress {
+            width: 100%;
+            height: 10px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        #downloadProgress::-webkit-progress-bar {
+            background-color: var(--dark-gray);
+            border-radius: 5px;
+            border: 1px solid var(--gold);
+        }
+
+        #downloadProgress::-webkit-progress-value {
+            background-color: var(--gold);
+            border-radius: 5px;
+            transition: width 0.1s linear;
+        }
+
+        #downloadStatus {
+            color: var(--light-gold);
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Features Section */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .feature {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+        
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        
+        .feature p {
+            color: var(--light-gold);
+            line-height: 1.6;
+        }
+        
+        /* Products Section */
+        .products-section {
+            margin: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gold);
+        }
+        
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .product {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.8));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            background: var(--dark-gray);
+            cursor: pointer;
+        }
+
+        .main-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .thumbnails {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            gap: 10px;
+        }
+        
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .thumbnail:hover, .thumbnail.active {
+            border-color: var(--gold);
+            transform: scale(1.1);
+        }
+        
+        .product-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .product h3 {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        
+        .product p {
+            color: var(--light-gold);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--gold);
+        }
+        
+        .product-rating .rating i {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .product-rating .rating i:hover {
+            color: var(--light-gold);
+        }
+        .product-rating .rating-count {
+            color: var(--light-gold);
+            font-size: 0.9rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+        
+        .product-share {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .product-share .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .product-share .share-btn:hover {
+             transform: translateY(-3px);
+        }
+
+        .order-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--gold), #b8860b);
+            border: none;
+            border-radius: 5px;
+            color: var(--black);
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Comments Section */
+        .comments-section {
+            margin: 60px 0;
+        }
+
+        .comment {
+            background: rgba(26, 26, 26, 0.7);
+            border-left: 3px solid var(--gold);
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .comment-date {
+            color: var(--light-gold);
+            font-size: 0.85rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 5px;
+            background: rgba(26, 26, 26, 0.7);
+            color: white;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gold), #b8860b);
+            color: var(--black);
+            border: none;
+            padding: 12px 20px;
+            font-size: 1.0rem;
+            font-weight: bold;
+            border-radius: 0px;
+            cursor: pointer;
+        }
+
+        /* Chat Window */
+        .chat-icon {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold), #b8860b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--black);
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .chat-window {
+            position: fixed;
+            right: 30px;
+            bottom: 100px;
+            width: 350px;
+            height: 450px;
+            background: rgba(26, 26, 26, 0.95);
+            border: 1px solid var(--gold);
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: translateY(20px) scale(0.9);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            transform-origin: bottom right;
+        }
+        
+        .chat-window.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--gold), #b8860b);
+            padding: 15px;
+            color: var(--black);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .close-chat {
+             margin-left: auto; /* Fix for rtl */
+             margin-right: auto;
+             background: none;
+             border: none;
+             color: var(--black);
+             font-size: 1.2rem;
+             cursor: pointer;
+        }
+        
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .chat-message {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            line-height: 1.5;
+        }
+        
+        .bot-message {
+            background: rgba(212, 175, 55, 0.2);
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+        
+        .user-message {
+            background: rgba(255, 255, 255, 0.1);
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+        }
+        
+        .chat-footer {
+            padding: 15px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        #namePrompt, #chatInputContainer {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .chat-input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 30px;
+            background: rgba(26, 26, 26, 0.7);
+            color: white;
+        }
+        
+        .send-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            color: var(--black);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        /* Modal for images */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            padding-top: 60px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            animation: zoom 0.6s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0)}
+            to {transform:scale(1)}
+        }
+        
+        /* Updated Close Button for Modal */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            left: 35px; /* RTL fix */
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* PWA Install Bottom Bar */
+        .pwa-install-bottom {
+            display: none; /* Controlled by JS */
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--dark-gray), var(--black));
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 15px 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            z-index: 2001;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { bottom: -100px; opacity: 0; }
+            to { bottom: 15px; opacity: 1; }
+        }
+
+        .pwa-install-bottom p {
+            margin: 0;
+            color: var(--light-gold);
+            flex-grow: 1;
+        }
+
+        .pwa-install-bottom button {
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .pwa-install-bottom button#dismissPwaBtn {
+            background: transparent;
+            color: var(--light-gold);
+            font-size: 1.5rem;
+            padding: 0 5px;
+        }
+        
+        /* Fixed Share Buttons */
+        .fixed-share { 
+            position: fixed; 
+            left: 20px; 
+            bottom: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 10px; 
+            z-index: 999; 
+        }
+        .fixed-share-btn { 
+            width: 45px; 
+            height: 45px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-size: 1.2rem; 
+            text-decoration: none; 
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3); 
+            transition: all 0.3s ease; 
+        }
+        .fixed-share-btn:hover { transform: translateY(-5px) scale(1.1); }
+        .facebook { background: #3b5998; }
+        .instagram { background: #e1306c; }
+        .twitter { background: #1da1f2; }
+        .whatsapp { background: #25d366; }
+        .share-all { background: var(--gold); }
+        
+        /* Welcome Message */
+        .welcome-message {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: var(--dark-gray);
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            z-index: 1002;
+            color: var(--light-gold);
+            max-width: 250px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .welcome-message.show {
+            opacity: 1;
+        }
+        .close-welcome {
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .follow-us { margin: 60px 0; text-align: center; }
+        .social-buttons { display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+        .social-btn { display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; font-size: 1.5rem; text-decoration: none; color: white; transition: all 0.3s ease; border:none; cursor:pointer;}
+        .social-btn:hover { transform: translateY(-5px); }
+        .fb { background: #3b5998; } .ig { background: #e1306c; } .wa { background: #25d366; }
+        .contact-us { 
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.8)); 
+            border: 1px solid rgba(212, 175, 55, 0.3); 
+            border-radius: 10px; 
+            padding: 30px; 
+            margin: 40px 0; 
+            text-align: center; 
+        }
+        .contact-buttons { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            gap: 20px; 
+            margin-top: 20px; 
+            flex-wrap: wrap; 
+        }
+        .contact-btn { 
+            padding: 12px 25px; 
+            border-radius: 30px; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            text-decoration: none; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 10px; 
+            transition: all 0.3s ease; 
+            border: none;
+            cursor: pointer;
+        }
+        .contact-btn:hover { transform: translateY(-3px); }
+        .messenger-btn { background: linear-gradient(135deg, #006aff, #0084ff); color: white; }
+        .designer-btn { background: linear-gradient(135deg, var(--gold), #b8860b); color: var(--black); }
+        
+        .contact-us h4, .contact-us p {
+            color: var(--light-gold);
+            margin: 15px 0 5px;
+        }
+        .contact-us p a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer { text-align: center; padding: 30px 0; border-top: 1px solid rgba(212, 175, 55, 0.3); margin-top: 60px; }
+        footer p { color: var(--light-gold); margin: 10px 0; }
+        
+        /* Social Media Modal */
+        .social-modal {
+            position: fixed;
+            z-index: 3000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .social-modal-content {
+            width: 90%;
+            height: 90%;
+            background: var(--white);
+            position: relative;
+        }
+        .social-modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .close-social-modal {
+            position: absolute;
+            top: -35px;
+            right: 0px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+
+        @media (max-width: 768px) { .header-content h1 {font-size: 2rem;} .chat-window { width: 90%; right: 5%; height: 70vh; bottom: 80px;} }
+
+    </style>
 </head>
+<body>
 <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v23.0&appId=1112709710371948"></script>
 <body>
@@ -99,10 +869,10 @@
 <center>
     <div class="fixed-menu">
   <div class="btn-group btn-group-justified"> 
-   <a href="index.html" class="btn btn-primary">الرئيسية</a> 
-   <a href="men.html" class="btn btn-primary">عطور رجالي</a> 
-   <a href="female.html" class="btn btn-primary">عطزر نسائية</a>
-   <a href="moan.html" class="btn btn-warning">بخور وعود</a>      
+   <a href="index.html" class="submit-btn messenger-btn">🏠</a> 
+   <a href="men.html" class="submit-btn messenger-btn">عطر رجالي</a> 
+   <a href="female.html" class="submit-btn messenger-btn">عطر نسائي</a>
+<a href="moan.html" class="submit-btn submit-btn">بخور</a>      
      </div> 
     </center>
     
@@ -126,7 +896,7 @@
             </div>
 
         <section class="install-section">
-            <a href="الأيقونة.apk" class="install-btn" id="installBtn">
+            <a href="الأيقونة.apk" class="order-btn" id="installBtn">
                 <i class="fas fa-download"></i> تثبيت عادي لتطبيق (الأيقونة)
             </a>
             <div class="progress-container" id="progressContainer">
@@ -167,7 +937,7 @@
                             <span class="rating-count" id="rating-count-bakhoor">(0 تقييم)</span>
                         </div>
                         <div class="product-actions">
-                           <div class="fb-like" data-href="https://talalye1.github.io/Icon-perfumes#product3" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+                           <div class="fb-like" data-href="https://talalye1.github.io/Icon-perfumes/moan.html#product3" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
                         </div>
                         <button class="order-btn" onclick="orderProduct('بخور وعود أصيل')">اطلب الآن</button>
                          <div class="product-share">
@@ -176,7 +946,7 @@
                             <a href="#" class="share-btn twitter" onclick="shareProduct('بخور وعود أصيل', 'twitter')"><i class="fab fa-twitter"></i></a>
                             <a href="#" class="share-btn share-all" onclick="shareProduct('بخور وعود أصيل', 'all')"><i class="fas fa-share-alt"></i></a>
                         </div>
-                        <div class="fb-comments" data-href="https://talalye1.github.io/Icon-perfumes#product3" data-width="320" data-color="dark" data-numposts="5"></div>
+                        <div class="fb-comments" data-href="https://talalye1.github.io/Icon-perfumes/moan.html#product3" data-width="320" data-color="dark" data-numposts="5"></div>
                     </div>
                 </div>
 
@@ -227,39 +997,586 @@
 
         <footer>
             <div class="container">
-                <p>الأيقونة للعطور - جودة وأصالة</p>
+                <p>بخور وعود - أصيل</p>
                 <p>© 2024 جميع الحقوق محفوظة</p>
             </div>
         </footer>
     </div>
     
-     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js" type="module"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js" type="module"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js" type="module"></script>
     
     <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy, doc, getDoc, setDoc, runTransaction } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-        
-        <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+      import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAcOLUzUULR6HYcJKdPCFvhJJHT4gKnczU",
+        authDomain: "icon-for-perfumes-5ccd6.firebaseapp.com",
+        projectId: "icon-for-perfumes-5ccd6",
+        storageBucket: "icon-for-perfumes-5ccd6.appspot.com",
+        messagingSenderId: "942406140856",
+        appId: "1:942406140856:web:ff4729e3f3a7653a56454d"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      
+      // Gemini API Key
+      const GEMINI_API_KEY = "AIzaSyDSGuS0cRduU1dPGzHjXRjWvjDgzL4NyIY";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAcOLUzUULR6HYcJKdPCFvhJJHT4gKnczU",
-    authDomain: "icon-for-perfumes-5ccd6.firebaseapp.com",
-    projectId: "icon-for-perfumes-5ccd6",
-    storageBucket: "icon-for-perfumes-5ccd6.firebasestorage.app",
-    messagingSenderId: "942406140856",
-    appId: "1:942406140856:web:ff4729e3f3a7653a56454d"
-  };
+      // --- PWA Installation ---
+      let deferredPrompt;
+      const pwaInstallPrompt = document.getElementById('pwaInstallPrompt');
+      const installPwaBtn = document.getElementById('installPwaBtn');
+      const dismissPwaBtn = document.getElementById('dismissPwaBtn');
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-</script>
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        setTimeout(() => {
+            pwaInstallPrompt.style.display = 'flex';
+        }, 5000); // Show after 5 seconds
         
+        setTimeout(() => {
+            if(pwaInstallPrompt.style.display === 'flex') {
+                pwaInstallPrompt.style.display = 'none';
+            }
+        }, 25000); // Hide after 20 more seconds
+      });
+
+      installPwaBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            pwaInstallPrompt.style.display = 'none';
+        }
+      });
+      
+      dismissPwaBtn.addEventListener('click', () => {
+          pwaInstallPrompt.style.display = 'none';
+      });
+
+
+      // --- APK Install ---
+      const installApkBtn = document.getElementById('installApkBtn');
+      const progressContainer = document.getElementById('downloadProgressContainer');
+      const progressBar = document.getElementById('downloadProgress');
+      const progressStatus = document.getElementById('downloadStatus');
+      
+      installApkBtn.addEventListener('click', async () => {
+          installApkBtn.disabled = true;
+          progressContainer.style.display = 'block';
+
+          try {
+            const response = await fetch('./app.apk');
+            if (!response.ok) {
+                throw new Error(`خطأ في الشبكة: ${response.statusText}`);
+            }
+
+            const contentLength = +response.headers.get('Content-Length');
+            const totalMB = (contentLength / 1024 / 1024).toFixed(2);
+            let loaded = 0;
+
+            const reader = response.body.getReader();
+            const chunks = [];
+
+            while(true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                chunks.push(value);
+                loaded += value.length;
+                const loadedMB = (loaded / 1024 / 1024).toFixed(2);
+                
+                const percent = Math.round((loaded / contentLength) * 100);
+                progressBar.value = percent;
+                progressStatus.textContent = `${percent}% (${loadedMB} MB / ${totalMB} MB)`;
+            }
+
+            const blob = new Blob(chunks, { type: 'application/vnd.android.package-archive' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'icon-perfumes.apk';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            URL.revokeObjectURL(url);
+            
+            progressStatus.textContent = "اكتمل التحميل!";
+          } catch(error) {
+            progressStatus.textContent = `فشل التحميل: ${error.message}`;
+            console.error('Download error:', error);
+          } finally {
+            installApkBtn.disabled = false;
+          }
+      });
+
+      // --- Image Modal ---
+      window.expandImage = (imageSrc) => {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        modal.style.display = "flex";
+        modalImg.src = imageSrc;
+      };
+      
+      window.closeModal = () => {
+        document.getElementById('imageModal').style.display = "none";
+      };
+
+      window.changeImage = (imageSrc, mainImageElement, thumbnailElement) => {
+          mainImageElement.src = imageSrc;
+          const thumbnails = thumbnailElement.parentElement.querySelectorAll('.thumbnail');
+          thumbnails.forEach(thumb => thumb.classList.remove('active'));
+          thumbnailElement.classList.add('active');
+      };
+
+      // --- Comments Section (Firestore) ---
+      const commentForm = document.getElementById('commentForm');
+      const commentsContainer = document.getElementById('commentsContainer');
+      const commentName = document.getElementById('commentName');
+      const commentContent = document.getElementById('commentContent');
+
+      function formatTimeAgo(date) {
+        if (!date) return "";
+        const seconds = Math.floor((new Date() - date) / 1000);
+        let interval = seconds / 31536000;
+        if (interval > 1) return `منذ ${Math.floor(interval)} سنوات`;
+        interval = seconds / 2592000;
+        if (interval > 1) return `منذ ${Math.floor(interval)} أشهر`;
+        interval = seconds / 86400;
+        if (interval > 1) return `منذ ${Math.floor(interval)} أيام`;
+        interval = seconds / 3600;
+        if (interval > 1) return `منذ ${Math.floor(interval)} ساعات`;
+        interval = seconds / 60;
+        if (interval > 1) return `منذ ${Math.floor(interval)} دقائق`;
+        return "الآن";
+      }
+
+      function renderComments(doc) {
+          const comment = doc.data();
+          const commentDiv = document.createElement('div');
+          commentDiv.className = 'comment';
+          commentDiv.setAttribute('data-id', doc.id);
+
+          const date = comment.createdAt ? comment.createdAt.toDate() : new Date();
+          
+          commentDiv.innerHTML = `
+              <div class="comment-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                  <div class="comment-author">${comment.name}</div>
+                  <div class="comment-date" data-timestamp="${date.getTime()}">${formatTimeAgo(date)}</div>
+              </div>
+              <p class="comment-content">${comment.content}</p>
+          `;
+          commentsContainer.prepend(commentDiv);
+      }
+      
+      // Load comments from Firestore
+      const q = query(collection(db, 'comments'), orderBy('createdAt', 'desc'));
+      onSnapshot(q, (snapshot) => {
+          commentsContainer.innerHTML = '';
+          snapshot.docs.forEach(doc => {
+              renderComments(doc);
+          });
+      });
+
+      // Update timestamps every minute
+      setInterval(() => {
+          document.querySelectorAll('.comment-date').forEach(el => {
+              const timestamp = parseInt(el.getAttribute('data-timestamp'));
+              if (timestamp) {
+                  el.textContent = formatTimeAgo(new Date(timestamp));
+              }
+          });
+      }, 60000);
+
+      // Add new comment
+      commentForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const name = commentName.value.trim();
+          const content = commentContent.value.trim();
+
+          if (name && content) {
+              await addDoc(collection(db, "comments"), {
+                  name: name,
+                  content: content,
+                  createdAt: serverTimestamp()
+              });
+              commentForm.reset();
+          }
+      });
+      
+      // --- Chatbot, Welcome Message, etc. ---
+      const chatIcon = document.getElementById('chatIcon');
+      const chatWindow = document.getElementById('chatWindow');
+      const closeChat = document.getElementById('closeChat');
+      const chatBody = document.getElementById('chatBody');
+      const chatFooter = document.getElementById('chatFooter');
+      let chatUserName = localStorage.getItem('chatUserName');
+
+      const welcomeMessage = document.getElementById('welcomeMessage');
+      const closeWelcomeBtn = document.getElementById('closeWelcome');
+      let welcomeTimeout;
+
+      function showWelcomeMessage() {
+          welcomeMessage.classList.add('show');
+          welcomeTimeout = setTimeout(() => {
+              welcomeMessage.classList.remove('show');
+          }, 8000); // Hide after 8 seconds
+      }
+      
+      closeWelcomeBtn.addEventListener('click', () => {
+          clearTimeout(welcomeTimeout);
+          welcomeMessage.classList.remove('show');
+      });
+
+      setTimeout(showWelcomeMessage, 5000); // First appearance after 5s
+      setInterval(() => {
+        if (!chatWindow.classList.contains('active')) {
+            showWelcomeMessage();
+        }
+      }, 30000); // Re-appear every 30s if chat is closed
+
+
+      function setupChatUI() {
+          chatFooter.innerHTML = '';
+          if (!chatUserName) {
+              chatFooter.innerHTML = `
+                <div id="namePrompt">
+                    <input type="text" class="chat-input" id="userNameInput" placeholder="أدخل اسمك الكريم للبدء...">
+                    <button class="send-btn" id="setUserNameBtn"><i class="fas fa-check"></i></button>
+                </div>
+              `;
+              document.getElementById('setUserNameBtn').addEventListener('click', handleNameSubmit);
+              document.getElementById('userNameInput').addEventListener('keypress', (e) => {
+                  if (e.key === 'Enter') handleNameSubmit();
+              });
+          } else {
+              chatFooter.innerHTML = `
+                <div id="chatInputContainer">
+                  <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
+                  <button class="send-btn" id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+              `;
+              document.getElementById('sendBtn').addEventListener('click', handleMessageSend);
+              document.getElementById('chatInput').addEventListener('keypress', (e) => {
+                  if (e.key === 'Enter') handleMessageSend();
+              });
+          }
+      }
+
+      function handleNameSubmit() {
+          const input = document.getElementById('userNameInput');
+          const name = input.value.trim();
+          if (name) {
+              chatUserName = name;
+              localStorage.setItem('chatUserName', name);
+              addMessageToChat(`أهلاً بك يا ${name}! يمكنك سماع المؤسقى ارسل كلمت (تشغيل كيف يمكنني مساعدتك اليوم؟`, 'bot');
+              setupChatUI();
+          }
+      }
+
+      async function handleMessageSend() {
+          const input = document.getElementById('chatInput');
+          const message = input.value.trim();
+          if (message) {
+              addMessageToChat(message, 'user');
+              input.value = '';
+              await processMessage(message);
+          }
+      }
+      
+      function addMessageToChat(text, sender, isTyping = false) {
+          const messageDiv = document.createElement('div');
+          messageDiv.className = `chat-message ${sender}-message`;
+          if (isTyping) {
+              messageDiv.id = 'typing-indicator';
+              messageDiv.innerHTML = '<i>الأيقونة يكتب الان...</i>';
+          } else {
+              messageDiv.textContent = text;
+              // Log to Firestore
+              addDoc(collection(db, "chat_log"), {
+                  user: sender === 'user' ? chatUserName : 'bot',
+                  message: text,
+                  timestamp: serverTimestamp()
+              });
+          }
+          chatBody.appendChild(messageDiv);
+          chatBody.scrollTop = chatBody.scrollHeight;
+      }
+      
+      chatIcon.addEventListener('click', () => {
+          welcomeMessage.classList.remove('show');
+          clearTimeout(welcomeTimeout);
+          chatWindow.classList.toggle('active');
+          if (chatWindow.classList.contains('active') && chatBody.children.length === 0) {
+              setupChatUI();
+              if(!chatUserName) {
+                addMessageToChat('مرحباً بك في خدمة عملاء الأيقونة للعطور. لسماع المؤسيقى ارسل كلمة (تشغيل)', 'bot');
+              } else {
+                addMessageToChat(`أهلاً بعودتك يا ${chatUserName}! يمكنك سماع المؤسيقى ارسل كلمة (تشغيل)`, 'bot');
+              }
+          }
+      });
+      closeChat.addEventListener('click', () => chatWindow.classList.remove('active'));
+
+      // Text-to-Speech
+      let egyptianVoice = null;
+      function loadVoices() {
+          const voices = window.speechSynthesis.getVoices();
+          egyptianVoice = voices.find(voice => voice.lang === 'ar-EG');
+          if (!egyptianVoice) {
+             egyptianVoice = voices.find(voice => voice.lang.startsWith('ar-'));
+          }
+      }
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+      loadVoices();
+
+      function speak(text) {
+          if ('speechSynthesis' in window) {
+              window.speechSynthesis.cancel(); // Cancel any previous speech
+              const utterance = new SpeechSynthesisUtterance(text);
+              if (egyptianVoice) {
+                  utterance.voice = egyptianVoice;
+              }
+              utterance.lang = 'ar-EG';
+              window.speechSynthesis.speak(utterance);
+          }
+      }
+      
+      // Message Processing and Gemini
+      async function processMessage(message) {
+          const musicPlayCommands = ['تشغيل', 'شغل', 'غني', 'شغل اغاني', 'غنيلي'];
+          const musicStopCommands = ['ايقاف', 'إيقاف', 'إغلاق', 'اغلاق', 'طفي'];
+
+          if (musicPlayCommands.some(cmd => message.includes(cmd))) {
+              document.getElementById('backgroundMusic').play();
+              const reply = 'تم تشغيل الموسيقى. لإيقافها، اكتب "إيقاف".';
+              addMessageToChat(reply, 'bot');
+              speak(reply);
+              return;
+          }
+          if (musicStopCommands.some(cmd => message.includes(cmd))) {
+              document.getElementById('backgroundMusic').pause();
+              const reply = 'تم إيقاف الموسيقى لتشغيل ارسل كلمة (تشغيل).';
+              addMessageToChat(reply, 'bot');
+              speak(reply);
+              return;
+          }
+          
+          // Fallback to Gemini
+          addMessageToChat('', 'bot', true); // Show typing indicator
+          try {
+              const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      "contents": [{
+                          "parts": [{ "text": `أنت مساعد ذكي في متجر عطور اسمه "الأيقونة". أجب على السؤال التالي باللغة العربية بأسلوب ودود ومختصر: ${message}` }]
+                      }]
+                  })
+              });
+              
+              document.getElementById('typing-indicator')?.remove();
+              
+              if (!response.ok) {
+                  throw new Error('فشل الاتصال بخدمة العملاء.');
+              }
+              const data = await response.json();
+              const botReply = data.candidates[0].content.parts[0].text;
+              addMessageToChat(botReply, 'bot');
+              speak(botReply);
+
+          } catch (error) {
+              document.getElementById('typing-indicator')?.remove();
+              console.error('Gemini Error:', error);
+              addMessageToChat('عذراً، حدث خطأ أثناء محاولة الرد. مؤظف خدمة العملاء غير متواجد في الوقت الحالي. يرجى المحاولة مرة أخرى.', 'bot');
+          }
+      }
+      
+      // --- Order & Share Functions ---
+      
+      window.orderProduct = (productName) => {
+          if (typeof FB === 'undefined') {
+              alert('شكراً لك في الوقت الحالي خدمة المبيعات غير متواجد بعد. يرجى المحاولة مرة أخرى.');
+              return;
+          }
+          FB.getLoginStatus(function(response) {
+            const baseMessage = `العميل: الاخوه مبيعات الأيقونة للعطور، السلام عليكم. أريد معلومات عن هذا المنتج: ${productName}. هل يمكن تزويدي بالأسعار؟ رابط المنتج: ${window.location.href}`;
+            let finalMessage = '';
+            
+            if (response.status === 'connected') {
+                FB.api('/me', { fields: 'name' }, function(meResponse) {
+                    const userName = meResponse.name;
+                    finalMessage = `اهلا بك يا ${userName}. ${baseMessage}`;
+                    const encodedMessage = encodeURIComponent(finalMessage);
+                    window.open(`https://m.me/alayqwnt.ll.twr?text=${encodedMessage}`, '_blank');
+                });
+            } else {
+                // User not logged in or not authorized
+                finalMessage = `اهلا بك. ${baseMessage}. يرجى تزويدنا باسمك ورقم هاتفك ومكان إقامتك لنسهل عملية الطلب.`;
+                const encodedMessage = encodeURIComponent(finalMessage);
+                window.open(`https://m.me/alayqwnt.ll.twr?text=${encodedMessage}`, '_blank');
+            }
+          });
+      };
+      
+      const shareTextTemplate = (productName) => `الأيقونة للعطور - جودة وأصالة
+${productName}
+عطور رجاليه ونسائيه واجود انواع البخور
+يوجد لدينا التوصيل الى جميع المحافظات اليمنيه
+↓روابط الأيقونة للعطور↓
+موقع متجر الايقونة↓
+https://talalye1.github.io/Icon-perfumes/moan.html
+تطبيق متجر الايقونة ↓
+https://talalye1.github.io/Icon-perfumes/الأيقونة.apk
+حساب متجر الأيقونة فيسبوك↓ 
+https://facebook.com/alayqwnt.ll.twr
+حساب متجر الأيقونة انستجرام↓
+https://www.instagram.com/lyqwn_lltwr
+للطلب والإستفسارات راسلنا على الماسنجر↓
+https://m.me/alayqwnt.ll.twr`;
+
+      window.shareContent = (text, platform) => {
+          const encodedText = encodeURIComponent(text);
+          const pageUrl = encodeURIComponent('https://talalye1.github.io/Icon-perfumes/moan.html');
+          let url = '';
+
+          switch (platform) {
+              case 'facebook':
+                  url = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&quote=${encodedText}`;
+                  break;
+              case 'twitter':
+                  url = `https://twitter.com/intent/tweet?text=${encodedText}`;
+                  break;
+              case 'whatsapp':
+                  url = `https://wa.me/?text=${encodedText}`;
+                  break;
+              case 'instagram':
+                  alert('للمشاركة على انستجرام، يرجى نسخ النص وفتحه في التطبيق.');
+                  navigator.clipboard.writeText(text);
+                  window.open('https://www.instagram.com/lyqwn_lltwr', '_blank');
+                  return;
+              case 'all':
+                  if (navigator.share) {
+                      navigator.share({
+                          title: 'بخور وعود - أصيل',
+                          text: text,
+                          url: 'https://talalye1.github.io/Icon-perfumes/moan.html'
+                      }).catch(console.error);
+                  } else {
+                      alert('المتصفح لا يدعم المشاركة المباشرة. يمكنك نسخ النص.');
+                      navigator.clipboard.writeText(text);
+                  }
+                  return;
+          }
+          window.open(url, '_blank');
+      };
+
+      window.shareProduct = (productName, platform) => {
+          const text = shareTextTemplate(productName);
+          shareContent(text, platform);
+      };
+
+      window.sharePage = (platform) => {
+          const text = shareTextTemplate("تصفحوا مجموعتنا المميزة!");
+          shareContent(text, platform);
+      };
+      
+      // --- Product Ratings (Firestore) ---
+      async function setRating(productId, ratingValue) {
+          const ratingRef = doc(db, 'product-ratings', productId);
+          try {
+              await runTransaction(db, async (transaction) => {
+                  const ratingDoc = await transaction.get(ratingRef);
+                  if (!ratingDoc.exists()) {
+                      transaction.set(ratingRef, { total_rating: ratingValue, rating_count: 1 });
+                  } else {
+                      const newCount = ratingDoc.data().rating_count + 1;
+                      const newTotal = ratingDoc.data().total_rating + ratingValue;
+                      transaction.update(ratingRef, {
+                          total_rating: newTotal,
+                          rating_count: newCount
+                      });
+                  }
+              });
+              alert('شكراً لتقييمك!');
+          } catch (e) {
+              console.error("Transaction failed: ", e);
+              alert('فشل حفظ التقييم .اعد التقييم مرة اخرى');
+          }
+      }
+
+      function updateRatingDisplay(productId, data) {
+          const ratingContainer = document.getElementById(`rating-${productId}`);
+          const ratingCountEl = document.getElementById(`rating-count-${productId}`);
+          if (!ratingContainer || !data || data.rating_count === 0) {
+            ratingCountEl.textContent = '(0 تقييم)';
+            return;
+          };
+          
+          const avgRating = data.total_rating / data.rating_count;
+          const avgRounded = Math.round(avgRating * 2) / 2; // round to nearest 0.5
+
+          ratingCountEl.textContent = `(${data.rating_count} تقييم)`;
+          ratingContainer.querySelectorAll('i').forEach((star, index) => {
+              if (avgRounded >= index + 1) {
+                  star.className = 'fas fa-star';
+              } else if (avgRounded >= index + 0.5) {
+                  star.className = 'fas fa-star-half-alt';
+              } else {
+                  star.className = 'far fa-star';
+              }
+          });
+      }
+      
+      document.querySelectorAll('.product').forEach(product => {
+          const productId = product.dataset.productId;
+          if (productId) {
+              // Load initial rating
+              const ratingDocRef = doc(db, 'product-ratings', productId);
+              onSnapshot(ratingDocRef, (doc) => {
+                  updateRatingDisplay(productId, doc.data());
+              });
+
+              // Add click listeners
+              const ratingContainer = document.getElementById(`rating-${productId}`);
+              ratingContainer.querySelectorAll('i').forEach(star => {
+                  star.addEventListener('click', () => {
+                      const ratingValue = parseInt(star.dataset.value);
+                      setRating(productId, ratingValue);
+                  });
+              });
+          }
+      });
+      
+      // --- Social Media Modal ---
+      window.openSocialModal = (platform) => {
+        const modal = document.getElementById('socialModal');
+        const body = document.getElementById('socialModalBody');
+        body.innerHTML = ''; // Clear previous content
+
+        if(platform === 'facebook') {
+            body.innerHTML = `<div class="fb-page" data-href="https://facebook.com/alayqwnt.ll.twr" data-tabs="timeline" data-width="500" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://facebook.com/alayqwnt.ll.twr" class="fb-xfbml-parse-ignore"><a href="https://facebook.com/alayqwnt.ll.twr">الأيقونة للعطور</a></blockquote></div>`;
+            if (FB) FB.XFBML.parse(body); // Re-parse for dynamic content
+        } else if (platform === 'instagram') {
+             body.innerHTML = `<iframe src="https://www.instagram.com/lyqwn_lltwr/embed" width="100%" height="100%" frameborder="0"></iframe>`;
+        }
+        modal.style.display = 'flex';
+      }
+
+      window.closeSocialModal = () => {
+        document.getElementById('socialModal').style.display = 'none';
+        document.getElementById('socialModalBody').innerHTML = '';
+      }
+
+    </script>
+            
 </body>
 </html>
