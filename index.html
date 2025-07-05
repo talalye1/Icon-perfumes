@@ -1080,7 +1080,7 @@
           progressContainer.style.display = 'block';
 
           try {
-            const response = await fetch('./app.apk');
+            const response = await fetch('./الأيقونة.apk');
             if (!response.ok) {
                 throw new Error(`خطأ في الشبكة: ${response.statusText}`);
             }
@@ -1109,7 +1109,7 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'icon-perfumes.apk';
+            a.download = 'الأيقونة.apk';
             document.body.appendChild(a);
             a.click();
             a.remove();
