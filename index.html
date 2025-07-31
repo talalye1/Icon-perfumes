@@ -73,10 +73,11 @@
         h1, h2, h3 { color: var(--gold); }
         h2 { text-align: center; margin-bottom: 25px; font-size: 2.2rem; }
 
+    
         /* --- Navigation Bar --- */
         .top-bar {
             position: fixed;
-            top: 0;
+            top: 10;
             left: 0;
             width: 100%;
             display: flex;
@@ -149,7 +150,7 @@
             padding: 15px;
             text-align: center;
             transition: all 0.3s ease;
-            display: flex;
+            display: none;
             flex-direction: column;
             justify-content: space-between;
         }
@@ -360,18 +361,15 @@
     </div>
   <!-- صف الصور المصغرة -->
   </div>
-  <div class="thumbs-row" style="display:flex;justify-content:center;gap:12px;margin-bottom:5px;">
-    <img class="thumb" src="men1.jpg" alt="منتج 1" data-high="men1.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
-    <img class="thumb" src="men2.jpg" alt="منتج 2" data-high="men2.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
-    <img class="thumb" src="men3.jpg" alt="منتج 3" data-high="men3.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
-    <img class="thumb" src="men4.jpg" alt="منتج 4" data-high="men4.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
-    <img class="thumb" src="men5.jpg" alt="منتج 5" data-high="men5.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
-  </div>
 </div>
+    <div class="container">
+    <p>عدد الزوار: <span id="visitorCount" style="color: gold;"></span></p>
+    </div>
     <div class="container">
                 <h1>الأيقونة للعطور - اناقة واصالة</h1>
                 <p>اكتشف مجموعة من العطور الرجالية والنسائية والبخور تمتع بالقوة والأناقة. ثبات يدوم طويلاً ورائحة تأسر الحواس.</p>
-                
+    </div>
+    <div class="container">
                 <button id="downloadBtn">
                     <i class="fab fa-android"></i> تحميل تطبيق الأندرويد
                 </button>
@@ -400,7 +398,7 @@
             </div>
         </div>
         <div class="container">
-            <h2>منتجاتنا الرجالية المميزة</h2>
+         
             <div id="products-grid" class="products-grid">
                 </div>
         </div>
@@ -909,7 +907,7 @@
 
     });
 
-const sliderImgs = ["men1.jpg","men2.jpg","men3.jpg","men4.jpg","men5.jpg"];
+const sliderImgs = ["men1.jpg","female1.jpg","moan1.jpg","men2.jpg","female2.jpg","moan2.jpg","men3.jpg","female3.jpg","moan3.jpg","men4.jpg","female4.jpg","moan4.jpg","men5.jpg","female1.jpg","moan1.jpg"];
   const highImgs = ["men1.png","men2.png","men3.png","men4.png","men5.png"];
   let mainImg = document.getElementById('mainImg');
   let thumbs = document.querySelectorAll('.thumb');
@@ -955,6 +953,29 @@ const sliderImgs = ["men1.jpg","men2.jpg","men3.jpg","men4.jpg","men5.jpg"];
       spacing:"3px"
     });
   });
+
+// Check for localStorage support
+    if (typeof(Storage) !== "undefined") {
+        // Get the current visitor count from localStorage
+        let count = localStorage.getItem("visitorCount");
+
+        // If it's the first visit, set the count to 1
+        if (count === null) {
+            count = 1;
+        } else {
+            // Otherwise, increment the count by 1
+            count = parseInt(count) + 1;
+        }
+
+        // Store the new count in localStorage
+        localStorage.setItem("visitorCount", count);
+
+        // Display the count on the page
+        document.getElementById("visitorCount").innerHTML = count;
+    } else {
+        // Fallback for browsers that don't support localStorage
+        document.getElementById("visitorCount").innerHTML = "متصفحك لا يدعم localStorage";
+    }
     </script>
 
 </body>

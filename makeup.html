@@ -122,10 +122,39 @@
    <!-- الصورة الكبرى المتغيرة -->
     <img id="mainImg" src="moant4.jpg" alt="منتج مختار" style="width:100%;max-width:100%;height:100%;object-fit:contain;transition:.4s;">
     </div>
-  
+  <div class="container">
+    <p>عدد الزوار: <span id="visitorCount" style="color: gold;"></span></p>
+    </div>
     <div class="container">
         <h1>مستحضرات التجميل - قيد الإنشاء</h1>
         <p>قريباً سيتم انشاء قسم مستحضرات التجميل</p>
         </div>
+    
+    <script>
+    
+    // Check for localStorage support
+    if (typeof(Storage) !== "undefined") {
+        // Get the current visitor count from localStorage
+        let count = localStorage.getItem("visitorCount");
+
+        // If it's the first visit, set the count to 1
+        if (count === null) {
+            count = 1;
+        } else {
+            // Otherwise, increment the count by 1
+            count = parseInt(count) + 1;
+        }
+
+        // Store the new count in localStorage
+        localStorage.setItem("visitorCount", count);
+
+        // Display the count on the page
+        document.getElementById("visitorCount").innerHTML = count;
+    } else {
+        // Fallback for browsers that don't support localStorage
+        document.getElementById("visitorCount").innerHTML = "متصفحك لا يدعم localStorage";
+    }
+    
+    </script>
 </body>
 </html>
