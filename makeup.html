@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأيقونة للعطور - غير متصل</title>
+        <link rel="icon" href="icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+    <meta name="theme-color" content="#000000">
+    <title>الأيقونة للعطور - جودة وأصالة</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="offline" href="offline.html">
+    <link rel="index" href="index.html">
+    <link rel="men" href="men.html">
+    <link rel="female" href="female.html">
+    <link rel="moan" href="moan.html">
+    <link rel="script" href="script.js">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+                /* (1/12) CSS Styles */
+        :root {
+            --gold: #D4AF37;
+            --light-gold: #F5DEB3;
+            --black: #0F0F0F;
+            --dark-gray: #1A1A1A;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            position: relative;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><defs><pattern id="d" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke-width="0.3" stroke="%23D4AF37"/></pattern></defs><rect width="100%" height="100%" fill="url(%23d)"/></svg>');
+            background-size: 200px;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 1px solid var(--gold);
+            pointer-events: none;
+            z-index: 1000;
+            border-radius: 10px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2, h3 { color: var(--gold); }
+        h2 { text-align: center; margin-bottom: 25px; font-size: 2.2rem; }
+
+  /* --- Navigation Bar --- */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            border-bottom: 2px solid var(--gold);
+            z-index: 990;
+        }
+        .nav-buttons { display: flex; gap: 5px; }
+        .nav-btn {
+            color: var(--gold);
+            background: var(--black);
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--gold);
+            color: var(--black);
+            box-shadow: 0 0 15px var(--gold);
+        }
+        
+        main { padding-top: 80px; /* Space for fixed nav */ }
+
+    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap">
+</head>
+<body>
+  
+  <div class="top-bar">
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-btn">الرئيسية</a>
+            <a href="men.html" class="nav-btn">عطور رجالي</a>
+            <a href="female.html" class="nav-btn">عطور نسائي</a>
+            <a href="moan.html" class="nav-btn">بخور وعود</a>
+        </div>
+    </div>
+                    <!-- أيقونات Font Awesome -->
+    <main>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- خط عربي أنيق -->
+<link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+<!-- (4/8) مربع الصور المتحركة وصور المنتجات المصغرة -->
+<div class="products-section" style="padding:0px 0;">
+  <div id="mainSlider" style="width:100%;max-width:100%;margin:0 auto 5px;position:relative;border:4px solid var(--gold);border-radius:10px;overflow:hidden;background:var(--black);display:flex;justify-content:center;align-items:center;min-height:100%;">
+   <!-- الصورة الكبرى المتغيرة -->
+    <img id="mainImg" src="moant4.jpg" alt="منتج مختار" style="width:100%;max-width:100%;height:100%;object-fit:contain;transition:.4s;">
+    </div>
+  
+    <div class="container">
+        <h1>مستحضرات التجميل - قيد الإنشاء</h1>
+        <p>قريباً سيتم انشاء قسم مستحضرات التجميل</p>
+        </div>
+</body>
+</html>

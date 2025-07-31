@@ -3,1022 +3,489 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta property="og:url"           content="https://talalye1.github.io/Icon-perfumes" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="الأيقونة للعطور - جودة وأصالة">
-    <meta property="og:description"   content="تقدم لكم الأيقونة للعطور مجموعة مميزة من العطور الرجالية والنسائية وأجود أنواع البخور. توصيل لجميع المحافظات اليمنيه">
-    <meta property="og:image"         content="https://talalye1.github.io/Icon-perfumes/moant4.jpg">
-    <meta property="og:site_name"     content="الأيقونة للعطور">
+    <title>الأيقونة - اناقة واصالة</title>
 
-    
+    <meta property="og:title" content="عطور رجالية - فاخرة">
+    <meta property="og:description" content="اكتشف مجموعة من العطور الرجالية والنسائية والبخور تمتع بالقوة والأناقة. ثبات يدوم طويلاً ورائحة تأسر الحواس.">
+    <meta property="og:image" content="https://talalye1.github.io/Icon-perfumes/moant4.jpg">
+    <meta property="og:url" content="https://talalye1.github.io/Icon-perfumes/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="متجر الأيقونة للعطور">
+
     <link rel="manifest" href="manifest.json">
     <link rel="icon" href="icon.png" type="image/png">
     <link rel="apple-touch-icon" href="icon-192x192.png">
     <meta name="theme-color" content="#000000">
-    <title>الأيقونة للعطور - جودة وأصالة</title>
-    <link rel="offline" href="offline.html">
-    <link rel="index" href="index.html">
-    <link rel="men" href="men.html">
-    <link rel="female" href="female.html">
-    <link rel="moan" href="moan.html">
-    <link rel="sw" href="sw.js">
-    <link rel="service-worker" href="service-worker.js">
-    <link rel="manifes" href="manifes.json">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    
     <style>
+        /* (1/12) CSS Styles */
         :root {
             --gold: #D4AF37;
             --light-gold: #F5DEB3;
-            --black: #000000;
-            --white: #FFFFFF;
+            --black: #0F0F0F;
             --dark-gray: #1A1A1A;
+            --white: #FFFFFF;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
+            font-family: 'Cairo', sans-serif;
             background-color: var(--black);
             color: var(--white);
             position: relative;
-            min-height: 100vh;
-            padding-bottom: 100px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23D4AF37" stroke-width="0.5"/></svg>');
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                              url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><defs><pattern id="d" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M0 10h20M10 0v20" stroke-width="0.3" stroke="%23D4AF37"/></pattern></defs><rect width="100%" height="100%" fill="url(%23d)"/></svg>');
             background-size: 200px;
+            overflow-x: hidden;
         }
-        
+
         body::before {
             content: "";
             position: fixed;
-            top: 00px;
-            left: 0px;
-            right: 0px;
-            bottom: 0px;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
             border: 1px solid var(--gold);
             pointer-events: none;
             z-index: 1000;
+            border-radius: 10px;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 10px;
-        }
-        
-        header {
-            text-align: center;
-            padding: 20px 0;
-            position: relative;
-        }
-        
-        .logo {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            margin: 0 auto;
-            border-radius: 5%;
-            overflow: hidden;
-            border: 4px solid var(--gold);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            background: linear-gradient(45deg, var(--black), var(--dark-gray));
-        }
-
-        .logo img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .header-content h1 {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin: 20px 0 10px;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-        
-        .header-content p {
-            font-size: 1.2rem;
-            color: var(--light-gold);
-            max-width: 800px;
-            margin: 0 auto 20px;
-            line-height: 1.6;
-        }
-
-        .header-content .fb-like {
-            margin-bottom: 20px;
-        }
-        
-        #installApkBtn {
-             margin: 0 auto 10px;
-        }
-
-        #downloadProgressContainer {
-            width: 80%;
-            max-width: 400px;
-            margin: 0 auto 20px;
-            text-align: center;
-        }
-
-        #downloadProgress {
-            width: 100%;
-            height: 10px;
-            -webkit-appearance: none;
-            appearance: none;
-        }
-        
-        #downloadProgress::-webkit-progress-bar {
-            background-color: var(--dark-gray);
-            border-radius: 5px;
-            border: 1px solid var(--gold);
-        }
-
-        #downloadProgress::-webkit-progress-value {
-            background-color: var(--gold);
-            border-radius: 5px;
-            transition: width 0.1s linear;
-        }
-
-        #downloadStatus {
-            color: var(--light-gold);
-            font-size: 0.9rem;
-            display: block;
-            margin-top: 5px;
-        }
-
-        /* Features Section */
-        .features {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin: 40px 0;
-            gap: 20px;
-        }
-        
-        .feature {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 10px;
-            padding: 25px;
-            text-align: center;
-            flex: 1;
-            min-width: 250px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-        }
-        
-        .feature i {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-        }
-        
-        .feature h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--gold);
-        }
-        
-        .feature p {
-            color: var(--light-gold);
-            line-height: 1.6;
-        }
-        
-        /* Products Section */
-        .products-section {
-            margin: 60px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 40px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: var(--gold);
-        }
-        
-        .products {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-        
-        .product {
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.8));
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 10px;
-            overflow: hidden;
-            width: 100%;
-            max-width: 350px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .product:hover {
-            transform: translateY(-10px);
-        }
-        
-        .product-image {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .main-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-            background: var(--dark-gray);
-            cursor: pointer;
-        }
-
-        .main-image:hover {
-            transform: scale(1.05);
-        }
-        
-        .thumbnails {
-            display: flex;
-            overflow-x: auto;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            gap: 10px;
-        }
-        
-        .thumbnail {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border: 2px solid transparent;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-        
-        .thumbnail:hover, .thumbnail.active {
-            border-color: var(--gold);
-            transform: scale(1.1);
-        }
-        
-        .product-content {
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        
-        .product h3 {
-            font-size: 1.5rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-        
-        .product p {
-            color: var(--light-gold);
-            line-height: 1.6;
-            margin-bottom: 15px;
-            flex-grow: 1;
-        }
-        
-        .product-rating {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            color: var(--gold);
-        }
-        
-        .product-rating .rating i {
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .product-rating .rating i:hover {
-            color: var(--light-gold);
-        }
-        .product-rating .rating-count {
-            color: var(--light-gold);
-            font-size: 0.9rem;
-        }
-        
-        .product-actions {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            gap: 10px;
-        }
-        
-        .product-share {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-        .product-share .share-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        .product-share .share-btn:hover {
-             transform: translateY(-3px);
         }
 
-        .order-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, var(--gold), #b8860b);
-            border: none;
-            border-radius: 5px;
-            color: var(--black);
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: auto;
-        }
-        
-        .order-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(212, 175, 55, 0.3);
-        }
-        
-        /* Comments Section */
-        .comments-section {
-            margin: 60px 0;
-        }
+        h1, h2, h3 { color: var(--gold); }
+        h2 { text-align: center; margin-bottom: 25px; font-size: 2.2rem; }
 
-        .comment {
-            background: rgba(26, 26, 26, 0.7);
-            border-left: 3px solid var(--gold);
-            border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .comment-author {
-            font-weight: bold;
-            color: var(--gold);
-        }
-
-        .comment-date {
-            color: var(--light-gold);
-            font-size: 0.85rem;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 5px;
-            background: rgba(26, 26, 26, 0.7);
-            color: white;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, var(--gold), #b8860b);
-            color: var(--black);
-            border: none;
-            padding: 20px 30px;
-            font-size: 1.0rem;
-            font-weight: bold;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-    
-            /* Fixed menu Buttons */
-        .fixed-menu { 
+        /* --- Navigation Bar --- */
+        .top-bar {
             position: fixed;
-            margin-top: 5px;
-            align-items: center;
-            overflow: hidden;
-            z-index: 999; 
-        }
-        .fixed-menu-btn { 
-            padding: 10px 11px;
-            border-radius: 20px;
-            align-items: center; 
-            justify-content: center;
-            color: white; 
-            text-decoration: none; 
-        }   
-        .fixed-menu-btn:hover { transform: translateY(-5px) scale(1.1); }
-        .open { background: #3b5998; }
-        .closed { background: #1da1f2; }
-
-        /* Chat Window */
-        .chat-icon {
-            position: fixed;
-            right: 30px;
-            bottom: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--gold), #b8860b);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--black);
-            font-size: 1.8rem;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 1000;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        .chat-window {
-            position: fixed;
-            right: 30px;
-            bottom: 100px;
-            width: 350px;
-            height: 450px;
-            background: rgba(26, 26, 26, 0.95);
-            border: 1px solid var(--gold);
-            border-radius: 15px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            transform: translateY(20px) scale(0.9);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            transform-origin: bottom right;
-        }
-        
-        .chat-window.active {
-            transform: translateY(0) scale(1);
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .chat-header {
-            background: linear-gradient(135deg, var(--gold), #b8860b);
-            padding: 15px;
-            color: var(--black);
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .close-chat {
-             margin-left: auto; /* Fix for rtl */
-             margin-right: auto;
-             background: none;
-             border: none;
-             color: var(--black);
-             font-size: 1.2rem;
-             cursor: pointer;
-        }
-        
-        .chat-body {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .chat-message {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 15px;
-            line-height: 1.5;
-        }
-        
-        .bot-message {
-            background: rgba(212, 175, 55, 0.2);
-            align-self: flex-start;
-            border-bottom-left-radius: 0;
-        }
-        
-        .user-message {
-            background: rgba(255, 255, 255, 0.1);
-            align-self: flex-end;
-            border-bottom-right-radius: 0;
-        }
-        
-        .chat-footer {
-            padding: 15px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        #namePrompt, #chatInputContainer {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .chat-input {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 30px;
-            background: rgba(26, 26, 26, 0.7);
-            color: white;
-        }
-        
-        .send-btn {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--gold);
-            border: none;
-            color: var(--black);
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        /* Modal for images */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.9);
-            padding-top: 60px;
-            align-items: center;
+            display: flex;
             justify-content: center;
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            border-bottom: 2px solid var(--gold);
+            z-index: 990;
         }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-            animation: zoom 0.6s;
-        }
-
-        @keyframes zoom {
-            from {transform:scale(0)}
-            to {transform:scale(1)}
-        }
-        
-        /* Updated Close Button for Modal */
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            left: 35px; /* RTL fix */
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .close-btn:hover,
-        .close-btn:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* PWA Install Bottom Bar */
-        .pwa-install-bottom {
-            display: none;
-            position: fixed;
-            bottom: 300px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--dark-gray), var(--black));
-            border: 1px solid var(--gold);
-            border-radius: 10px;
-            padding: 15px 20px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-            z-index: 2001;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            animation: slideUp 0.5s ease-out;
-        }
-
-        @keyframes slideUp {
-            from { bottom: -100px; opacity: 0; }
-            to { bottom: 15px; opacity: 1; }
-        }
-
-        .pwa-install-bottom p {
-            margin: 0;
-            color: var(--light-gold);
-            flex-grow: 1;
-        }
-
-        .pwa-install-bottom button {
-            background: var(--gold);
-            color: var(--black);
-            border: none;
+        .nav-buttons { display: flex; gap: 5px; }
+        .nav-btn {
+            color: var(--gold);
+            background: var(--black);
             padding: 8px 15px;
             border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .pwa-install-bottom button#dismissPwaBtn {
-            background: transparent;
-            color: var(--light-gold);
-            font-size: 1.5rem;
-            padding: 0 5px;
-        }
-        
-        /* Fixed Share Buttons */
-        .fixed-share { 
-            position: fixed; 
-            left: 20px; 
-            bottom: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 10px; 
-            z-index: 999; 
-        }
-        .fixed-share-btn { 
-            width: 45px; 
-            height: 45px; 
-            border-radius: 50%; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: white; 
-            font-size: 1.2rem; 
-            text-decoration: none; 
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3); 
-            transition: all 0.3s ease; 
-        }
-        .fixed-share-btn:hover { transform: translateY(-5px) scale(1.1); }
-        .facebook { background: #3b5998; }
-        .instagram { background: #e1306c; }
-        .twitter { background: #1da1f2; }
-        .whatsapp { background: #25d366; }
-        .share-all { background: var(--gold); }
-        
-        /* Welcome Message */
-        .welcome-message {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            background: var(--dark-gray);
-            border: 1px solid var(--gold);
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            z-index: 1002;
-            color: var(--light-gold);
-            max-width: 250px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-        }
-        .welcome-message.show {
-            opacity: 1;
-        }
-        .close-welcome {
-            position: absolute;
-            top: 5px;
-            left: 10px;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .follow-us { margin: 60px 0; text-align: center; }
-        .social-buttons { display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
-        .social-btn { display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; border-radius: 50%; font-size: 1.5rem; text-decoration: none; color: white; transition: all 0.3s ease; border:none; cursor:pointer;}
-        .social-btn:hover { transform: translateY(-5px); }
-        .fb { background: #3b5998; } .ig { background: #e1306c; } .wa { background: #25d366; }
-        .contact-us { 
-            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.8)); 
-            border: 1px solid rgba(212, 175, 55, 0.3); 
-            border-radius: 10px; 
-            padding: 30px; 
-            margin: 40px 0; 
-            text-align: center; 
-        }
-        .contact-buttons { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center;
-            gap: 20px; 
-            margin-top: 20px; 
-            flex-wrap: wrap; 
-        }
-        .contact-btn { 
-            padding: 12px 25px; 
-            border-radius: 30px; 
-            font-size: 1.1rem; 
-            font-weight: bold; 
-            text-decoration: none; 
-            display: inline-flex; 
-            align-items: center; 
-            gap: 10px; 
-            transition: all 0.3s ease; 
-            border: none;
-            cursor: pointer;
-        }
-        .contact-btn:hover { transform: translateY(-3px); }
-        .messenger-btn { background: linear-gradient(135deg, #006aff, #0084ff); color: white; }
-        .designer-btn { background: linear-gradient(135deg, var(--gold), #b8860b); color: var(--black); }
-        
-        .contact-us h4, .contact-us p {
-            color: var(--light-gold);
-            margin: 15px 0 5px;
-        }
-        .contact-us p a {
-            color: var(--gold);
             text-decoration: none;
             font-weight: bold;
+            border: 1px solid var(--gold);
+            transition: all 0.3s ease;
         }
-
-        footer { text-align: center; padding: 30px 0; border-top: 1px solid rgba(212, 175, 55, 0.3); margin-top: 60px; }
-        footer p { color: var(--light-gold); margin: 10px 0; }
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--gold);
+            color: var(--black);
+            box-shadow: 0 0 15px var(--gold);
+        }
         
-        /* Social Media Modal */
-        .social-modal {
-            position: fixed;
-            z-index: 3000;
-            left: 0;
-            top: 0;
+        main { padding-top: 80px; /* Space for fixed nav */ }
+
+        /* --- Header Section --- */
+        .header-content { text-align: center; margin-top: 20px; }
+        .header-content .logo img {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            max-width: 600px;
+            height: auto;
+            border-radius: 15px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+        .header-content h1 { margin: 20px 0 10px; font-size: 2.5rem; }
+        .header-content p { color: var(--light-gold); margin-bottom: 20px; font-size: 1.1rem; }
+
+        /* --- Download Button --- */
+        #downloadBtn {
+            background: var(--gold); color: var(--black); font-size: 1.1rem;
+            border: none; padding: 12px 24px; border-radius: 8px;
+            width: 100%; max-width: 400px; cursor: pointer; font-weight: bold;
+            transition: all 0.3s;
+        }
+        #downloadBtn:hover { transform: scale(1.05); }
+        #progressBar { height: 6px; width: 0; background: var(--gold); margin: 8px auto 0; transition: width 0.3s; max-width: 400px; border-radius: 6px; }
+
+        /* --- Why Us Section --- */
+        .why-us { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin-top: 40px; }
+        .feature-item { text-align: center; max-width: 250px; }
+        .feature-item .icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 10px; }
+        .feature-item h3 { font-size: 1.3rem; margin-bottom: 5px; }
+        .feature-item p { color: var(--light-gold); font-size: 0.95rem; }
+
+        /* --- Products Section --- */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .product-card {
+            background: var(--dark-gray);
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .social-modal-content {
-            width: 90%;
-            height: 90%;
-            background: var(--white);
-            position: relative;
+        .product-card:hover { border-color: var(--gold); box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; cursor: pointer; margin-bottom: 15px; }
+        .product-card h3 { font-size: 1.4rem; color: var(--light-gold); }
+        .product-info { display: flex; justify-content: space-between; align-items: center; margin: 10px 0; }
+        .price { font-size: 1.3rem; font-weight: bold; color: var(--gold); }
+        .like-btn { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+        .like-btn.liked { color: #ff6b6b; }
+        .quantity-selector { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px 0; }
+        .quantity-selector button { background: var(--gold); color: var(--black); border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; }
+        .quantity-selector input { width: 50px; text-align: center; background: var(--black); color: var(--white); border: 1px solid var(--gold); border-radius: 5px; padding: 5px; }
+        .total-price { margin: 10px 0; font-weight: bold; }
+        .buy-btn {
+            background: var(--gold); color: var(--black); font-size: 1.1rem;
+            border: none; padding: 10px 20px; border-radius: 8px; width: 100%;
+            cursor: pointer; font-weight: bold; margin-top: 10px; transition: all 0.3s;
         }
-        .social-modal-content iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        .buy-btn:hover { background: var(--light-gold); }
+        .social-share { margin-top: 15px; }
+        .social-share a { color: white; margin: 0 8px; font-size: 1.5rem; text-decoration: none; }
+        .social-share a.facebook:hover { color: #1877F2; }
+        .social-share a.twitter:hover { color: #1DA1F2; }
+        .social-share a.whatsapp:hover { color: #25D366; }
+        .social-share a.telegram:hover { color: #0088cc; }
+
+        /* --- Modal (Popup) --- */
+        .modal {
+            position: fixed; z-index: 1001; left: 0; top: 0;
+            width: 100%; height: 100%; overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            display: none; justify-content: center; align-items: center;
         }
-        .close-social-modal {
+        .modal-content {
+            background: var(--dark-gray);
+            padding: 30px; border-radius: 15px;
+            border: 2px solid var(--gold);
+            width: 90%; max-width: 450px;
+            text-align: center;
+        }
+        .modal-content h3 { margin-bottom: 20px; }
+        .modal-content input {
+            width: 100%; padding: 12px; margin-bottom: 20px;
+            border-radius: 8px; border: 1px solid var(--gold);
+            background: var(--black); color: var(--white); font-size: 1rem;
+        }
+        .modal-btn {
+            background: var(--gold); color: var(--black); font-size: 1.1rem;
+            border: none; padding: 12px 24px; border-radius: 8px;
+            cursor: pointer; font-weight: bold; margin: 5px;
+        }
+        .modal-btn.close { background: #555; color: white; }
+        
+        /* --- Comments Section --- */
+        #comments-section { background: var(--dark-gray); padding: 20px; border-radius: 15px; margin-top: 40px; }
+        #comment-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
+        #comment-form input, #comment-form textarea {
+            padding: 10px; background: var(--black); color: var(--white);
+            border: 1px solid var(--gold); border-radius: 8px;
+        }
+        #comment-form button {
+            align-self: flex-start; background: var(--gold); color: var(--black);
+            padding: 10px 20px; border-radius: 8px; font-weight: bold; border: none; cursor: pointer;
+        }
+        .comment {
+            border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 10px;
+        }
+        .comment-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
+        .comment-author { font-weight: bold; color: var(--gold); }
+        .comment-date { font-size: 0.8rem; color: #aaa; }
+        .comment-text { color: var(--light-gold); }
+        .comment-actions { display: flex; gap: 15px; font-size: 0.9rem; color: #ccc; }
+        .comment-actions button { background: none; border: none; color: #ccc; cursor: pointer; }
+        .comment-actions button:hover { color: var(--gold); }
+
+        /* --- Footer --- */
+        footer { text-align: center; padding: 30px 20px; margin-top: 40px; background: var(--dark-gray); }
+        .footer-social a { color: var(--gold); margin: 0 15px; font-size: 2rem; transition: all 0.3s; }
+        .footer-social a:hover { color: var(--light-gold); transform: translateY(-5px); }
+        .footer-contact { margin: 20px 0; }
+        .contact-btn {
+            display: inline-block; background: var(--gold); color: var(--black);
+            padding: 10px 20px; margin: 5px; text-decoration: none;
+            border-radius: 20px; font-weight: bold;
+        }
+        .designer-credit { margin-top: 20px; color: #888; font-size: 0.9rem; }
+
+        /* --- Floating Share Buttons --- */
+        .floating-share-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 995;
+        }
+        .floating-share-buttons a {
+            width: 45px; height: 45px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            color: white; text-decoration: none; font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .floating-share-buttons a:hover { transform: scale(1.1); }
+        .share-fb { background: #1877F2; }
+        .share-wa { background: #25D366; }
+        .share-tg { background: #0088cc; }
+        .share-tw { background: #1DA1F2; }
+
+        /* --- Floating Chat Widget --- */
+        #chat-widget {
+            position: fixed;
+            bottom: 20px; right: 20px;
+            z-index: 998;
+        }
+        #chat-icon {
+            width: 60px; height: 60px; background: var(--gold);
+            color: var(--black); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 2rem; cursor: pointer;
+            box-shadow: 0 0 20px var(--gold);
+            animation: pulse 2s infinite;
+        }
+        #chat-popup {
             position: absolute;
-            top: -35px;
-            right: 0px;
-            color: white;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
+            bottom: 80px; right: 0;
+            width: 320px;
+            background: var(--dark-gray);
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            border: 1px solid var(--gold);
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            overflow: hidden;
         }
+        .chat-header {
+            background: var(--black);
+            color: var(--gold);
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .chat-messages {
+            height: 300px; padding: 10px;
+            overflow-y: auto;
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .chat-message {
+            padding: 8px 12px; border-radius: 10px;
+            max-width: 80%;
+        }
+        .user-message { background: var(--gold); color: var(--black); align-self: flex-end; }
+        .bot-message { background: #333; color: var(--light-gold); align-self: flex-start; }
+        .chat-input-area {
+            display: flex; padding: 10px; border-top: 1px solid var(--gold);
+        }
+        #chat-input, #name-input {
+            flex-grow: 1; border: none; padding: 8px;
+            background: var(--black); color: var(--white);
+            border-radius: 20px;
+        }
+        #mic-btn, #send-btn {
+            background: none; border: none; color: var(--gold);
+            font-size: 1.5rem; cursor: pointer; margin: 0 5px;
+        }
+        #name-prompt { padding: 15px; text-align: center; }
 
-
-        @media (max-width: 768px) { .header-content h1 {font-size: 2rem;} .chat-window { width: 90%; right: 5%; height: 70vh; bottom: 80px;} }
-
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-buttons { gap: 2px; }
+            .nav-btn { padding: 6px 8px; font-size: 0.8rem; }
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            .floating-share-buttons { left: 10px; }
+            #chat-widget { right: 10px; }
+            #chat-popup { width: calc(100vw - 20px); }
+        }
     </style>
 </head>
 <body>
-    
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v23.0&appId=1112709710371948"></script>
-<body>
-    
-    <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v23.0&appId=1112709710371948"></script>
-    
-    <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v23.0"></script>
-    
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v23.0&appId=YOUR_APP_ID&autoLogAppEvents=1"></script>
-    <script async src="//www.instagram.com/embed.js"></script>
-    
-    
-    <div id="imageModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <img id="modalImage" src="" alt="صورة موسعة" style="width:100%">
+
+    <div class="top-bar">
+        <div class="nav-buttons">
+            <a href="men.html" class="nav-btn">عطور رجالي</a>
+            <a href="female.html" class="nav-btn">عطور نسائي</a>
+            <a href="moan.html" class="nav-btn">بخـور وعود</a>
+            <a href="makeup.html" class="nav-btn">مستحضرات</a>
         </div>
     </div>
-
-    <div id="socialModal" class="modal" style="display:none;">
-        <div class="social-modal-content">
-            <span class="close-social-modal" onclick="closeSocialModal()">&times;</span>
-            <div id="socialModalBody" style="width:100%; height:100%;"></div>
-        </div>
+                    <!-- أيقونات Font Awesome -->
+    <main>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- خط عربي أنيق -->
+<link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title>Hello, World!</title>
+<!-- (4/8) مربع الصور المتحركة وصور المنتجات المصغرة -->
+<div class="products-section" style="padding:0px 0;">
+  <div id="mainSlider" style="width:100%;max-width:100%;margin:0 auto 5px;position:relative;border:4px solid var(--gold);border-radius:10px;overflow:hidden;background:var(--black);display:flex;justify-content:center;align-items:center;min-height:100%;">
+   <!-- الصورة الكبرى المتغيرة -->
+    <img id="mainImg" src="moant4.jpg" alt="منتج مختار" style="width:100%;max-width:100%;height:100%;object-fit:contain;transition:.4s;">
     </div>
-
-    <!-- Modal for displaying images -->
-    <div id="imageModal" class="modal">
-        <span class="close-btn" id="closeImageModal">&times;</span>
-        <img class="modal-content" id="modalImageContent">
-    </div>
-
-    <!-- PWA Install Prompt -->
-    <div class="pwa-install-bottom" id="pwaInstallPrompt">
-        <p>ثبّت متجر الأيقونة للعطور لتصفح أسهل!</p>
-        <button id="installPwaBtn">تثبيت</button>
-        <button id="dismissPwaBtn">&times;</button>
-    </div>
-
-    <div class="fixed-share">
-        <a href="#" class="fixed-share-btn facebook" onclick="sharePage('facebook')"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="fixed-share-btn instagram" onclick="sharePage('instagram')"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="fixed-share-btn twitter" onclick="sharePage('twitter')"><i class="fab fa-twitter"></i></a>
-        <a href="#" class="fixed-share-btn whatsapp" onclick="sharePage('whatsapp')"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" class="fixed-share-btn share-all" onclick="sharePage('all')"><i class="fas fa-share-alt"></i></a>
-    </div>
-    
-    <div class="welcome-message" id="welcomeMessage">
-        <button class="close-welcome" id="closeWelcome">&times;</button>
-        <p>اهلاً بك! أنا هنا لمساعدتك. اضغط على أيقونة الدردشة للتواصل معنا. يمكنك سماع الموسيقى</p>
-    </div>
-
-    <div class="chat-icon" id="chatIcon">
-        <i class="fas fa-comment-dots"></i>
-    </div>
-
-    <div class="chat-window" id="chatWindow">
-        <div class="chat-header">
-            <i class="fas fa-headset"></i>
-            <span>خدمة العملاء</span>
-            <button class="close-chat" id="closeChat">&times;</button>
-        </div>
-        <div class="chat-body" id="chatBody">
-            </div>
-        <div class="chat-footer" id="chatFooter">
-            </div>
-    </div>
-
-    <audio id="backgroundMusic" src="http://stream.zeno.fm/ae32e025wp8uv" loop style="display:none;"></audio>
-
-
-    <section class="fixed-menu">
-  <div class="btn-group btn-group-justified"> 
-   <a href="index.html" class="fixed-menu-btn closed">الرئيسية</a> 
-   <a href="men.html" class="fixed-menu-btn open">عطور رجالية</a> 
-   <a href="female.html" class="fixed-menu-btn open">عطور نسائية</a>
-<a href="moan.html" class="fixed-menu-btn open">بخور وعود</a>      
-     </div>
-        </section>
-    
+  <!-- صف الصور المصغرة -->
+  </div>
+  <div class="thumbs-row" style="display:flex;justify-content:center;gap:12px;margin-bottom:5px;">
+    <img class="thumb" src="men1.jpg" alt="منتج 1" data-high="men1.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
+    <img class="thumb" src="men2.jpg" alt="منتج 2" data-high="men2.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
+    <img class="thumb" src="men3.jpg" alt="منتج 3" data-high="men3.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
+    <img class="thumb" src="men4.jpg" alt="منتج 4" data-high="men4.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
+    <img class="thumb" src="men5.jpg" alt="منتج 5" data-high="men5.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
+  </div>
+</div>
     <div class="container">
-        <header>
-            <div class="logo">
-                <img src="moant4.jpg" alt="شعار الأيقونة للعطور">
-            </div>
-            <div class="header-content">
-                <h1>الأيقونة للعطور - جودة وأصالة</h1>
-                <p>تقدم لكم الأيقونة للعطور مجموعة مميزة من العطور الرجالية والنسائية وأجود أنواع البخور. نضمن لكم منتجات أصلية بجودة عالية مع خدمة توصيل سريعة لجميع المحافظات اليمنية.</p>
-                <div class="fb-like" data-href="https://facebook.com/alayqwnt.ll.twr" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="true"></div>
-
-        <button id="installApkBtn" class="order-btn" style="max-width: 300px; margin-top:20px;">
-                    <i class="fab fa-android"></i> تثبيت سريع لتطبيق (الأيقونة)
+                <h1>الأيقونة للعطور - اناقة واصالة</h1>
+                <p>اكتشف مجموعة من العطور الرجالية والنسائية والبخور تمتع بالقوة والأناقة. ثبات يدوم طويلاً ورائحة تأسر الحواس.</p>
+                
+                <button id="downloadBtn">
+                    <i class="fab fa-android"></i> تحميل تطبيق الأندرويد
                 </button>
-                <div id="downloadProgressContainer" style="display:none;">
-                    <progress id="downloadProgress" value="0" max="100"></progress>
-                    <span id="downloadStatus">0% (0 KB / 0 KB)</span>
+                <div id="progressBar"></div>
+                <div id="downloadStatus" style="margin-top: 5px; color: var(--light-gold);"></div>
+            </div>
+        </div>
+        <div class="container">
+            <h2>لماذا تختار الأيقونة للعطور؟</h2>
+            <div class="why-us">
+                <div class="feature-item">
+                    <div class="icon"><i class="fas fa-gem"></i></div>
+                    <h3>جودة أصلية</h3>
+                    <p>نضمن لكم منتجات أصلية 100% ومكونات عالية الجودة لتجربة فريدة.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon"><i class="fas fa-truck-fast"></i></div>
+                    <h3>توصيل سريع</h3>
+                    <p>خدمة توصيل سريعة وآمنة إلى جميع المحافظات اليمنية تصلك أينما كنت.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3>ضمان الرضا</h3>
+                    <p>سياسة إرجاع واستبدال مرنة تضمن رضاك الكامل عن مشترياتك.</p>
                 </div>
             </div>
-
-        <section class="install-section">
-            <a href="الأيقونة.apk" class="order-btn" id="installBtn">
-                <i class="fas fa-download"></i> تثبيت عادي لتطبيق (الأيقونة)
-            </a>
-            <div class="progress-container" id="progressContainer">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="container">
+            <h2>منتجاتنا الرجالية المميزة</h2>
+            <div id="products-grid" class="products-grid">
                 </div>
-                <div class="progress-info">
-                    <span id="progressPercentage">0%</span>
-                    <span id="progressCounter">0 KB / 0 KB</span>
+        </div>
 
-                </div>
+        <div id="purchaseModal" class="modal">
+            <div class="modal-content">
+                <h3>تأكيد الطلب</h3>
+                <p>المنتج: <strong id="modalProductName"></strong></p>
+                <p>الإجمالي: <strong id="modalTotalPrice"></strong></p>
+                <hr style="border-color: var(--gold); opacity: 0.2; margin: 20px 0;">
+                <input type="text" id="customerNameInput" placeholder="الرجاء إدخال اسمك الكريم" required>
+                <button id="confirmPurchaseBtn" class="modal-btn">تأكيد وإرسال عبر ماسنجر</button>
+                <button class="modal-btn close">إلغاء</button>
             </div>
-        </header>
-
-        <section class="features">
-             </section>
-
-        <section class="products-section">
-            <h2 class="section-title">لماذا تختار الأيقونة للعطور</h2>
-            <div class="products">
-        <!-- مميزات المتجر -->
-        <section class="features">
-            <div class="feature">
-                <i class="fas fa-shipping-fast"></i>
-                <h3>توصيل سريع</h3>
-                <p>توصيل إلى جميع المحافظات اليمنية خلال 1-7 أيام عمل</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-check-circle"></i>
-                <h3>جودة عالية</h3>
-                <p>منتجات أصلية 100% بجودة عالية مع ضمان استرجاع</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-undo"></i>
-                <h3>ضمان الاستبدال</h3>
-                <p>استبدال أو إرجاع المنتج خلال 7 أيام من الاستلام</p>
-            </div>
-        </section>
-        
-
-        <section class="comments-section">
-            <h2 class="section-title">آراء عملاء الأيقونة للعطور</h2>
-            <div class="comments-container" id="commentsContainer">
-                </div>
-
-            <div class="add-comment" style="margin-top: 40px;">
-                <h3>أضف تعليقك</h3>
-                <form id="commentForm">
-                    <div style="margin-bottom: 20px;">
-                        <input type="text" id="commentName" class="form-control" placeholder="اكتب اسمك" required>
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <textarea id="commentContent" class="form-control" placeholder="اكتب تعليقك هنا..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">نشر التعليق</button>
+        </div>
+        <div class="container">
+            <div id="comments-section">
+                <h2>آراء العملاء</h2>
+                <form id="comment-form">
+                    <input type="text" id="comment-name" placeholder="اسمك (مطلوب)" required>
+                    <textarea id="comment-text" rows="4" placeholder="اكتب تعليقك هنا..." required></textarea>
+                    <button type="submit">أضف تعليق</button>
                 </form>
+                <div id="comments-list">
+                    </div>
             </div>
-        </section>
-        
-        <section class="follow-us">
-            <h2 class="section-title">تابعنا على وسائل التواصل</h2>
-            <div class="social-buttons">
-                <button class="social-btn fb" onclick="openSocialModal('facebook')"><i class="fab fa-facebook-f"></i></button>
-                <button class="social-btn ig" onclick="openSocialModal('instagram')"><i class="fab fa-instagram"></i></button>
-                <a href="https://wa.me/" class="social-btn wa" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h2>تابعنا على</h2>
+            <div class="footer-social">
+                <a href="https://facebook.com/alayqwnt.ll.twr" target="_blank" title="فيسبوك"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/lyqwn_lltwr" target="_blank" title="انستجرام"><i class="fab fa-instagram"></i></a>
+                <a href="#" id="whatsapp-group-link" target="_blank" title="مجموعة واتساب"><i class="fab fa-whatsapp"></i></a>
             </div>
-        </section>
+            <div class="footer-contact">
+                <h2>تواصل معنا</h2>
+                <a href="https://m.me/alayqwnt.ll.twr" target="_blank" class="contact-btn"><i class="fab fa-facebook-messenger"></i> خدمة العملاء</a>
+                <a href="https://wa.me/967774662666?text=اطلب%20تصميم%20الان" target="_blank" class="contact-btn"><i class="fab fa-whatsapp"></i> اطلب تصميم الآن</a>
+            </div>
+            <p class="designer-credit">تم التصميم والتطوير بواسطة: <br> م/ طلال سليمان المقطري</p>
+        </div>
+    </footer>
 
-        <section class="contact-us">
-             <h2 class="section-title">تواصل معنا</h2>
-             <div class="contact-buttons">
-                <a href="https://m.me/alayqwnt.ll.twr" class="contact-btn messenger-btn" target="_blank">
-                    <i class="fab fa-facebook-messenger"></i> خدمة العملاء
-                </a>
-                <a href="https://wa.me/967774662666?text=مصمم%20التطبيقات%20والمواقع%20طلال%20سليمان%20قايد%20المقطري%20https://www.facebook.com/talalye2024%20اهلاً%20بك%20انت%20قادم%20من%20موقع%20الأيقونة%20للعطور%20هل%20لديك%20استفسار%20او%20طلب%20تصميم%20اكتب%20ما%20هو%20نوع%20الاستفسار%20او%20الطلب%20هنا👈" class="contact-btn designer-btn" target="_blank">
-                    <i class="fab fa-whatsapp"></i> اطلب تصميمك الان
-                </a>
-             </div>
-             <h4>تم تصميم الموقع بواسطة</h4>
-             <p><a href="https://www.facebook.com/talalye2024" target="_blank">المصمم طلال سليمان قايد المقطري</a></p>
-        </section>
-
-        </footer>
+    <div class="floating-share-buttons">
+        <a href="#" id="share-fb" class="share-fb" title="مشاركة على فيسبوك"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" id="share-wa" class="share-wa" title="مشاركة على واتساب"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" id="share-tg" class="share-tg" title="مشاركة على تيليجرام"><i class="fab fa-telegram-plane"></i></a>
+        <a href="#" id="share-tw" class="share-tw" title="مشاركة على تويتر"><i class="fab fa-twitter"></i></a>
     </div>
-    
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js" type="module"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js" type="module"></script>
+
+    <div id="chat-widget">
+        <div id="chat-popup">
+            <div class="chat-header">
+                <span>مساعد الأيقونة الذكي</span>
+                <button id="close-chat" style="background:none; border:none; color:white; float:left; font-size:1.2rem; cursor:pointer;">&times;</button>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                </div>
+            <div id="name-prompt">
+                <p>مرحباً بك! الرجاء إدخال اسمك للبدء.</p>
+                <input type="text" id="name-input" placeholder="اكتب اسمك هنا...">
+                <button id="send-name-btn" class="modal-btn" style="margin-top:10px;">بدء المحادثة</button>
+            </div>
+            <div class="chat-input-area" id="chat-input-area" style="display:none;">
+                <button id="mic-btn" title="تحدث"><i class="fas fa-microphone"></i></button>
+                <input type="text" id="chat-input" placeholder="اكتب سؤالك...">
+                <button id="send-btn" title="إرسال"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <div id="chat-icon">
+            <i class="fas fa-comments"></i>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     
     <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-    
-      // Your web app's Firebase configuration
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+      import { getFirestore, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+      
       const firebaseConfig = {
         apiKey: "AIzaSyAcOLUzUULR6HYcJKdPCFvhJJHT4gKnczU",
         authDomain: "icon-for-perfumes-5ccd6.firebaseapp.com",
@@ -1027,268 +494,267 @@
         messagingSenderId: "942406140856",
         appId: "1:942406140856:web:ff4729e3f3a7653a56454d"
       };
-    
-      // Initialize Firebase
+
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
-      
-      // Gemini API Key
-      const GEMINI_API_KEY = "AIzaSyDSGuS0cRduU1dPGzHjXRjWvjDgzL4NyIY";
 
-      // --- PWA Installation ---
-      let deferredPrompt;
-      const pwaInstallPrompt = document.getElementById('pwaInstallPrompt');
-      const installPwaBtn = document.getElementById('installPwaBtn');
-      const dismissPwaBtn = document.getElementById('dismissPwaBtn');
+      window.firebase = { db, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp };
+    </script>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
 
-      window.addEventListener('beforeinstallprompt', (e) => {
-        e.preventDefault();
-        deferredPrompt = e;
-        setTimeout(() => {
-            pwaInstallPrompt.style.display = 'flex';
-        }, 5000); // Show after 5 seconds
+        // --- Service Worker Registration for PWA ---
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(registration => console.log('Service Worker registered successfully:', registration))
+                .catch(error => console.log('Service Worker registration failed:', error));
+        }
         
-        setTimeout(() => {
-            if(pwaInstallPrompt.style.display === 'flex') {
-                pwaInstallPrompt.style.display = 'none';
-            }
-        }, 25000); // Hide after 20 more seconds
-      });
+        // --- App Download Simulation ---
+        const downloadBtn = document.getElementById('downloadBtn');
+        const progressBar = document.getElementById('progressBar');
+        const downloadStatus = document.getElementById('downloadStatus');
+        let downloading = false;
+        downloadBtn.onclick = () => {
+            if (downloading) return;
+            downloading = true;
+            downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التحميل...';
+            downloadBtn.disabled = true;
+            progressBar.style.width = '0%';
+            downloadStatus.innerText = '';
+            let percent = 0;
+            const totalKb = 9850;
+            const interval = setInterval(() => {
+                percent += 2;
+                if (percent >= 100) {
+                    clearInterval(interval);
+                    percent = 100;
+                    downloadBtn.innerHTML = '<i class="fas fa-download"></i> تثبيت تطبيق الأندرويد';
+                    downloadStatus.innerText = 'اكتمل التحميل ✔️';
+                    downloadBtn.disabled = false;
+                    downloadBtn.onclick = () => { window.open('الأيقونة.apk', '_blank'); };
+                }
+                progressBar.style.width = percent + '%';
+                let kb = Math.floor((percent/100)*totalKb);
+                downloadStatus.innerText = `${kb} / ${totalKb} كيلو بايت`;
+            }, 50);
+        };
 
-      installPwaBtn.addEventListener('click', async () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            deferredPrompt = null;
-            pwaInstallPrompt.style.display = 'none';
-        }
-      });
-      
-      dismissPwaBtn.addEventListener('click', () => {
-          pwaInstallPrompt.style.display = 'none';
-      });
+        // --- Product Data ---
+        const products = [
+            { id: 'p1', name: 'عطر العود الملكي', price: 5900, image: 'men1.jpg', rating: 4.8 },
+            { id: 'p2', name: 'نسيم البحر', price: 4900, image: 'men2.jpg', rating: 4.5 },
+            { id: 'p3', name: 'روح الصحراء', price: 5500, image: 'men3.jpg', rating: 4.9 },
+            { id: 'p4', name: 'ليالي الشرق', price: 5200, image: 'men4.jpg', rating: 4.7 },
+            { id: 'p5', name: 'خرير الماء', price: 4200, image: 'men5.jpg', rating: 4.6 }
+        ];
 
-
-      // --- APK Install ---
-      const installApkBtn = document.getElementById('installApkBtn');
-      const progressContainer = document.getElementById('downloadProgressContainer');
-      const progressBar = document.getElementById('downloadProgress');
-      const progressStatus = document.getElementById('downloadStatus');
-      
-      installApkBtn.addEventListener('click', async () => {
-          installApkBtn.disabled = true;
-          progressContainer.style.display = 'block';
-
-          try {
-            const response = await fetch('./الأيقونة.apk');
-            if (!response.ok) {
-                throw new Error(`خطأ في الشبكة: ${response.statusText}`);
-            }
-
-            const contentLength = +response.headers.get('Content-Length');
-            const totalMB = (contentLength / 1024 / 1024).toFixed(2);
-            let loaded = 0;
-
-            const reader = response.body.getReader();
-            const chunks = [];
-
-            while(true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-
-                chunks.push(value);
-                loaded += value.length;
-                const loadedMB = (loaded / 1024 / 1024).toFixed(2);
-                
-                const percent = Math.round((loaded / contentLength) * 100);
-                progressBar.value = percent;
-                progressStatus.textContent = `${percent}% (${loadedMB} MB / ${totalMB} MB)`;
-            }
-
-            const blob = new Blob(chunks, { type: 'application/vnd.android.package-archive' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'الأيقونة.apk';
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            URL.revokeObjectURL(url);
-            
-            progressStatus.textContent = "اكتمل التحميل!";
-          } catch(error) {
-            progressStatus.textContent = `فشل التحميل: ${error.message}`;
-            console.error('Download error:', error);
-          } finally {
-            installApkBtn.disabled = false;
-          }
-      });
-            
-      // --- Image Modal ---
-      window.expandImage = (imageSrc) => {
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        modal.style.display = "flex";
-        modalImg.src = imageSrc;
-      };
-      
-      window.closeModal = () => {
-        document.getElementById('imageModal').style.display = "none";
-      };
-
-      window.changeImage = (imageSrc, mainImageElement, thumbnailElement) => {
-          mainImageElement.src = imageSrc;
-          const thumbnails = thumbnailElement.parentElement.querySelectorAll('.thumbnail');
-          thumbnails.forEach(thumb => thumb.classList.remove('active'));
-          thumbnailElement.classList.add('active');
-      };
-
-      // --- Comments Section (Firestore) ---
-      const commentForm = document.getElementById('commentForm');
-      const commentsContainer = document.getElementById('commentsContainer');
-      const commentName = document.getElementById('commentName');
-      const commentContent = document.getElementById('commentContent');
-
-      function formatTimeAgo(date) {
-        if (!date) return "";
-        const seconds = Math.floor((new Date() - date) / 1000);
-        let interval = seconds / 31536000;
-        if (interval > 1) return `منذ ${Math.floor(interval)} سنوات`;
-        interval = seconds / 2592000;
-        if (interval > 1) return `منذ ${Math.floor(interval)} أشهر`;
-        interval = seconds / 86400;
-        if (interval > 1) return `منذ ${Math.floor(interval)} أيام`;
-        interval = seconds / 3600;
-        if (interval > 1) return `منذ ${Math.floor(interval)} ساعات`;
-        interval = seconds / 60;
-        if (interval > 1) return `منذ ${Math.floor(interval)} دقائق`;
-        return "الآن";
-      }
-
-      function renderComments(doc) {
-          const comment = doc.data();
-          const commentDiv = document.createElement('div');
-          commentDiv.className = 'comment';
-          commentDiv.setAttribute('data-id', doc.id);
-
-          const date = comment.createdAt ? comment.createdAt.toDate() : new Date();
-          
-          commentDiv.innerHTML = `
-              <div class="comment-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                  <div class="comment-author">${comment.name}</div>
-                  <div class="comment-date" data-timestamp="${date.getTime()}">${formatTimeAgo(date)}</div>
-              </div>
-              <p class="comment-content">${comment.content}</p>
-          `;
-          commentsContainer.prepend(commentDiv);
-      }
-      
-      // Load comments from Firestore
-      const q = query(collection(db, 'comments'), orderBy('createdAt', 'desc'));
-      onSnapshot(q, (snapshot) => {
-          commentsContainer.innerHTML = '';
-          snapshot.docs.forEach(doc => {
-              renderComments(doc);
-          });
-      });
-
-      // Update timestamps every minute
-      setInterval(() => {
-          document.querySelectorAll('.comment-date').forEach(el => {
-              const timestamp = parseInt(el.getAttribute('data-timestamp'));
-              if (timestamp) {
-                  el.textContent = formatTimeAgo(new Date(timestamp));
-              }
-          });
-      }, 60000);
-
-      // Add new comment
-      commentForm.addEventListener('submit', async (e) => {
-          e.preventDefault();
-          const name = commentName.value.trim();
-          const content = commentContent.value.trim();
-
-          if (name && content) {
-              await addDoc(collection(db, "comments"), {
-                  name: name,
-                  content: content,
-                  createdAt: serverTimestamp()
-              });
-              commentForm.reset();
-          }
-      });
-      
-      // --- Chatbot, Welcome Message, etc. ---
-      const chatIcon = document.getElementById('chatIcon');
-      const chatWindow = document.getElementById('chatWindow');
-      const closeChat = document.getElementById('closeChat');
-      const chatBody = document.getElementById('chatBody');
-      const chatFooter = document.getElementById('chatFooter');
-      let chatUserName = localStorage.getItem('chatUserName');
-
-      const welcomeMessage = document.getElementById('welcomeMessage');
-      const closeWelcomeBtn = document.getElementById('closeWelcome');
-      let welcomeTimeout;
-
-      function showWelcomeMessage() {
-          welcomeMessage.classList.add('show');
-          welcomeTimeout = setTimeout(() => {
-              welcomeMessage.classList.remove('show');
-          }, 8000); // Hide after 8 seconds
-      }
-      
-      closeWelcomeBtn.addEventListener('click', () => {
-          clearTimeout(welcomeTimeout);
-          welcomeMessage.classList.remove('show');
-      });
-
-      setTimeout(showWelcomeMessage, 5000); // First appearance after 5s
-      setInterval(() => {
-        if (!chatWindow.classList.contains('active')) {
-            showWelcomeMessage();
-        }
-      }, 30000); // Re-appear every 30s if chat is closed
-
-
-      function setupChatUI() {
-          chatFooter.innerHTML = '';
-          if (!chatUserName) {
-              chatFooter.innerHTML = `
-                <div id="namePrompt">
-                    <input type="text" class="chat-input" id="userNameInput" placeholder="أدخل اسمك الكريم للبدء...">
-                    <button class="send-btn" id="setUserNameBtn"><i class="fas fa-check"></i></button>
+        const productsGrid = document.getElementById('products-grid');
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <div class="product-info">
+                    <div class="rateYo" data-rateyo-rating="${product.rating}" data-rateyo-read-only="true"></div>
+                    <button class="like-btn" data-product-id="${product.id}"><i class="far fa-heart"></i> <span id="like-count-${product.id}">0</span></button>
                 </div>
-              `;
-              document.getElementById('setUserNameBtn').addEventListener('click', handleNameSubmit);
-              document.getElementById('userNameInput').addEventListener('keypress', (e) => {
-                  if (e.key === 'Enter') handleNameSubmit();
-              });
-          } else {
-              chatFooter.innerHTML = `
-                <div id="chatInputContainer">
-                  <input type="text" class="chat-input" id="chatInput" placeholder="اكتب رسالتك هنا...">
-                  <button class="send-btn" id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                <div class="price">
+                    <span>${product.price.toLocaleString()} ريال</span>
                 </div>
-              `;
-              document.getElementById('sendBtn').addEventListener('click', handleMessageSend);
-              document.getElementById('chatInput').addEventListener('keypress', (e) => {
-                  if (e.key === 'Enter') handleMessageSend();
-              });
-          }
-      }
+                <div class="quantity-selector">
+                    <button class="quantity-minus">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" readonly>
+                    <button class="quantity-plus">+</button>
+                </div>
+                <div class="total-price">الإجمالي: <span class="total-price-value">${product.price.toLocaleString()}</span> ريال</div>
+                <button class="buy-btn" data-product-name="${product.name}" data-product-price="${product.price}">شراء الآن</button>
+                <div class="social-share">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(product.name)}" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(product.name + ' ' + window.location.href)}" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(product.name)}" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            `;
+            productsGrid.appendChild(card);
+        });
+        
+        // Initialize RateYo
+        $(".rateYo").rateYo({
+            rating: function () { return $(this).attr('data-rateyo-rating'); },
+            starWidth: "20px",
+            ratedFill: "var(--gold)",
+            normalFill: "#555",
+            readOnly: function () { return $(this).attr('data-rateyo-read-only') === 'true'; },
+            rtl: true,
+            spacing: "5px"
+        });
 
-      function handleNameSubmit() {
-          const input = document.getElementById('userNameInput');
-          const name = input.value.trim();
-          if (name) {
-              chatUserName = name;
-              localStorage.setItem('chatUserName', name);
-              addMessageToChat(`أهلاً بك يا ${name}! يمكنك سماع المؤسقى ارسل كلمت (تشغيل كيف يمكنني مساعدتك اليوم؟`, 'bot');
-              setupChatUI();
-          }
-      }
+        // --- Product Card Interactivity ---
+        productsGrid.addEventListener('click', e => {
+            const quantityInput = e.target.closest('.product-card')?.querySelector('.quantity-input');
+            const price = parseFloat(e.target.closest('.product-card')?.querySelector('.buy-btn').dataset.productPrice);
+            const totalPriceEl = e.target.closest('.product-card')?.querySelector('.total-price-value');
+            
+            if (e.target.classList.contains('quantity-plus')) {
+                quantityInput.value = parseInt(quantityInput.value) + 1;
+            }
+            if (e.target.classList.contains('quantity-minus') && quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+            if (quantityInput) {
+                const total = parseInt(quantityInput.value) * price;
+                totalPriceEl.textContent = total.toLocaleString();
+            }
 
-      async function handleMessageSend() {
+            // Buy Now Button
+            if (e.target.classList.contains('buy-btn')) {
+                const productName = e.target.dataset.productName;
+                const total = totalPriceEl.textContent;
+                openPurchaseModal(productName, total, parseInt(quantityInput.value));
+            }
+            
+            // Like Button
+            if (e.target.closest('.like-btn')) {
+                handleLike(e.target.closest('.like-btn'));
+            }
+        });
+        
+        // --- Purchase Modal Logic ---
+        const modal = document.getElementById('purchaseModal');
+        const modalProductName = document.getElementById('modalProductName');
+        const modalTotalPrice = document.getElementById('modalTotalPrice');
+        const confirmBtn = document.getElementById('confirmPurchaseBtn');
+        let currentProduct = {};
+
+        function openPurchaseModal(name, total, quantity) {
+            currentProduct = { name, total, quantity };
+            modalProductName.textContent = name;
+            modalTotalPrice.textContent = total + ' ريال';
+            modal.style.display = 'flex';
+        }
+
+        modal.querySelector('.close').onclick = () => modal.style.display = 'none';
+        window.onclick = e => { if (e.target == modal) modal.style.display = 'none'; };
+
+        confirmBtn.onclick = () => {
+            const customerName = document.getElementById('customerNameInput').value.trim();
+            if (!customerName) {
+                alert('الرجاء إدخال اسمك لإتمام الطلب.');
+                return;
+            }
+            const message = `مرحباً مبيعات الأيقونة للعطور،\nأنا ${customerName}، وأرغب في طلب المنتج التالي:\n\nالمنتج: ${currentProduct.name}\nالكمية: ${currentProduct.quantity}\nالسعر الإجمالي: ${currentProduct.total} ريال\n\nالرابط المرجعي: ${window.location.href}\n\nشكراً لكم.`;
+            const messengerLink = `https://m.me/alayqwnt.ll.twr?text=${encodeURIComponent(message)}`;
+            window.open(messengerLink, '_blank');
+            modal.style.display = 'none';
+        };
+
+        // --- Firebase Firestore Logic (Likes & Comments) ---
+        const { db, collection, addDoc, onSnapshot, doc, updateDoc, increment, serverTimestamp } = window.firebase;
+        const commentsCollection = collection(db, 'mens-perfume-comments');
+        const likesCollection = collection(db, 'product-likes');
+
+        // Handle Likes
+        async function handleLike(btn) {
+            const productId = btn.dataset.productId;
+            const likedKey = `liked_${productId}`;
+            
+            if (localStorage.getItem(likedKey)) {
+                // Unlike (optional, can be implemented)
+                console.log("Already liked");
+                return;
+            }
+
+            const likeDocRef = doc(db, "product-likes", productId);
+            await updateDoc(likeDocRef, { count: increment(1) });
+            
+            localStorage.setItem(likedKey, 'true');
+            btn.classList.add('liked');
+            btn.querySelector('i').className = 'fas fa-heart';
+        }
+
+        // Fetch and display likes
+        products.forEach(p => {
+            const likeDocRef = doc(db, "product-likes", p.id);
+            onSnapshot(likeDocRef, (doc) => {
+                const count = doc.exists() ? doc.data().count : 0;
+                document.getElementById(`like-count-${p.id}`).textContent = count;
+            });
+        });
+
+
+        // Handle Comments
+        const commentForm = document.getElementById('comment-form');
+        const commentsList = document.getElementById('comments-list');
+
+        commentForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            const name = document.getElementById('comment-name').value;
+            const text = document.getElementById('comment-text').value;
+            
+            await addDoc(commentsCollection, {
+                name: name,
+                text: text,
+                createdAt: serverTimestamp()
+            });
+
+            commentForm.reset();
+        });
+
+        // Listen for and display comments
+        onSnapshot(commentsCollection, (snapshot) => {
+            commentsList.innerHTML = '';
+            snapshot.docs.sort((a, b) => b.data().createdAt - a.data().createdAt).forEach(doc => {
+                const comment = doc.data();
+                const date = comment.createdAt ? comment.createdAt.toDate().toLocaleString('ar-SA') : 'الآن';
+                const div = document.createElement('div');
+                div.className = 'comment';
+                div.innerHTML = `
+                    <div class="comment-header">
+                        <span class="comment-author">${comment.name}</span>
+                        <span class="comment-date">${date}</span>
+                    </div>
+                    <p class="comment-text">${comment.text}</p>
+                `;
+                commentsList.appendChild(div);
+            });
+        });
+        
+        // --- Floating Share Buttons Logic ---
+        const shareText = `الأيقونة للعطور - جودة وأصالة\nعطور رجالية ونسائية وبخور ومستحضرات التجميل.\nيوجد لدينا توصيل الى جميع المحافظات اليمنيه.\n\nاكتشف قسم العطور الرجالية:\n${window.location.href}`;
+        document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(shareText)}`;
+        document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+        document.getElementById('share-tg').href = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(shareText)}`;
+        document.getElementById('share-tw').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(shareText)}`;
+
+        // --- Chat Widget Logic ---
+        const chatIcon = document.getElementById('chat-icon');
+        const chatPopup = document.getElementById('chat-popup');
+        const closeChatBtn = document.getElementById('close-chat');
+        const chatMessages = document.getElementById('chat-messages');
+        const namePrompt = document.getElementById('name-prompt');
+        const nameInput = document.getElementById('name-input');
+        const sendNameBtn = document.getElementById('send-name-btn');
+        const chatInputArea = document.getElementById('chat-input-area');
+        const chatInput = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const micBtn = document.getElementById('mic-btn');
+        const GEMINI_API_KEY = 'AIzaSyDSGuS0cRduU1dPGzHjXRjWvjDgzL4NyIY';
+        const audioPlayer = new Audio();
+        let userName = localStorage.getItem('perfume_userName');
+
+        // Text-to-Speech function
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'ar-SA';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+        
+        async function handleMessageSend() {
           const input = document.getElementById('chatInput');
           const message = input.value.trim();
           if (message) {
@@ -1297,292 +763,199 @@
               await processMessage(message);
           }
       }
-      
-      function addMessageToChat(text, sender, isTyping = false) {
-          const messageDiv = document.createElement('div');
-          messageDiv.className = `chat-message ${sender}-message`;
-          if (isTyping) {
-              messageDiv.id = 'typing-indicator';
-              messageDiv.innerHTML = '<i>الأيقونة يكتب الان...</i>';
-          } else {
-              messageDiv.textContent = text;
-              // Log to Firestore
-              addDoc(collection(db, "chat_log"), {
-                  user: sender === 'user' ? chatUserName : 'bot',
-                  message: text,
-                  timestamp: serverTimestamp()
-              });
-          }
-          chatBody.appendChild(messageDiv);
-          chatBody.scrollTop = chatBody.scrollHeight;
-      }
-      
-      chatIcon.addEventListener('click', () => {
-          welcomeMessage.classList.remove('show');
-          clearTimeout(welcomeTimeout);
-          chatWindow.classList.toggle('active');
-          if (chatWindow.classList.contains('active') && chatBody.children.length === 0) {
-              setupChatUI();
-              if(!chatUserName) {
-                addMessageToChat('مرحباً بك في خدمة عملاء الأيقونة للعطور. لسماع المؤسيقى ارسل كلمة (تشغيل)', 'bot');
-              } else {
-                addMessageToChat(`أهلاً بعودتك يا ${chatUserName}! يمكنك سماع المؤسيقى ارسل كلمة (تشغيل)`, 'bot');
-              }
-          }
-      });
-      closeChat.addEventListener('click', () => chatWindow.classList.remove('active'));
 
-      // Text-to-Speech
-      let egyptianVoice = null;
-      function loadVoices() {
-          const voices = window.speechSynthesis.getVoices();
-          egyptianVoice = voices.find(voice => voice.lang === 'ar-EG');
-          if (!egyptianVoice) {
-             egyptianVoice = voices.find(voice => voice.lang.startsWith('ar-'));
-          }
-      }
-      window.speechSynthesis.onvoiceschanged = loadVoices;
-      loadVoices();
-
-      function speak(text) {
-          if ('speechSynthesis' in window) {
-              window.speechSynthesis.cancel(); // Cancel any previous speech
-              const utterance = new SpeechSynthesisUtterance(text);
-              if (egyptianVoice) {
-                  utterance.voice = egyptianVoice;
-              }
-              utterance.lang = 'ar-EG';
-              window.speechSynthesis.speak(utterance);
-          }
-      }
-      
-      // Message Processing and Gemini
-      async function processMessage(message) {
-          const musicPlayCommands = ['تشغيل', 'شغل', 'غني', 'شغل اغاني', 'غنيلي'];
-          const musicStopCommands = ['ايقاف', 'إيقاف', 'إغلاق', 'اغلاق', 'طفي'];
-
-          if (musicPlayCommands.some(cmd => message.includes(cmd))) {
-              document.getElementById('backgroundMusic').play();
-              const reply = 'تم تشغيل الموسيقى. لإيقافها، اكتب "إيقاف".';
-              addMessageToChat(reply, 'bot');
-              speak(reply);
-              return;
-          }
-          if (musicStopCommands.some(cmd => message.includes(cmd))) {
-              document.getElementById('backgroundMusic').pause();
-              const reply = 'تم إيقاف الموسيقى لتشغيل ارسل كلمة (تشغيل).';
-              addMessageToChat(reply, 'bot');
-              speak(reply);
-              return;
-          }
-          
-          // Fallback to Gemini
-          addMessageToChat('', 'bot', true); // Show typing indicator
-          try {
-              const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                      "contents": [{
-                          "parts": [{ "text": `أنت خدمة العملاء في متجر عطور اسمه "الأيقونة". عنوان: المركز الرئيسي للأيقونة "اليمن محافظة ذمار". عملية شراء منتج يتم الدفع عبر إيداع مبلغ الشراء لحساب الايقونة لدى بنك الكريمي. رقم حساب الكريمي الخاص باستقبال المبالغ قم بمراسلتنا عبر زر الماسنجر الموجود في اسفل صفحة المتجر او الضغط على زر اطلب الان الموجود تحت كل منتج ليتم تزويدك برقم حساب بنك الكريمي. مصمم ومبرمح متحر الأيقونة "السيد طلال سليمان المقطري". رقم هاتف المصمم طلال سليمان المقطري "774662666". أجب على السؤال التالي باللغة العربية بأسلوب ودود ومختصر: ${message}` }]
-                      }]
-                  })
-              });
-              
-              document.getElementById('typing-indicator')?.remove();
-              
-              if (!response.ok) {
-                  throw new Error('فشل الاتصال بخدمة العملاء.');
-              }
-              const data = await response.json();
-              const botReply = data.candidates[0].content.parts[0].text;
-              addMessageToChat(botReply, 'bot');
-              speak(botReply);
-
-          } catch (error) {
-              document.getElementById('typing-indicator')?.remove();
-              console.error('Gemini Error:', error);
-              addMessageToChat('عذراً، حدث خطأ أثناء محاولة الرد. مؤظف خدمة العملاء غير متواجد في الوقت الحالي. يرجى المحاولة مرة أخرى.', 'bot');
-          }
-      }
-      
-      // --- Order & Share Functions ---
-      
-      window.orderProduct = (productName) => {
-          if (typeof FB === 'undefined') {
-              alert('شكراً لك في الوقت الحالي خدمة المبيعات غير متواجد بعد. يرجى المحاولة مرة أخرى.');
-              return;
-          }
-          FB.getLoginStatus(function(response) {
-            const baseMessage = `العميل: الاخوه مبيعات الأيقونة للعطور، السلام عليكم. أريد معلومات عن هذا المنتج: ${productName}. هل يمكن تزويدي بالأسعار؟ رابط المنتج: ${window.location.href}`;
-            let finalMessage = '';
-            
-            if (response.status === 'connected') {
-                FB.api('/me', { fields: 'name' }, function(meResponse) {
-                    const userName = meResponse.name;
-                    finalMessage = `اهلا بك يا ${userName}. ${baseMessage}`;
-                    const encodedMessage = encodeURIComponent(finalMessage);
-                    window.open(`https://m.me/alayqwnt.ll.twr?text=${encodedMessage}`, '_blank');
-                });
-            } else {
-                // User not logged in or not authorized
-                finalMessage = `اهلا بك. ${baseMessage}. يرجى تزويدنا باسمك ورقم هاتفك ومكان إقامتك لنسهل عملية الطلب.`;
-                const encodedMessage = encodeURIComponent(finalMessage);
-                window.open(`https://m.me/alayqwnt.ll.twr?text=${encodedMessage}`, '_blank');
-            }
-          });
-      };
-      
-      const shareTextTemplate = (productName) => `الأيقونة للعطور - جودة وأصالة
-${productName}
-عطور رجاليه ونسائيه واجود انواع البخور
-يوجد لدينا التوصيل الى جميع المحافظات اليمنيه
-↓روابط الأيقونة للعطور↓
-موقع متجر الايقونة↓
-https://talalye1.github.io/Icon-perfumes
-تطبيق متجر الايقونة ↓
-https://talalye1.github.io/Icon-perfumes/الأيقونة.apk
-حساب متجر الأيقونة فيسبوك↓ 
-https://facebook.com/alayqwnt.ll.twr
-حساب متجر الأيقونة انستجرام↓
-https://www.instagram.com/lyqwn_lltwr
-للطلب والإستفسارات راسلنا على الماسنجر↓
-https://m.me/alayqwnt.ll.twr`;
-
-      window.shareContent = (text, platform) => {
-          const encodedText = encodeURIComponent(text);
-          const pageUrl = encodeURIComponent('https://talalye1.github.io/Icon-perfumes');
-          let url = '';
-
-          switch (platform) {
-              case 'facebook':
-                  url = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&quote=${encodedText}`;
-                  break;
-              case 'twitter':
-                  url = `https://twitter.com/intent/tweet?text=${encodedText}`;
-                  break;
-              case 'whatsapp':
-                  url = `https://wa.me/?text=${encodedText}`;
-                  break;
-              case 'instagram':
-                  alert('للمشاركة على انستجرام، يرجى نسخ النص وفتحه في التطبيق.');
-                  navigator.clipboard.writeText(text);
-                  window.open('https://www.instagram.com/lyqwn_lltwr', '_blank');
-                  return;
-              case 'all':
-                  if (navigator.share) {
-                      navigator.share({
-                          title: 'الأيقونة للعطور - جودة وأصالة',
-                          text: text,
-                          url: 'https://talalye1.github.io/Icon-perfumes'
-                      }).catch(console.error);
-                  } else {
-                      alert('المتصفح لا يدعم المشاركة المباشرة. يمكنك نسخ النص.');
-                      navigator.clipboard.writeText(text);
-                  }
-                  return;
-          }
-          window.open(url, '_blank');
-      };
-
-      window.shareProduct = (productName, platform) => {
-          const text = shareTextTemplate(productName);
-          shareContent(text, platform);
-      };
-
-      window.sharePage = (platform) => {
-          const text = shareTextTemplate("تصفحوا مجموعتنا المميزة!");
-          shareContent(text, platform);
-      };
-      
-      // --- Product Ratings (Firestore) ---
-      async function setRating(productId, ratingValue) {
-          const ratingRef = doc(db, 'product-ratings', productId);
-          try {
-              await runTransaction(db, async (transaction) => {
-                  const ratingDoc = await transaction.get(ratingRef);
-                  if (!ratingDoc.exists()) {
-                      transaction.set(ratingRef, { total_rating: ratingValue, rating_count: 1 });
-                  } else {
-                      const newCount = ratingDoc.data().rating_count + 1;
-                      const newTotal = ratingDoc.data().total_rating + ratingValue;
-                      transaction.update(ratingRef, {
-                          total_rating: newTotal,
-                          rating_count: newCount
-                      });
-                  }
-              });
-              alert('شكراً لتقييمك!');
-          } catch (e) {
-              console.error("Transaction failed: ", e);
-              alert('فشل حفظ التقييم .اعد التقييم مرة اخرى');
-          }
-      }
-
-      function updateRatingDisplay(productId, data) {
-          const ratingContainer = document.getElementById(`rating-${productId}`);
-          const ratingCountEl = document.getElementById(`rating-count-${productId}`);
-          if (!ratingContainer || !data || data.rating_count === 0) {
-            ratingCountEl.textContent = '(0 تقييم)';
-            return;
-          };
-          
-          const avgRating = data.total_rating / data.rating_count;
-          const avgRounded = Math.round(avgRating * 2) / 2; // round to nearest 0.5
-
-          ratingCountEl.textContent = `(${data.rating_count} تقييم)`;
-          ratingContainer.querySelectorAll('i').forEach((star, index) => {
-              if (avgRounded >= index + 1) {
-                  star.className = 'fas fa-star';
-              } else if (avgRounded >= index + 0.5) {
-                  star.className = 'fas fa-star-half-alt';
-              } else {
-                  star.className = 'far fa-star';
-              }
-          });
-      }
-      
-      document.querySelectorAll('.product').forEach(product => {
-          const productId = product.dataset.productId;
-          if (productId) {
-              // Load initial rating
-              const ratingDocRef = doc(db, 'product-ratings', productId);
-              onSnapshot(ratingDocRef, (doc) => {
-                  updateRatingDisplay(productId, doc.data());
-              });
-
-              // Add click listeners
-              const ratingContainer = document.getElementById(`rating-${productId}`);
-              ratingContainer.querySelectorAll('i').forEach(star => {
-                  star.addEventListener('click', () => {
-                      const ratingValue = parseInt(star.dataset.value);
-                      setRating(productId, ratingValue);
-                  });
-              });
-          }
-      });
-      
-      // --- Social Media Modal ---
-      window.openSocialModal = (platform) => {
-        const modal = document.getElementById('socialModal');
-        const body = document.getElementById('socialModalBody');
-        body.innerHTML = ''; // Clear previous content
-
-        if(platform === 'facebook') {
-            body.innerHTML = `<div class="fb-page" data-href="https://facebook.com/alayqwnt.ll.twr" data-tabs="timeline" data-width="500" data-height="600" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://facebook.com/alayqwnt.ll.twr" class="fb-xfbml-parse-ignore"><a href="https://facebook.com/alayqwnt.ll.twr">الأيقونة للعطور</a></blockquote></div>`;
-            if (FB) FB.XFBML.parse(body); // Re-parse for dynamic content
-        } else if (platform === 'instagram') {
-             body.innerHTML = `<iframe src="https://www.instagram.com/lyqwn_lltwr/embed" width="100%" height="100%" frameborder="0"></iframe>`;
+        // Add message to chat UI
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${sender}-message`;
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
-        modal.style.display = 'flex';
-      }
+        // Open/Close chat
+        chatIcon.onclick = () => { chatPopup.style.display = 'flex'; chatIcon.style.display = 'none'; };
+        closeChatBtn.onclick = () => { chatPopup.style.display = 'none'; chatIcon.style.display = 'block'; };
 
-      window.closeSocialModal = () => {
-        document.getElementById('socialModal').style.display = 'none';
-        document.getElementById('socialModalBody').innerHTML = '';
-      }
+        // Handle user name
+        if (userName) {
+            namePrompt.style.display = 'none';
+            chatInputArea.style.display = 'flex';
+            const welcomeBackMsg = `أهلاً بعودتك يا ${userName}! كيف أقدر أساعدك اليوم؟ يمكنك سماع الموسيقى اكتب "شغل موسيقى".`;
+            addMessage(welcomeBackMsg, 'bot');
+            speak(welcomeBackMsg);
+        } else {
+            const welcomeMsg = "أهلاً بك في متجر الأيقونة! أنا خدمة العملاء. لطفاً، أدخل اسمك للبدء.";
+            addMessage(welcomeMsg, 'bot');
+            speak(welcomeMsg);
+        }
 
-    </script>
+        sendNameBtn.onclick = () => {
+            const name = nameInput.value.trim();
+            if (name) {
+                userName = name;
+                localStorage.setItem('perfume_userName', userName);
+                namePrompt.style.display = 'none';
+                chatInputArea.style.display = 'flex';
+                addMessage(`رائع يا ${userName}! كيف أقدر أساعدك؟ لسماع الموسيقى ارسل كلمة "تشغيل`, 'bot');
+            }
+        };
+
+        // Handle sending messages
+        sendBtn.onclick = handleUserInput;
+        chatInput.onkeypress = e => { if (e.key === 'Enter') handleUserInput(); };
+        
+        function handleUserInput() {
+            const query = chatInput.value.trim();
+            if (!query) return;
+            addMessage(query, 'user');
+            processQuery(query);
+            chatInput.value = '';
+        }
+        
+        // Music Commands
+        const playCommands = ['تشغيل', 'شغل', 'موسيقى', 'طرب', 'اغاني', 'غني'];
+        const stopCommands = ['ايقاف', 'إيقاف', 'اغلاق', 'إغلاق', 'طفي', 'صمت'];
+
+        // Pre-defined Answers
+        const preDefinedAnswers = {
+            'دفع': 'نقدم عدة طرق للدفع: إيداع بنك الكريمي، حوالات مصرفية، أو عبر المحافظ الإلكترونية.',
+            'توصيل': 'مدة التوصيل تتراوح بين 1-3 أيام في المدن الكبرى و3-7 أيام لباقي المناطق.',
+            'جودة': 'جميع منتجاتنا أصلية 100% وذات جودة عالية مع ضمان استرجاع.',
+            'عروض': 'لدينا عروض دورية. تابع صفحاتنا على التواصل الاجتماعي لمعرفة أحدث العروض.',
+            'سعر': 'الأسعار موضحة في صفحة كل منتج. لأي استفسار آخر، أنا في الخدمة.',
+            'استبدال': 'نقدم خدمة استبدال المنتج خلال 7 أيام من الاستلام في حال وجود عيب مصنعي.',
+            'عنوان': 'مقرنا الرئيسي في محافظة ذمار، اليمن، ونقوم بالتوصيل لجميع المحافظات.',
+            'مصمم': 'تم تصميم المتجر بواسطة المبرمج والمصمم طلال سليمان المقطري. للتواصل معه: 774662666.',
+            'من معي': 'انا موظف خدمة العملاء لدى متجر الأيقونة للعطور..',
+            'من انت': 'انا موظف خدمة العملاء لدى متجر الأيقونة للعطور.'
+        };
+
+        // Process user query
+        async function processQuery(query) {
+            // Check for music commands
+            if (playCommands.some(cmd => query.includes(cmd))) {
+                audioPlayer.src = 'http://stream.zeno.fm/ae32e025wp8uv';
+                audioPlayer.play();
+                addMessage('  تم تشغيل الموسيقى لك 🎶 للإيقاف ارسل كلمة "ايقاف"', 'bot');
+                return;
+            }
+            if (stopCommands.some(cmd => query.includes(cmd))) {
+                audioPlayer.pause();
+                audioPlayer.src = '';
+                addMessage('تم إيقاف الموسيقى لتشغيل ارسل كلمة "تشغيل".', 'bot');
+                return;
+            }
+
+            // Check for pre-defined answers
+            for (const key in preDefinedAnswers) {
+                if (query.includes(key)) {
+                    addMessage(preDefinedAnswers[key], 'bot');
+                    speak(preDefinedAnswers[key]);
+                    return;
+                }
+            }
+
+            // Fallback to Gemini API
+            addMessage('لحظات، الأيقونة يكتب الإجابة... 🤔 الأن', 'bot');
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        "contents": [{
+                            "parts": [{ "text": `أنت خدمة العملاء في متجر عطور اسمه "الأيقونة". عنوان: المركز الرئيسي للأيقونة "اليمن محافظة ذمار". عملية شراء منتج يتم الدفع عبر إيداع مبلغ الشراء لحساب الايقونة لدى بنك الكريمي. رقم حساب الكريمي الخاص باستقبال المبالغ قم بمراسلتنا عبر زر الماسنجر الموجود في اسفل صفحة المتجر او الضغط على زر اطلب الان الموجود تحت كل منتج ليتم تزويدك برقم حساب بنك الكريمي. مصمم ومبرمح متحر الأيقونة "السيد طلال سليمان المقطري". رقم هاتف المصمم طلال سليمان المقطري "774662666". أجب على السؤال التالي باللغة العربية بأسلوب ودود ومختصر: ${message}` }]
+                        }]
+                    })
+                });
+                const data = await response.json();
+                const botResponse = data.candidates[0].content.parts[0].text;
+                
+                // Remove the "thinking" message and add the real one
+                chatMessages.removeChild(chatMessages.lastChild); 
+                addMessage(botResponse, 'bot');
+                speak(botResponse);
+
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                chatMessages.removeChild(chatMessages.lastChild); 
+                addMessage('عذراً، حدث خطأ أثناء محاولة الرد. مؤظف خدمة العملاء غير متواجد في الوقت الحالي. يرجى المحاولة مرة أخرى..', 'bot');
+            }
+        }
+        
+        // Speech Recognition
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'ar-SA';
+            recognition.continuous = false;
             
+            micBtn.onclick = () => {
+                recognition.start();
+                micBtn.style.color = '#ff6b6b';
+            };
+            
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                chatInput.value = transcript;
+                handleUserInput();
+            };
+
+            recognition.onend = () => {
+                micBtn.style.color = 'var(--gold)';
+            };
+        } else {
+            micBtn.style.display = 'none';
+        }
+
+    });
+
+const sliderImgs = ["men1.jpg","men2.jpg","men3.jpg","men4.jpg","men5.jpg"];
+  const highImgs = ["men1.png","men2.png","men3.png","men4.png","men5.png"];
+  let mainImg = document.getElementById('mainImg');
+  let thumbs = document.querySelectorAll('.thumb');
+  let sliderIndex = 0;
+  let sliderActive = true;
+  let sliderInterval = setInterval(()=>{
+    if (sliderActive) {
+      sliderIndex = (sliderIndex+1)%sliderImgs.length;
+      mainImg.src = sliderImgs[sliderIndex];
+    }
+  }, 1800);
+
+  thumbs.forEach((thumb,idx)=>{
+    thumb.onclick = ()=>{
+      sliderActive = false;
+      clearInterval(sliderInterval);
+      mainImg.src = highImgs[idx];
+      // ظل للصورة المختارة
+      thumbs.forEach(t=>t.style.boxShadow="none");
+      thumb.style.boxShadow="0 0 12px var(--gold)";
+    };
+  });
+  // إعادة التشغيل عند مغادرة الماوس المربع الكبير
+  mainImg.onmouseleave = ()=>{
+    if(!sliderActive){
+      sliderActive = true;
+      sliderInterval = setInterval(()=>{
+        sliderIndex = (sliderIndex+1)%sliderImgs.length;
+        mainImg.src = sliderImgs[sliderIndex];
+        thumbs.forEach(t=>t.style.boxShadow="none");
+      }, 1800);
+    }
+  };
+  
+  $('.rateYo').each(function(){
+    $(this).rateYo({
+      rtl:true,
+      rating: $(this).data('rate'),
+      starWidth: "18px",
+      ratedFill: "#D4AF37",
+      normalFill: "#fff2b2",
+      readOnly: true,
+      spacing:"3px"
+    });
+  });
+    </script>
+
 </body>
 </html>
