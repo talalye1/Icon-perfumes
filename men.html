@@ -233,7 +233,7 @@
         }
         .modal-btn.close { background: #555; color: white; }
         
-        /* --- Comments Section --- CODE MODIFIED */
+        /* --- Comments Section --- */
         #comments-section { background: var(--dark-gray); padding: 20px; border-radius: 15px; margin-top: 40px; }
         #comment-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
         #comment-form input, #comment-form textarea {
@@ -349,10 +349,30 @@
         }
         #name-prompt { padding: 15px; text-align: center; }
 
+        /* --- Loading Indicator --- */
+        #loading-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold);
+            z-index: 9999;
+            transform-origin: 0 50%;
+            animation: loading 1.5s infinite;
+            display: block;
+        }
+
         @keyframes pulse {
             0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
             70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
             100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+        
+        @keyframes loading {
+            0% { transform: scaleX(0); }
+            50% { transform: scaleX(0.7); }
+            100% { transform: scaleX(0); }
         }
         
         @media (max-width: 768px) {
@@ -367,6 +387,7 @@
     </style>
 </head>
 <body>
+    <div id="loading-indicator"></div>
 
     <div class="top-bar">
         <div class="nav-buttons">
@@ -381,26 +402,25 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-<!-- (4/8) مربع الصور المتحركة وصور المنتجات المصغرة -->
-<div class="products-section" style="padding:0px 0;">
-  <div id="mainSlider" style="width:100%;max-width:100%;margin:0 auto 5px;position:relative;border:4px solid var(--gold);border-radius:10px;overflow:hidden;background:var(--black);display:flex;justify-content:center;align-items:center;min-height:100%;">
-   <!-- الصورة الكبرى المتغيرة -->
-    <img id="mainImg" src="men.jpg" alt="منتج مختار" style="width:100%;max-width:100%;height:100%;object-fit:contain;transition:.4s;">
-    </div>
-  <!-- صف الصور المصغرة -->
-  </div>
-  <div class="thumbs-row" style="display:flex;justify-content:center;gap:12px;margin-bottom:5px;">
-    <img class="thumb" src="men1.jpg" alt="منتج 1" data-high="men1.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
-    <img class="thumb" src="men2.jpg" alt="منتج 2" data-high="men2.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
-    <img class="thumb" src="men3.jpg" alt="منتج 3" data-high="men3.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
-    <img class="thumb" src="men4.jpg" alt="منتج 4" data-high="men4.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
-    <img class="thumb" src="men5.jpg" alt="منتج 5" data-high="men5.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
-  </div>
+                    <div class="products-section" style="padding:0px 0;">
+                        <div id="mainSlider" style="width:100%;max-width:100%;margin:0 auto 5px;position:relative;border:4px solid var(--gold);border-radius:10px;overflow:hidden;background:var(--black);display:flex;justify-content:center;align-items:center;min-height:100%;">
+                            <img id="mainImg" src="men.jpg" alt="منتج مختار" style="width:100%;max-width:100%;height:100%;object-fit:contain;transition:.4s;">
+                        </div>
+                    </div>
+                    <div class="thumbs-row" style="display:flex;justify-content:center;gap:12px;margin-bottom:5px;">
+                        <img class="thumb" src="men1.jpg" alt="منتج 1" data-high="men1.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
+                        <img class="thumb" src="men2.jpg" alt="منتج 2" data-high="men2.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
+                        <img class="thumb" src="men3.jpg" alt="منتج 3" data-high="men3.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
+                        <img class="thumb" src="men4.jpg" alt="منتج 4" data-high="men4.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
+                        <img class="thumb" src="men5.jpg" alt="منتج 5" data-high="men5.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
+                    </div>
+                </div>
                 <div id="visitor-counter-container">
                     <h3>عدد زوار الصفحة</h3>
                     <div id="visitor-counter">
                         <i class="fas fa-spinner fa-spin"></i>
                     </div>
+                </div>
                 <h1>عطور رجالية فاخرة</h1>
                 <p>اكتشف مجموعة العطور الرجالية التي تعكس القوة والأناقة. ثبات يدوم طويلاً ورائحة تأسر الحواس.</p>
                 
@@ -414,22 +434,21 @@
         <div class="container">
             <h2>لماذا تختار الأيقونة للعطور؟</h2>
             <div class="why-us">
-            <div class="stats-section">
-                <div class="feature-item">
-                    <div class="icon"><i class="fas fa-gem"></i></div>
-                    <h3>جودة أصلية</h3>
-                </div>
-                <div class="feature-item">
-                    <div class="icon"><i class="fas fa-truck-fast"></i></div>
-                    <h3>توصيل سريع</h3>
-                
-                </div>
-                <div class="feature-item">
-                    <div class="icon"><i class="fas fa-shield-halved"></i></div>
-                    <h3>ضمان الرضا</h3>
+                <div class="stats-section">
+                    <div class="feature-item">
+                        <div class="icon"><i class="fas fa-gem"></i></div>
+                        <h3>جودة أصلية</h3>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon"><i class="fas fa-truck-fast"></i></div>
+                        <h3>توصيل سريع</h3>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon"><i class="fas fa-shield-halved"></i></div>
+                        <h3>ضمان الرضا</h3>
+                    </div>
                 </div>
             </div>
-        </div>
             <div class="search-container">
                 <i class="fas fa-search"></i>
                 <input type="search" id="search-bar" placeholder="ابحث عن عطرك المفضل...">
@@ -437,9 +456,9 @@
         </div>
         <div class="container">
             <h2>منتجاتنا الرجالية المميزة</h2>
-            
             <div id="products-grid" class="products-grid">
-                </div>
+                <!-- Products will be loaded here -->
+            </div>
         </div>
 
         <div id="purchaseModal" class="modal">
@@ -467,6 +486,7 @@
                 <div id="comments-list">
                     <p>جاري تحميل التعليقات...</p>
                 </div>
+                <div id="load-more-container" style="text-align: center; margin-top: 20px;"></div>
             </div>
         </div>
     </main>
@@ -502,7 +522,8 @@
                 <button id="close-chat" style="background:none; border:none; color:white; float:left; font-size:1.2rem; cursor:pointer;">&times;</button>
             </div>
             <div class="chat-messages" id="chat-messages">
-                </div>
+                <!-- Chat messages will be loaded here -->
+            </div>
             <div id="name-prompt">
                 <p>مرحباً بك! الرجاء إدخال اسمك للبدء.</p>
                 <input type="text" id="name-input" placeholder="اكتب اسمك هنا...">
@@ -519,13 +540,12 @@
         </div>
     </div>
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
     
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      import { getFirestore, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc, limit } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
       
       const firebaseConfig = {
         apiKey: "AIzaSyDw2xnlpD8aSsOOElIz9Nw-LWGIJnScMks",
@@ -540,18 +560,23 @@
       const db = getFirestore(app);
 
       // Make firebase functions globally available
-      window.firebase = { db, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc };
+      window.firebase = { db, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc, limit };
     </script>
     
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // Hide loading indicator after page load
+        setTimeout(() => {
+            document.getElementById('loading-indicator').style.display = 'none';
+        }, 500);
+
         // Ensure firebase is initialized before using it
         if (!window.firebase) {
             console.error("Firebase is not initialized!");
             return;
         }
 
-        const { db, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc } = window.firebase;
+        const { db, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc, limit } = window.firebase;
 
         // --- Service Worker Registration for PWA ---
         if ('serviceWorker' in navigator) {
@@ -607,7 +632,7 @@
                 <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
                 <div class="product-info">
-                    <div class="rateYo" data-rateyo-rating="${product.rating}" data-rateyo-read-only="true"></div>
+                    <div class="rateYo" data-rateyo-rating="${product.rating}" data-product-id="${product.id}" data-rateyo-read-only="true"></div>
                     <button class="like-btn" data-product-id="${product.id}"><i class="far fa-heart"></i> <span id="like-count-${product.id}">0</span></button>
                 </div>
                 <div class="price">
@@ -630,15 +655,17 @@
             productsGrid.appendChild(card);
         });
         
-        // Initialize RateYo
-        $(".rateYo").rateYo({
-            rating: function () { return $(this).attr('data-rateyo-rating'); },
-            starWidth: "20px",
-            ratedFill: "var(--gold)",
-            normalFill: "#555",
-            readOnly: function () { return $(this).attr('data-rateyo-read-only') === 'true'; },
-            rtl: true,
-            spacing: "5px"
+        // Initialize RateYo for ratings
+        $(".rateYo").each(function(){
+            $(this).rateYo({
+                rating: $(this).data('rateyo-rating'),
+                starWidth: "20px",
+                ratedFill: "var(--gold)",
+                normalFill: "#555",
+                readOnly: $(this).data('rateyo-read-only') === 'true',
+                rtl: true,
+                spacing: "5px"
+            });
         });
 
         // --- Product Card Interactivity ---
@@ -699,8 +726,17 @@
         };
 
         // --- Firestore & Page Logic ---
-        // CODE ADDED: Visitor Counter Logic
+        // Visitor Counter Logic with localStorage
         async function updateVisitorCount() {
+            // Get local count
+            let localCount = parseInt(localStorage.getItem('visitorCount') || 0;
+            localCount++;
+            localStorage.setItem('visitorCount', localCount);
+            
+            // Update UI with local count immediately
+            document.getElementById('visitor-counter').innerHTML = localCount.toLocaleString();
+            
+            // Update Firebase
             const counterRef = doc(db, "site-stats", "visitor-counter");
             try {
                 await runTransaction(db, async (transaction) => {
@@ -714,19 +750,13 @@
                     return newCount;
                 });
 
-                const updatedDoc = await getDoc(counterRef);
-                if (updatedDoc.exists()) {
-                    document.getElementById('visitor-counter').textContent = updatedDoc.data().count.toLocaleString();
-                }
-
             } catch (e) {
                 console.error("Transaction failed: ", e);
-                document.getElementById('visitor-counter').textContent = "N/A";
             }
         }
         updateVisitorCount();
 
-        // CODE ADDED: Client-side Search Logic
+        // Search Functionality
         const searchBar = document.getElementById('search-bar');
         searchBar.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
@@ -741,29 +771,13 @@
             });
         });
 
-        // CODE MODIFIED & ADDED: Entire Comments section logic
+        // Comments Section Logic
         const commentsCollectionRef = collection(db, 'mens-perfume-comments');
         const commentForm = document.getElementById('comment-form');
         const commentsList = document.getElementById('comments-list');
-
-        // Function to add initial comments if the collection is empty
-        async function addInitialComments() {
-            const snapshot = await getDocs(commentsCollectionRef);
-            if (snapshot.empty) {
-                console.log('No comments found. Adding initial comments.');
-                const initialComments = [
-                    { name: 'أحمد', text: 'عطر رائع وثباته ممتاز جداً، أنصح به بشدة!', likes: 15 },
-                    { name: 'سارة', text: 'وصلني الطلب بسرعة، والتغليف كان أنيق. شكراً لكم.', likes: 12 },
-                    { name: 'خالد', text: 'من أفضل العطور اللي جربتها، رائحة فريدة ومميزة.', likes: 25 },
-                    { name: 'فاطمة', text: 'خدمة العملاء كانت متعاونة جداً. تجربة شراء ممتازة.', likes: 8 },
-                    { name: 'محمد', text: 'هل يوجد توصيل إلى جميع المحافظات؟', likes: 5 }
-                ];
-                for (const comment of initialComments) {
-                    await addDoc(commentsCollectionRef, { ...comment, createdAt: serverTimestamp() });
-                }
-            }
-        }
-        addInitialComments();
+        const loadMoreContainer = document.getElementById('load-more-container');
+        let commentsLimit = 5;
+        let commentsUnsubscribe = null;
 
         // Function to format relative time
         function formatRelativeTime(date) {
@@ -790,16 +804,47 @@
         }
         setInterval(updateTimestamps, 60000); // Update every minute
 
-        // Listen for and display comments and replies
-        const q = query(commentsCollectionRef, orderBy('createdAt', 'desc'));
-        onSnapshot(q, (snapshot) => {
-            commentsList.innerHTML = '';
-            snapshot.forEach(doc => {
-                renderComment(doc);
+        // Setup comments with pagination
+        function setupComments(limit) {
+            if (commentsUnsubscribe) commentsUnsubscribe();
+            
+            const q = query(commentsCollectionRef, orderBy('createdAt', 'desc'), limit(limit));
+            commentsUnsubscribe = onSnapshot(q, (snapshot) => {
+                commentsList.innerHTML = '';
+                
+                if (snapshot.empty) {
+                    commentsList.innerHTML = '<p>لا توجد تعليقات بعد. كن أول من يعلق!</p>';
+                    return;
+                }
+                
+                snapshot.forEach(doc => {
+                    renderComment(doc);
+                });
+                
+                // Add load more button if there are more comments
+                if (snapshot.size === limit) {
+                    const loadMoreBtn = document.createElement('button');
+                    loadMoreBtn.id = 'load-more-comments';
+                    loadMoreBtn.className = 'modal-btn';
+                    loadMoreBtn.textContent = 'تحميل المزيد من التعليقات';
+                    loadMoreBtn.onclick = () => {
+                        commentsLimit += 5;
+                        setupComments(commentsLimit);
+                    };
+                    loadMoreContainer.innerHTML = '';
+                    loadMoreContainer.appendChild(loadMoreBtn);
+                } else {
+                    loadMoreContainer.innerHTML = '';
+                }
+                
+                updateTimestamps();
+            }, (error) => {
+                console.error("Error loading comments: ", error);
+                commentsList.innerHTML = '<p>حدث خطأ في تحميل التعليقات. يرجى المحاولة لاحقاً.</p>';
             });
-            updateTimestamps();
-        });
+        }
 
+        // Render a comment
         function renderComment(commentDoc) {
             const comment = commentDoc.data();
             const commentId = commentDoc.id;
@@ -844,6 +889,7 @@
             });
         }
         
+        // Render a reply
         function renderReply(replyDoc, commentId) {
             const reply = replyDoc.data();
             const replyId = replyDoc.id;
@@ -944,19 +990,26 @@
             }
         });
 
-        // --- Product & Misc Logic (No changes below this line, kept for completeness) ---
+        // Initialize comments
+        setupComments(commentsLimit);
 
-        // Handle Product Likes
+        // --- Product Likes ---
         async function handleLike(btn) {
             const productId = btn.dataset.productId;
             const likedKey = `liked_product_${productId}`;
-            if (localStorage.getItem(likedKey)) { console.log("Already liked"); return; }
+            if (localStorage.getItem(likedKey)) { 
+                console.log("Already liked"); 
+                return; 
+            }
+            
             const likeDocRef = doc(db, "product-likes", productId);
             await updateDoc(likeDocRef, { count: increment(1) });
             localStorage.setItem(likedKey, 'true');
             btn.classList.add('liked');
             btn.querySelector('i').className = 'fas fa-heart';
         }
+        
+        // Initialize product likes
         products.forEach(p => {
             const likeDocRef = doc(db, "product-likes", p.id);
             onSnapshot(likeDocRef, (doc) => {
@@ -998,88 +1051,150 @@
         function addMessage(text, sender) { const messageDiv = document.createElement('div'); messageDiv.className = `chat-message ${sender}-message`; messageDiv.textContent = text; chatMessages.appendChild(messageDiv); chatMessages.scrollTop = chatMessages.scrollHeight; }
         chatIcon.onclick = () => { chatPopup.style.display = 'flex'; chatIcon.style.display = 'none'; };
         closeChatBtn.onclick = () => { chatPopup.style.display = 'none'; chatIcon.style.display = 'block'; };
-        if (userName) { namePrompt.style.display = 'none'; chatInputArea.style.display = 'flex'; const welcomeBackMsg = `أهلاً بعودتك يا ${userName}! كيف أقدر أساعدك اليوم؟ يمكنك طلب تشغيل الموسيقى اكتب كلمة "تشغيل".`; addMessage(welcomeBackMsg, 'bot'); speak(welcomeBackMsg); } else { const welcomeMsg = "أهلاً بك في متجر الأيقونة! أنا مؤظف خدمة العملاء الذكي. لطفاً، أدخل اسمك للبدء."; addMessage(welcomeMsg, 'bot'); speak(welcomeMsg); }
-        sendNameBtn.onclick = () => { const name = nameInput.value.trim(); if (name) { userName = name; localStorage.setItem('perfume_userName', userName); namePrompt.style.display = 'none'; chatInputArea.style.display = 'flex'; addMessage(`رائع يا ${userName}! كيف أقدر أساعدك؟`, 'bot'); } };
+        if (userName) { 
+            namePrompt.style.display = 'none'; 
+            chatInputArea.style.display = 'flex'; 
+            const welcomeBackMsg = `أهلاً بعودتك يا ${userName}! كيف أقدر أساعدك اليوم؟ يمكنك طلب تشغيل الموسيقى اكتب كلمة "تشغيل".`; 
+            addMessage(welcomeBackMsg, 'bot'); 
+            speak(welcomeBackMsg); 
+        } else { 
+            const welcomeMsg = "أهلاً بك في متجر الأيقونة! أنا مؤظف خدمة العملاء الذكي. لطفاً، أدخل اسمك للبدء."; 
+            addMessage(welcomeMsg, 'bot'); 
+            speak(welcomeMsg); 
+        }
+        sendNameBtn.onclick = () => { 
+            const name = nameInput.value.trim(); 
+            if (name) { 
+                userName = name; 
+                localStorage.setItem('perfume_userName', userName); 
+                namePrompt.style.display = 'none'; 
+                chatInputArea.style.display = 'flex'; 
+                addMessage(`رائع يا ${userName}! كيف أقدر أساعدك؟`, 'bot'); 
+                speak(`رائع يا ${userName}! كيف أقدر أساعدك؟`);
+            } 
+        };
         sendBtn.onclick = handleUserInput;
         chatInput.onkeypress = e => { if (e.key === 'Enter') handleUserInput(); };
-        function handleUserInput() { const query = chatInput.value.trim(); if (!query) return; addMessage(query, 'user'); processQuery(query); chatInput.value = ''; }
+        function handleUserInput() { 
+            const query = chatInput.value.trim(); 
+            if (!query) return; 
+            addMessage(query, 'user'); 
+            processQuery(query); 
+            chatInput.value = ''; 
+        }
         const playCommands = ['تشغيل', 'شغل', 'موسيقى', 'طرب', 'اغاني', 'غني'];
         const stopCommands = ['ايقاف', 'إيقاف', 'اغلاق', 'إغلاق', 'طفي', 'صمت'];
-        const preDefinedAnswers = { 'دفع': 'نقدم عدة طرق للدفع: إيداع بنك الكريمي، حوالات مصرفية، أو عبر المحافظ الإلكترونية.', 'توصيل': 'مدة التوصيل تتراوح بين 1-3 أيام في المدن الكبرى و3-7 أيام لباقي المناطق.', 'جودة': 'جميع منتجاتنا أصلية 100% وذات جودة عالية مع ضمان استرجاع.', 'عروض': 'لدينا عروض دورية. تابع صفحاتنا على التواصل الاجتماعي لمعرفة أحدث العروض.', 'سعر': 'الأسعار موضحة في صفحة كل منتج. لأي استفسار آخر، أنا في الخدمة.', 'استبدال': 'نقدم خدمة استبدال المنتج خلال 7 أيام من الاستلام في حال وجود عيب مصنعي.', 'عنوان': 'مقرنا الرئيسي في محافظة ذمار، اليمن، ونقوم بالتوصيل لجميع المحافظات.', 'مصمم': 'تم تصميم المتجر بواسطة المبرمج والمصمم طلال سليمان المقطري. للتواصل معه: 774662666.' };
-        async function processQuery(query) { if (playCommands.some(cmd => query.includes(cmd))) { audioPlayer.src = 'http://stream.zeno.fm/ae32e025wp8uv'; audioPlayer.play(); addMessage('تم تشغيل الموسيقى لك 🎶', 'bot'); return; } if (stopCommands.some(cmd => query.includes(cmd))) { audioPlayer.pause(); audioPlayer.src = ''; addMessage('تم إيقاف الموسيقى.', 'bot'); return; } for (const key in preDefinedAnswers) { if (query.includes(key)) { addMessage(preDefinedAnswers[key], 'bot'); speak(preDefinedAnswers[key]); return; } } addMessage('لحظات، خدمة العملاء يكتب الإجابة... 🤔', 'bot'); try { const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ "contents": [{ "parts": [{ "text": `أنت مساعد ذكي وودود في متجر عطور اسمه "الأيقونة". أجب على هذا السؤال من العميل "${userName}": ${query}` }] }] }) }); const data = await response.json(); const botResponse = data.candidates[0].content.parts[0].text; chatMessages.removeChild(chatMessages.lastChild); addMessage(botResponse, 'bot'); speak(botResponse); } catch (error) { console.error("Gemini API Error:", error); chatMessages.removeChild(chatMessages.lastChild); addMessage('عفواً، حدث خطأ ما. حاول مرة أخرى.', 'bot'); } }
-        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; if (SpeechRecognition) { const recognition = new SpeechRecognition(); recognition.lang = 'ar-SA'; recognition.continuous = false; micBtn.onclick = () => { recognition.start(); micBtn.style.color = '#ff6b6b'; }; recognition.onresult = (event) => { const transcript = event.results[0][0].transcript; chatInput.value = transcript; handleUserInput(); }; recognition.onend = () => { micBtn.style.color = 'var(--gold)'; }; } else { micBtn.style.display = 'none'; }
-    });
-    
-    const sliderImgs = ["men1.jpg","men2.jpg","men3.jpg","men4.jpg","men5.jpg"];
-  const highImgs = ["men1.png","men2.png","men3.png","men4.png","men5.png"];
-  let mainImg = document.getElementById('mainImg');
-  let thumbs = document.querySelectorAll('.thumb');
-  let sliderIndex = 0;
-  let sliderActive = true;
-  let sliderInterval = setInterval(()=>{
-    if (sliderActive) {
-      sliderIndex = (sliderIndex+1)%sliderImgs.length;
-      mainImg.src = sliderImgs[sliderIndex];
-    }
-  }, 1800);
-
-  thumbs.forEach((thumb,idx)=>{
-    thumb.onclick = ()=>{
-      sliderActive = false;
-      clearInterval(sliderInterval);
-      mainImg.src = highImgs[idx];
-      // ظل للصورة المختارة
-      thumbs.forEach(t=>t.style.boxShadow="none");
-      thumb.style.boxShadow="0 0 12px var(--gold)";
-    };
-  });
-  // إعادة التشغيل عند مغادرة الماوس المربع الكبير
-  mainImg.onmouseleave = ()=>{
-    if(!sliderActive){
-      sliderActive = true;
-      sliderInterval = setInterval(()=>{
-        sliderIndex = (sliderIndex+1)%sliderImgs.length;
-        mainImg.src = sliderImgs[sliderIndex];
-        thumbs.forEach(t=>t.style.boxShadow="none");
-      }, 1800);
-    }
-  };
-  
-  $('.rateYo').each(function(){
-    $(this).rateYo({
-      rtl:true,
-      rating: $(this).data('rate'),
-      starWidth: "18px",
-      ratedFill: "#D4AF37",
-      normalFill: "#fff2b2",
-      readOnly: true,
-      spacing:"3px"
-    });
-  });
-
-// Check for localStorage support
-    if (typeof(Storage) !== "undefined") {
-        // Get the current visitor count from localStorage
-        let count = localStorage.getItem("visitorCount");
-
-        // If it's the first visit, set the count to 1
-        if (count === null) {
-            count = 1;
-        } else {
-            // Otherwise, increment the count by 1
-            count = parseInt(count) + 1;
+        const preDefinedAnswers = { 
+            'دفع': 'نقدم عدة طرق للدفع: إيداع بنك الكريمي، حوالات مصرفية، أو عبر المحافظ الإلكترونية.', 
+            'توصيل': 'مدة التوصيل تتراوح بين 1-3 أيام في المدن الكبرى و3-7 أيام لباقي المناطق.', 
+            'جودة': 'جميع منتجاتنا أصلية 100% وذات جودة عالية مع ضمان استرجاع.', 
+            'عروض': 'لدينا عروض دورية. تابع صفحاتنا على التواصل الاجتماعي لمعرفة أحدث العروض.', 
+            'سعر': 'الأسعار موضحة في صفحة كل منتج. لأي استفسار آخر، أنا في الخدمة.', 
+            'استبدال': 'نقدم خدمة استبدال المنتج خلال 7 أيام من الاستلام في حال وجود عيب مصنعي.', 
+            'عنوان': 'مقرنا الرئيسي في محافظة ذمار، اليمن، ونقوم بالتوصيل لجميع المحافظات.', 
+            'مصمم': 'تم تصميم المتجر بواسطة المبرمج والمصمم طلال سليمان المقطري. للتواصل معه: 774662666.' 
+        };
+        async function processQuery(query) { 
+            if (playCommands.some(cmd => query.includes(cmd))) { 
+                audioPlayer.src = 'http://stream.zeno.fm/ae32e025wp8uv'; 
+                audioPlayer.play(); 
+                addMessage('تم تشغيل الموسيقى لك 🎶', 'bot'); 
+                return; 
+            } 
+            if (stopCommands.some(cmd => query.includes(cmd))) { 
+                audioPlayer.pause(); 
+                audioPlayer.src = ''; 
+                addMessage('تم إيقاف الموسيقى.', 'bot'); 
+                return; 
+            } 
+            for (const key in preDefinedAnswers) { 
+                if (query.includes(key)) { 
+                    addMessage(preDefinedAnswers[key], 'bot'); 
+                    speak(preDefinedAnswers[key]); 
+                    return; 
+                } 
+            } 
+            addMessage('لحظات، خدمة العملاء يكتب الإجابة... 🤔', 'bot'); 
+            try { 
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, { 
+                    method: 'POST', 
+                    headers: { 'Content-Type': 'application/json' }, 
+                    body: JSON.stringify({ 
+                        "contents": [{ 
+                            "parts": [{ 
+                                "text": `أنت مساعد ذكي وودود في متجر عطور اسمه "الأيقونة". أجب على هذا السؤال من العميل "${userName}": ${query}` 
+                            }] 
+                        }] 
+                    }) 
+                }); 
+                const data = await response.json(); 
+                const botResponse = data.candidates[0].content.parts[0].text; 
+                chatMessages.removeChild(chatMessages.lastChild); 
+                addMessage(botResponse, 'bot'); 
+                speak(botResponse); 
+            } catch (error) { 
+                console.error("Gemini API Error:", error); 
+                chatMessages.removeChild(chatMessages.lastChild); 
+                addMessage('عفواً، حدث خطأ ما. حاول مرة أخرى.', 'bot'); 
+            } 
         }
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; 
+        if (SpeechRecognition) { 
+            const recognition = new SpeechRecognition(); 
+            recognition.lang = 'ar-SA'; 
+            recognition.continuous = false; 
+            micBtn.onclick = () => { 
+                recognition.start(); 
+                micBtn.style.color = '#ff6b6b'; 
+            }; 
+            recognition.onresult = (event) => { 
+                const transcript = event.results[0][0].transcript; 
+                chatInput.value = transcript; 
+                handleUserInput(); 
+            }; 
+            recognition.onend = () => { 
+                micBtn.style.color = 'var(--gold)'; 
+            }; 
+        } else { 
+            micBtn.style.display = 'none'; 
+        }
+    
+        // Image slider functionality
+        const sliderImgs = ["men1.jpg","men2.jpg","men3.jpg","men4.jpg","men5.jpg"];
+        const highImgs = ["men1.png","men2.png","men3.png","men4.png","men5.png"];
+        let mainImg = document.getElementById('mainImg');
+        let thumbs = document.querySelectorAll('.thumb');
+        let sliderIndex = 0;
+        let sliderActive = true;
+        let sliderInterval = setInterval(()=>{
+            if (sliderActive) {
+                sliderIndex = (sliderIndex+1)%sliderImgs.length;
+                mainImg.src = sliderImgs[sliderIndex];
+            }
+        }, 1800);
 
-        // Store the new count in localStorage
-        localStorage.setItem("visitorCount", count);
-
-        // Display the count on the page
-        document.getElementById("visitorCount").innerHTML = count;
-    } else {
-        // Fallback for browsers that don't support localStorage
-        document.getElementById("visitorCount").innerHTML = "متصفحك لا يدعم localStorage";
-    }
+        thumbs.forEach((thumb,idx)=>{
+            thumb.onclick = ()=>{
+                sliderActive = false;
+                clearInterval(sliderInterval);
+                mainImg.src = highImgs[idx];
+                // ظل للصورة المختارة
+                thumbs.forEach(t=>t.style.boxShadow="none");
+                thumb.style.boxShadow="0 0 12px var(--gold)";
+            };
+        });
+        // إعادة التشغيل عند مغادرة الماوس المربع الكبير
+        mainImg.onmouseleave = ()=>{
+            if(!sliderActive){
+                sliderActive = true;
+                sliderInterval = setInterval(()=>{
+                    sliderIndex = (sliderIndex+1)%sliderImgs.length;
+                    mainImg.src = sliderImgs[sliderIndex];
+                    thumbs.forEach(t=>t.style.boxShadow="none");
+                }, 1800);
+            }
+        };
+    });
     </script>
-
 </body>
 </html>
