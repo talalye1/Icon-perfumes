@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="الأيقونة للعطور - جودة وأصالة">
-    <meta property="og:description" content="تقدم لكم الأيقونة للعطور مجموعة مميزة من العطور الرجالية والنسائية وأجود أنواع البخور. جربوا منتجاتنا واختبروا الفرق">
-    <meta property="og:image" content="https://talalye1.github.io/Icon-perfumes/moan4.jpg">
+    <meta property="og:title" content="الأيقونة للعطور - قسم العطور الرجالية">
+    <meta property="og:description" content="اكتشف مجموعة من العطور الرجالية التي تعكس القوة والأناقة. ثبات يدوم طويلاً ورائحة تأسر الحواس.">
+    <meta property="og:image" content="https://talalye1.github.io/Icon-perfumes/men.jpg">
     <meta property="og:url" content="https://talalye1.github.io/Icon-perfumes/">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="الأيقونة للعطور">
-    <title>الأيقونة للعطور - جودة وأصالة</title>
+    <meta property="og:site_name" content="الأيقونة للعطور - قسم العطور الجالية">
+    <title>الأيقونة للعطور - قسم العطور الرجالية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         :root {
@@ -91,6 +93,22 @@
         
         main { padding-top: 80px; /* Space for fixed nav */ }
 
+    /* --- Navigation Bar2 --- */
+        .top-bar2 {
+            position: fixed;
+            bottom: 520px;
+            left: 0px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            background: rgba(5, 15, 15, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 3px 0;
+            gap: 1px;
+            border-bottom: 3px solid var(--gold);
+            z-index: 995;
+        }
+    
         /* --- Header Section --- */
         .header-content { text-align: center; margin-top: 20px; }
         .header-content .logo img {
@@ -358,28 +376,35 @@
     </style>
 </head>
 <body>
-
     <div class="top-bar">
         <div class="nav-buttons">
             <a href="index.html" class="nav-btn">الرئيسية</a>
-            <a href="female.html" class="nav-btn">عطور نسائي</a>
+            <a href="index.html" class="nav-btn active">الرجالية</a>
+            <a href="female.html" class="nav-btn">النسائية</a>
             <a href="moan.html" class="nav-btn">بخـور وعود</a>
             <a href="makeup.html" class="nav-btn">مستحضرات</a>
         </div>
-    </div>
+        </div>
+    <div class="top-bar2">
+        <h1>قسم العطور الرجالية</h1>
+               </div>
+                 </div>
+        </div>
     
     <main>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
 <!-- (4/8) مربع الصور المتحركة وصور المنتجات المصغرة -->
-<div class="products-section" style="padding:0px 0;">
+                
+         <div class="products-section" style="padding:0px 0;">
   <div id="mainSlider" style="width:100%;max-width:100%;margin:0 auto 5px;position:relative;border:4px solid var(--gold);border-radius:10px;overflow:hidden;background:var(--black);display:flex;justify-content:center;align-items:center;min-height:100%;">
    <!-- الصورة الكبرى المتغيرة -->
     <img id="mainImg" src="men.jpg" alt="منتج مختار" style="width:100%;max-width:100%;height:100%;object-fit:contain;transition:.4s;">
     </div>
   <!-- صف الصور المصغرة -->
   </div>
+<div class="container">
   <div class="thumbs-row" style="display:flex;justify-content:center;gap:12px;margin-bottom:5px;">
     <img class="thumb" src="men1.jpg" alt="منتج 1" data-high="men1.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
     <img class="thumb" src="men2.jpg" alt="منتج 2" data-high="men2.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
@@ -428,8 +453,6 @@
         </div>
         <div class="container">
             <h2>منتجاتنا الرجالية المميزة</h2>
-            <p>عدد زياراتك لهذا القسم: <span id="visitorCount" style="color: gold;"></span></p>
-    </div>
             
             <div id="products-grid" class="products-grid">
                 </div>
@@ -589,7 +612,7 @@
             { id: 'p2', name: 'عطر نسيم البحر', price: 4900, image: 'men2.jpg', rating: 4.5 },
             { id: 'p3', name: 'عطر روح الصحراء', price: 5500, image: 'men3.jpg', rating: 4.9 },
             { id: 'p4', name: 'عطر ليالي الشرق', price: 5200, image: 'men4.jpg', rating: 4.7 },
-            { id: 'p5', name: 'غطر خرير الماء', price: 4200, image: 'men5.jpg', rating: 4.6 }
+            { id: 'p5', name: 'عطر خرير الماء', price: 4200, image: 'men5.jpg', rating: 4.6 }
         ];
 
         const productsGrid = document.getElementById('products-grid');
@@ -780,7 +803,7 @@
                 if (productName.includes(searchTerm)) {
                     product.style.display = 'flex';
                 } else {
-                    product.style.display = 'none';
+                    product.style.display = 'flex';
                 }
             });
         });
@@ -1043,7 +1066,7 @@
         chatIcon.onclick = () => { chatPopup.style.display = 'flex'; chatIcon.style.display = 'none'; };
         closeChatBtn.onclick = () => { chatPopup.style.display = 'none'; chatIcon.style.display = 'block'; };
         if (userName) { namePrompt.style.display = 'none'; chatInputArea.style.display = 'flex'; const welcomeBackMsg = `أهلاً بعودتك يا ${userName}! كيف أقدر أساعدك اليوم؟ يمكنك طلب تشغيل الموسيقى اكتب كلمة "تشغيل".`; addMessage(welcomeBackMsg, 'bot'); speak(welcomeBackMsg); } else { const welcomeMsg = "أهلاً بك في متجر الأيقونة! أنا مؤظف خدمة العملاء الذكي. لطفاً، أدخل اسمك للبدء."; addMessage(welcomeMsg, 'bot'); speak(welcomeMsg); }
-        sendNameBtn.onclick = () => { const name = nameInput.value.trim(); if (name) { userName = name; localStorage.setItem('perfume_userName', userName); namePrompt.style.display = 'none'; chatInputArea.style.display = 'flex'; addMessage(`رائع يا ${userName}! كيف أقدر أساعدك؟`, 'bot'); } };
+        sendNameBtn.onclick = () => { const name = nameInput.value.trim(); if (name) { userName = name; localStorage.setItem('perfume_userName', userName); namePrompt.style.display = 'none'; chatInputArea.style.display = 'flex'; addMessage(`رائع يا ${userName}! كيف أقدر أساعدك؟ يمكنك سماع الموسيقى ارسل كلمة "تشغيل"`, 'bot'); } };
         sendBtn.onclick = handleUserInput;
         chatInput.onkeypress = e => { if (e.key === 'Enter') handleUserInput(); };
         function handleUserInput() { const query = chatInput.value.trim(); if (!query) return; addMessage(query, 'user'); processQuery(query); chatInput.value = ''; }
@@ -1101,28 +1124,6 @@
     });
   });
 
-// Check for localStorage support
-    if (typeof(Storage) !== "undefined") {
-        // Get the current visitor count from localStorage
-        let count = localStorage.getItem("visitorCount");
-
-        // If it's the first visit, set the count to 1
-        if (count === null) {
-            count = 1;
-        } else {
-            // Otherwise, increment the count by 1
-            count = parseInt(count) + 1;
-        }
-
-        // Store the new count in localStorage
-        localStorage.setItem("visitorCount", count);
-
-        // Display the count on the page
-        document.getElementById("visitorCount").innerHTML = count;
-    } else {
-        // Fallback for browsers that don't support localStorage
-        document.getElementById("visitorCount").innerHTML = "متصفحك لا يدعم localStorage";
-    }
     </script>
 
 </body>
