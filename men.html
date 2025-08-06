@@ -96,17 +96,20 @@
     /* --- Navigation Bar2 --- */
         .top-bar2 {
             position: fixed;
-            bottom: 560px;
+            bottom: 540px;
             left: 0px;
             width: 100%;
             display: flex;
             justify-content: center;
-            background: rgba(5, 15, 15, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 3px 0;
-            gap: 1px;
-            border-bottom: 3px solid var(--gold);
-            z-index: 995;
+            backdrop-filter: blur(5px);
+            padding: 0px 0;
+            gap: 0px;
+            z-index: 1000;
+        }
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--gold);
+            color: var(--black);
+            box-shadow: 0 0 0px var(--gold);
         }
     
         /* --- Header Section --- */
@@ -171,6 +174,7 @@
             left: 20px;
             top: 50%;
             transform: translateY(-50%);
+            display: flex;
             color: var(--gold);
         }
 
@@ -376,6 +380,13 @@
     </style>
 </head>
 <body>
+    <div id="visitor-counter-container">
+        <main>
+        <div class="container">
+    <div class="top-bar2">
+<div class="nav-btn2"> <h1>قسم العطور الرجالية</h1>
+               </div>
+    </div>
     <div class="top-bar">
         <div class="nav-buttons">
             <a href="index.html" class="nav-btn">الرئيسية</a>
@@ -384,12 +395,7 @@
             <a href="moan.html" class="nav-btn">بخـور وعود</a>
             <a href="makeup.html" class="nav-btn">مستحضرات</a>
         </div>
-        </div>
-    <div class="top-bar2">
-        <h1>قسم العطور الرجالية</h1>
-               </div>
                  </div>
-        </div>
     
     <main>
         <div class="container">
