@@ -80,7 +80,7 @@
             border-bottom: 2px solid var(--gold);
             z-index: 990;
         }
-        .nav-buttons { display: flex; gap: 15px; }
+        .nav-buttons { display: flex; gap: 15px; align-items: center; }
         .nav-btn {
             color: var(--gold);
             background: var(--black);
@@ -90,15 +90,46 @@
             font-weight: bold;
             border: 1px solid var(--gold);
             transition: all 0.3s ease;
+            position: relative;
         }
         .nav-btn:hover, .nav-btn.active {
             background: var(--gold);
             color: var(--black);
             box-shadow: 0 0 15px var(--gold);
         }
+        #cart-count-badge {
+            position: absolute;
+            top: -5px;
+            right: -8px;
+            background: #ff4d4d;
+            color: white;
+            border-radius: 50%;
+            padding: 1px 6px;
+            font-size: 0.8rem;
+            border: 1px solid var(--black);
+            display: none; /* Hidden by default */
+        }
         
         main { padding-top: 30px; /* Space for fixed nav */ }
-
+    
+/* --- Navigation Bar3 --- */
+         .top-bar3 {
+            position: fixed;
+            bottom: 80px; right: 170px;
+            z-index: 998;
+        }
+        .nav-buttons3 { display: flex; gap: 10px; }
+        .nav-btn3 {
+            color: var(--gold);
+            background: var(--black);
+            padding: 10px 10px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 0px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+  
     /* --- Navigation Bar2 --- */
         .top-bar2 {
             position: fixed;
@@ -220,12 +251,12 @@
         .quantity-selector button { background: var(--gold); color: var(--black); border: none; width: 30px; height: 30px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; }
         .quantity-selector input { width: 50px; text-align: center; background: var(--black); color: var(--white); border: 1px solid var(--gold); border-radius: 5px; padding: 5px; }
         .total-price { margin: 10px 0; font-weight: bold; }
-        .buy-btn {
+        .add-to-cart-btn, .buy-btn {
             background: var(--gold); color: var(--black); font-size: 1.1rem;
             border: none; padding: 10px 20px; border-radius: 8px; width: 100%;
             cursor: pointer; font-weight: bold; margin-top: 10px; transition: all 0.3s;
         }
-        .buy-btn:hover { background: var(--light-gold); }
+        .add-to-cart-btn:hover, .buy-btn:hover { background: var(--light-gold); }
         .social-share { margin-top: 15px; }
         .social-share a { color: white; margin: 0 8px; font-size: 1.5rem; text-decoration: none; }
         .social-share a.facebook:hover { color: #1877F2; }
@@ -244,7 +275,7 @@
             background: var(--dark-gray);
             padding: 30px; border-radius: 15px;
             border: 2px solid var(--gold);
-            width: 90%; max-width: 450px;
+            width: 100%; max-width: 450px;
             text-align: center;
         }
         .modal-content h3 { margin-bottom: 20px; }
@@ -260,7 +291,23 @@
         }
         .modal-btn.close { background: #555; color: white; }
         
-        /* --- Comments Section --- CODE MODIFIED */
+        /* --- Cart Modal Styles --- */
+        #cart-items-container { text-align: right; }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #444;
+            padding: 5px 0;
+            margin-bottom: 10px;
+        }
+        .cart-item img { width: 60px; height: 60px; border-radius: 8px; margin-left: 5px; }
+        .cart-item-details { flex-grow: 1; }
+        .cart-item-details h4 { color: var(--light-gold); font-size: 1.1rem; }
+        .cart-item-details p { color: var(--gold); font-weight: bold; }
+        .cart-item-actions button { background: none; border: none; color: #ff6b6b; font-size: 1.2rem; cursor: pointer; }
+
+        /* --- Comments Section --- */
         #comments-section { background: var(--dark-gray); padding: 20px; border-radius: 15px; margin-top: 40px; }
         #comment-form { display: flex; flex-direction: column; gap: 10px; margin-bottom: 25px; }
         #comment-form input, #comment-form textarea {
@@ -271,13 +318,15 @@
             align-self: flex-start; background: var(--gold); color: var(--black);
             padding: 10px 20px; border-radius: 8px; font-weight: bold; border: none; cursor: pointer;
         }
-        .comment { border-bottom: 1px solid #333; padding-bottom: 15px; margin-bottom: 15px; }
+        .comment {
+            border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 10px;
+        }
         .comment-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
         .comment-author { font-weight: bold; color: var(--gold); }
         .comment-date { font-size: 0.8rem; color: #aaa; }
-        .comment-text { color: var(--light-gold); line-height: 1.6; }
-        .comment-actions { display: flex; gap: 15px; font-size: 0.9rem; color: #ccc; margin-top: 10px; }
-        .comment-actions button { background: none; border: none; color: #ccc; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+        .comment-text { color: var(--light-gold); }
+        .comment-actions { display: flex; gap: 15px; font-size: 0.9rem; color: #ccc; }
+        .comment-actions button { background: none; border: none; color: #ccc; cursor: pointer; }
         .comment-actions button:hover { color: var(--gold); }
         .comment-actions .action-like.liked { color: #ff6b6b; }
         .replies-container { margin-top: 15px; margin-right: 30px; border-right: 2px solid var(--gold); padding-right: 15px; }
@@ -401,21 +450,19 @@
             <a href="female.html" class="nav-btn">النسائية</a>
             <a href="moan.html" class="nav-btn">بخـور وعود</a>
             <a href="makeup.html" class="nav-btn">مستحضرات</a>
+
         </div>
-                 </div>
+    </div>
     
     <main>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-<!-- (4/8) مربع الصور المتحركة وصور المنتجات المصغرة -->
                 
          <div class="products-section" style="padding:0px 0;">
   <div id="mainSlider" style="width:100%;max-width:100%;margin:0 auto 5px;position:relative;border:4px solid var(--gold);border-radius:10px;overflow:hidden;background:var(--black);display:flex;justify-content:center;align-items:center;min-height:100%;">
-   <!-- الصورة الكبرى المتغيرة -->
     <img id="mainImg" src="men.jpg" alt="منتج مختار" style="width:100%;max-width:100%;height:100%;object-fit:contain;transition:.4s;">
     </div>
-  <!-- صف الصور المصغرة -->
   </div>
   <div class="thumbs-row" style="display:flex;justify-content:center;gap:12px;margin-bottom:5px;">
     <img class="thumb" src="men1.jpg" alt="منتج 1" data-high="men1.png" style="width:60px;height:60px;border:2px solid var(--gold);border-radius:2px;cursor:pointer;object-fit:cover;">
@@ -471,25 +518,27 @@
             <h2>منتجاتنا الرجالية المميزة</h2>
             <hr style="border-color: var(--gold); opacity: 1px; margin: 0px 0;">
              </div>
+              
              <div class="container">
             <div id="products-grid" class="products-grid">
                 </div>
         </div>
 
-        <div id="purchaseModal" class="modal">
-            <div class="modal-content">
-                <h3>تأكيد الطلب</h3>
-                <p>إسم المنتج: <strong id="modalProductName"></strong></p>
-                <p>المبلغ الإجمالي: <strong id="modalTotalPrice"></strong></p>
-                <h3>ستحصل على خصم خاص للكميات</h3>
+        <div id="cartModal" class="modal">
+            <div class="modal-content" style="max-width: 700px;">
+                <h3>سلة التسوق</h3>
+                <div id="cart-items-container" style="max-height: 400px; overflow-y: auto; padding: 10px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); margin-bottom: 20px; min-height: 100px;">
+                    <p id="empty-cart-msg">سلتك فارغة حالياً.</p>
+                </div>
+                <div id="cart-summary" style="text-align: left; padding: 0 10px;">
+                    <h4>الإجمالي: <strong id="cart-total-price">0 ريال</strong></h4>
+                </div>
                 <hr style="border-color: var(--gold); opacity: 0.2; margin: 20px 0;">
-                <input type="text" id="customerNameInput" placeholder="الرجاء إدخال اسمك الكريم" required>
-                <button id="confirmPurchaseBtn" class="modal-btn"><i class="fab fa-facebook-messenger"></i> طلب المنتج عبر ماسنجر <i class="fab fa-facebook-messenger"></i></button>
-                <button class="modal-btn close">إلغاء</button>
+                <input type="text" id="cartCustomerNameInput" placeholder="الرجاء إدخال اسمك الكريم لإتمام الطلب" required>
+                <button id="cart-checkout-btn" class="modal-btn"><i class="fab fa-facebook-messenger"></i> إتمام الطلب عبر ماسنجر</button>
+                <button class="modal-btn close">متابعة التسوق</button>
             </div>
         </div>
-
-        <hr style="border-color: var(--gold); opacity: 0.2; margin: 0px 0;">
 
         <div class="container">
             <div id="comments-section">
@@ -499,11 +548,27 @@
                     <textarea id="comment-text" rows="4" placeholder="اكتب تعليقك هنا..." required></textarea>
                     <button type="submit">أضف تعليق</button>
                 </form>
+                <!-- Static Comments -->
+                <div id="static-comments">
+                    <div class="comment">
+                        <div class="comment-header"><span class="comment-author">أحمد</span><span class="comment-date">منذ فترة</span></div>
+                        <p class="comment-text">عطر رائع وثباته ممتاز جداً، أنصح به بشدة!</p>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-header"><span class="comment-author">خالد</span><span class="comment-date">منذ فترة</span></div>
+                        <p class="comment-text">من أفضل العطور اللي جربتها، رائحة فريدة ومميزة.</p>
+                    </div>
+                </div>
+                <!-- Dynamic Comments from Firebase -->
+                <div id="comments-list" style="display:none;">
+                <button id="load-more-comments">تحميل جميع التعليقات</button>
+            </div>
                 <div id="comments-list">
                     <p>جاري تحميل التعليقات...</p>
-                </div>
+                    </div>
+                <button id="load-all-comments-btn" class="buy-btn" style="display: none; margin: 20px auto 0; width: auto;">تحميل كل التعليقات</button>
             </div>
-
+        </div>
     </main>
 
     <footer>
@@ -553,6 +618,15 @@
             <i class="fas fa-comments"></i>
         </div>
     </div>
+          <div class="container">
+              <div class="top-bar3">
+             
+              <a href="#" id="cart-icon" class="nav-btn3">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count-badge">0</span>
+            </a>
+               </div>
+                </div>
 <div class="container">
     <div class="top-bar2">
         <div class="nav-buttons2">
@@ -571,7 +645,7 @@
     
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-      import { getFirestore, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+      import { getFirestore, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc, limit, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
       
       const firebaseConfig = {
         apiKey: "AIzaSyDw2xnlpD8aSsOOElIz9Nw-LWGIJnScMks",
@@ -585,28 +659,24 @@
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
 
-      // Make firebase functions globally available
-      window.firebase = { db, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc };
+      window.firebase = { db, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc, limit, setDoc };
     </script>
     
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Ensure firebase is initialized before using it
         if (!window.firebase) {
             console.error("Firebase is not initialized!");
             return;
         }
 
-        const { db, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, runTransaction, query, orderBy, getDoc } = window.firebase;
+        const { db, collection, addDoc, getDocs, onSnapshot, doc, updateDoc, increment, serverTimestamp, query, orderBy, getDoc, limit, setDoc } = window.firebase;
 
-        // --- Service Worker Registration for PWA ---
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('service-worker.js')
                 .then(registration => console.log('Service Worker registered successfully:', registration))
                 .catch(error => console.log('Service Worker registration failed:', error));
         }
         
-        // --- App Download Simulation ---
         const downloadBtn = document.getElementById('downloadBtn');
         const progressBar = document.getElementById('progressBar');
         const downloadStatus = document.getElementById('downloadStatus');
@@ -636,7 +706,6 @@
             }, 50);
         };
 
-        // --- Product Data ---
         const products = [
             { id: 'p1', name: 'عطر العود الملكي', price: 5900, image: 'men1.jpg', rating: 4.8 },
             { id: 'p2', name: 'عطر نسيم البحر', price: 4900, image: 'men2.jpg', rating: 4.5 },
@@ -649,12 +718,13 @@
         products.forEach(product => {
             const card = document.createElement('div');
             card.className = 'product-card';
+            card.dataset.productId = product.id;
             card.innerHTML = `
                 <img src="${product.image}" alt="${product.name}">
                 <h3>${product.name}</h3>
                 <div class="product-info">
                     <div class="rateYo" data-rateyo-rating="${product.rating}" data-rateyo-read-only="true"></div>
-                    <button class="like-btn" data-product-id="${product.id}"><i class="far fa-heart"></i> <span id="like-count-${product.id}">0</span></button>
+                    <button class="like-btn" data-product-id="${product.id}"><i class="far fa-heart"></i> <span id="like-count-${product.id}"></span></button>
                 </div>
                 <div class="price">
                     <span>${product.price.toLocaleString()} ريال</span>
@@ -665,7 +735,7 @@
                     <button class="quantity-plus">+</button>
                 </div>
                 <div class="total-price">الإجمالي: <span class="total-price-value">${product.price.toLocaleString()}</span> ريال</div>
-                <button class="buy-btn" data-product-name="${product.name}" data-product-price="${product.price}">شراء الآن</button>
+                <button class="add-to-cart-btn" data-product-id="${product.id}" data-product-name="${product.name}" data-product-price="${product.price}">أضف إلى السلة</button>
                 <div class="social-share">
                     <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(product.name)}" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
@@ -676,7 +746,6 @@
             productsGrid.appendChild(card);
         });
         
-        // Initialize RateYo
         $(".rateYo").rateYo({
             rating: function () { return $(this).attr('data-rateyo-rating'); },
             starWidth: "20px",
@@ -687,11 +756,117 @@
             spacing: "5px"
         });
 
+        // --- Shopping Cart Logic ---
+        const cartIcon = document.getElementById('cart-icon');
+        const cartModal = document.getElementById('cartModal');
+        const cartBadge = document.getElementById('cart-count-badge');
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const emptyCartMsg = document.getElementById('empty-cart-msg');
+        const cartTotalPriceEl = document.getElementById('cart-total-price');
+        const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
+        let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+        function saveCart() {
+            localStorage.setItem('shoppingCart', JSON.stringify(cart));
+        }
+
+        function updateCartDisplay() {
+            cartItemsContainer.innerHTML = '';
+            if (cart.length === 0) {
+                cartItemsContainer.appendChild(emptyCartMsg);
+                emptyCartMsg.style.display = 'block';
+            } else {
+                emptyCartMsg.style.display = 'none';
+                cart.forEach(item => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = 'cart-item';
+                    itemEl.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>${(item.price * item.quantity).toLocaleString()} ريال (${item.quantity}x)</p>
+                        </div>
+                        <div class="cart-item-actions">
+                            <button class="remove-from-cart-btn" data-id="${item.id}"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+            }
+
+            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            cartTotalPriceEl.textContent = totalPrice.toLocaleString() + ' ريال';
+            
+            cartBadge.textContent = cart.reduce((count, item) => count + item.quantity, 0);
+            cartBadge.style.display = cart.length > 0 ? 'block' : 'none';
+        }
+
+        function addToCart(productId) {
+            const productCard = document.querySelector(`.product-card[data-product-id="${productId}"]`);
+            const name = productCard.querySelector('h3').textContent;
+            const price = parseFloat(productCard.querySelector('.add-to-cart-btn').dataset.productPrice);
+            const image = productCard.querySelector('img').src;
+            const quantity = parseInt(productCard.querySelector('.quantity-input').value);
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ id: productId, name, price, image, quantity });
+            }
+            saveCart();
+            updateCartDisplay();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+            updateCartDisplay();
+        }
+        
+        cartItemsContainer.addEventListener('click', e => {
+            if (e.target.closest('.remove-from-cart-btn')) {
+                const productId = e.target.closest('.remove-from-cart-btn').dataset.id;
+                removeFromCart(productId);
+            }
+        });
+
+        cartIcon.onclick = () => cartModal.style.display = 'flex';
+        cartModal.querySelector('.close').onclick = () => cartModal.style.display = 'none';
+
+        cartCheckoutBtn.onclick = () => {
+            const customerName = document.getElementById('cartCustomerNameInput').value.trim();
+            if (!customerName) {
+                alert('الرجاء إدخال اسمك لإتمام الطلب.');
+                return;
+            }
+            if (cart.length === 0) {
+                alert('سلة التسوق فارغة!');
+                return;
+            }
+            let message = `مرحباً مبيعات الأيقونة للعطور،\nأنا ${customerName}، وأرغب في طلب المنتجات التالية:\n\n`;
+            cart.forEach(item => {
+                message += `المنتج: ${item.name}\nالكمية: ${item.quantity}\nالسعر: ${(item.price * item.quantity).toLocaleString()} ريال\n\n`;
+            });
+            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            message += `\nالسعر الإجمالي للطلب: ${totalPrice.toLocaleString()} ريال\n`;
+            message += `\nالرابط المرجعي: ${window.location.href}\n\nشكراً لكم.`;
+            
+            const messengerLink = `https://m.me/alayqwnt.ll.twr?text=${encodeURIComponent(message)}`;
+            window.open(messengerLink, '_blank');
+            cartModal.style.display = 'none';
+        };
+        
+        updateCartDisplay();
+
         // --- Product Card Interactivity ---
         productsGrid.addEventListener('click', e => {
-            const quantityInput = e.target.closest('.product-card')?.querySelector('.quantity-input');
-            const price = parseFloat(e.target.closest('.product-card')?.querySelector('.buy-btn').dataset.productPrice);
-            const totalPriceEl = e.target.closest('.product-card')?.querySelector('.total-price-value');
+            const card = e.target.closest('.product-card');
+            if (!card) return;
+
+            const quantityInput = card.querySelector('.quantity-input');
+            const price = parseFloat(card.querySelector('.add-to-cart-btn').dataset.productPrice);
+            const totalPriceEl = card.querySelector('.total-price-value');
             
             if (e.target.classList.contains('quantity-plus')) {
                 quantityInput.value = parseInt(quantityInput.value) + 1;
@@ -704,10 +879,9 @@
                 totalPriceEl.textContent = total.toLocaleString();
             }
 
-            if (e.target.classList.contains('buy-btn')) {
-                const productName = e.target.dataset.productName;
-                const total = totalPriceEl.textContent;
-                openPurchaseModal(productName, total, parseInt(quantityInput.value));
+            if (e.target.classList.contains('add-to-cart-btn')) {
+                const productId = e.target.dataset.productId;
+                addToCart(productId);
             }
             
             if (e.target.closest('.like-btn')) {
@@ -715,115 +889,34 @@
             }
         });
         
-        // --- Purchase Modal Logic ---
-        const modal = document.getElementById('purchaseModal');
-        const modalProductName = document.getElementById('modalProductName');
-        const modalTotalPrice = document.getElementById('modalTotalPrice');
-        const confirmBtn = document.getElementById('confirmPurchaseBtn');
-        let currentProduct = {};
-
-        function openPurchaseModal(name, total, quantity) {
-            currentProduct = { name, total, quantity };
-            modalProductName.textContent = name;
-            modalTotalPrice.textContent = total + ' ريال';
-            modal.style.display = 'flex';
-        }
-
-        modal.querySelector('.close').onclick = () => modal.style.display = 'none';
-        window.onclick = e => { if (e.target == modal) modal.style.display = 'none'; };
-
-        confirmBtn.onclick = () => {
-            const customerName = document.getElementById('customerNameInput').value.trim();
-            if (!customerName) {
-                alert('الرجاء إدخال اسمك لإتمام الطلب.');
-                return;
-            }
-            const message = `مرحباً مبيعات الأيقونة للعطور،\nأنا ${customerName}، وأرغب في طلب المنتج التالي:\n\nالمنتج: ${currentProduct.name}\nالكمية: ${currentProduct.quantity}\nالسعر الإجمالي: ${currentProduct.total} ريال\n\nالرابط المرجعي: ${window.location.href}\n\nشكراً لكم.`;
-            const messengerLink = `https://m.me/alayqwnt.ll.twr?text=${encodeURIComponent(message)}`;
-            window.open(messengerLink, '_blank');
-            modal.style.display = 'none';
-        };
-
-        // --- Firestore & Page Logic ---
-        // CODE ADDED: Visitor Counter Logic
-           async function updateVisitorCount() {
-               
+        async function updateVisitorCount() {
             const localCount = localStorage.getItem('visitorCount') || 0;
             document.getElementById('visitor-counter').textContent = parseInt(localCount).toLocaleString();
-            
             const counterRef = doc(db, "site-stats", "visitor-counter");
             try {
-                await runTransaction(db, async (transaction) => {
-                    const counterDoc = await transaction.get(counterRef);
-                    if (!counterDoc.exists()) {
-                        transaction.set(counterRef, { count: 1 });
-                        localStorage.setItem('visitorCount', 1);
-                        return 1;
-                    }
-                     
-                    const lastUpdate = localStorage.getItem('lastVisitorUpdate') || 0;
-                    const now = Date.now();
-                    if ((now - lastUpdate) < 1800000) return; // 30 دقيقة
-                    
-                    const newCount = counterDoc.data().count + 1;
-                    transaction.update(counterRef, { count: newCount });
-                    localStorage.setItem('visitorCount', newCount);
+                const counterDoc = await getDoc(counterRef);
+                if (!counterDoc.exists()) {
+                     await setDoc(counterRef, { count: 1 });
+                     localStorage.setItem('visitorCount', 1);
+                }
+                const lastUpdate = localStorage.getItem('lastVisitorUpdate') || 0;
+                const now = Date.now();
+                 if ((now - lastUpdate) > 1800000) { // Update every 30 mins
+                    await updateDoc(counterRef, { count: increment(1) });
                     localStorage.setItem('lastVisitorUpdate', now);
-                    return newCount;
-                });
-
+                }
                 const updatedDoc = await getDoc(counterRef);
                 if (updatedDoc.exists()) {
-                    document.getElementById('visitor-counter').textContent = updatedDoc.data().count.toLocaleString();
+                    const cloudCount = updatedDoc.data().count;
+                    document.getElementById('visitor-counter').textContent = cloudCount.toLocaleString();
+                    localStorage.setItem('visitorCount', cloudCount);
                 }
-
             } catch (e) {
                 console.error("Error updating visitor count: ", e);
             }
         }
         updateVisitorCount();
         
-       // ======== [2] نظام التعليقات المحسن ========
-        let commentsLimit = 5;
-        let commentsUnsubscribe = null;
-
-        function setupComments(limit) {
-            if (commentsUnsubscribe) commentsUnsubscribe();
-            
-            const q = query(commentsCollectionRef, orderBy('createdAt', 'desc'), limit(limit));
-            commentsUnsubscribe = onSnapshot(q, (snapshot) => {
-                commentsList.innerHTML = '';
-                
-                if (snapshot.empty) {
-                    commentsList.innerHTML = '<p>لا توجد تعليقات بعد. كن أول من يعلق!</p>';
-                    return;
-                }
-                
-                snapshot.forEach(doc => {
-                    renderComment(doc);
-                });
-                
-                // إضافة زر "تحميل المزيد" إذا كان هناك المزيد من التعليقات
-                if (snapshot.size === limit) {
-                    const loadMoreBtn = document.createElement('button');
-                    loadMoreBtn.id = 'load-more-comments';
-                    loadMoreBtn.className = 'modal-btn';
-                    loadMoreBtn.textContent = 'تحميل المزيد من التعليقات';
-                    loadMoreBtn.onclick = () => {
-                        commentsLimit += 5;
-                        setupComments(commentsLimit);
-                    };
-                    commentsList.appendChild(loadMoreBtn);
-                }
-                
-                updateTimestamps();
-            }, (error) => {
-                console.error("Error loading comments: ", error);
-                commentsList.innerHTML = '<p>حدث خطأ في تحميل التعليقات. يرجى المحاولة لاحقاً.</p>';
-            });
-        }
-
-        // CODE ADDED: Client-side Search Logic
         const searchBar = document.getElementById('search-bar');
         searchBar.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
@@ -838,12 +931,13 @@
             });
         });
 
-        // CODE MODIFIED & ADDED: Entire Comments section logic
+        // --- Comments Section Logic ---
         const commentsCollectionRef = collection(db, 'mens-perfume-comments');
         const commentForm = document.getElementById('comment-form');
         const commentsList = document.getElementById('comments-list');
-
-        // Function to add initial comments if the collection is empty
+        const loadAllCommentsBtn = document.getElementById('load-all-comments-btn');
+        let unsubscribeComments = null;
+        
         async function addInitialComments() {
             const snapshot = await getDocs(commentsCollectionRef);
             if (snapshot.empty) {
@@ -862,8 +956,8 @@
         }
         addInitialComments();
 
-        // Function to format relative time
         function formatRelativeTime(date) {
+            if (!date) return 'الآن';
             const now = new Date();
             const seconds = Math.round((now - date) / 1000);
             const minutes = Math.round(seconds / 60);
@@ -885,17 +979,7 @@
                 }
             });
         }
-        setInterval(updateTimestamps, 60000); // Update every minute
-
-        // Listen for and display comments and replies
-        const q = query(commentsCollectionRef, orderBy('createdAt', 'desc'));
-        onSnapshot(q, (snapshot) => {
-            commentsList.innerHTML = '';
-            snapshot.forEach(doc => {
-                renderComment(doc);
-            });
-            updateTimestamps();
-        });
+        setInterval(updateTimestamps, 60000);
 
         function renderComment(commentDoc) {
             const comment = commentDoc.data();
@@ -908,7 +992,7 @@
             div.innerHTML = `
                 <div class="comment-header">
                     <span class="comment-author">${comment.name}</span>
-                    <span class="comment-date" data-timestamp="${comment.createdAt?.toMillis()}">${formatRelativeTime(comment.createdAt?.toDate() || new Date())}</span>
+                    <span class="comment-date" data-timestamp="${comment.createdAt?.toMillis()}">${formatRelativeTime(comment.createdAt?.toDate())}</span>
                 </div>
                 <p class="comment-text">${comment.text}</p>
                 <div class="comment-actions">
@@ -928,15 +1012,12 @@
             `;
             commentsList.appendChild(div);
 
-            // Fetch and render replies
             const repliesRef = collection(db, 'mens-perfume-comments', commentId, 'replies');
             const repliesQuery = query(repliesRef, orderBy('createdAt', 'asc'));
             onSnapshot(repliesQuery, (replySnapshot) => {
                 const repliesContainer = document.getElementById(`replies-${commentId}`);
                 repliesContainer.innerHTML = '';
-                replySnapshot.forEach(replyDoc => {
-                    renderReply(replyDoc, commentId);
-                });
+                replySnapshot.forEach(replyDoc => renderReply(replyDoc, commentId));
                 updateTimestamps();
             });
         }
@@ -952,7 +1033,7 @@
             div.innerHTML = `
                 <div class="comment-header">
                     <span class="comment-author">${reply.name}</span>
-                    <span class="comment-date" data-timestamp="${reply.createdAt?.toMillis()}">${formatRelativeTime(reply.createdAt?.toDate() || new Date())}</span>
+                    <span class="comment-date" data-timestamp="${reply.createdAt?.toMillis()}">${formatRelativeTime(reply.createdAt?.toDate())}</span>
                 </div>
                 <p class="comment-text">${reply.text}</p>
                 <div class="comment-actions">
@@ -963,39 +1044,54 @@
             `;
             repliesContainer.appendChild(div);
         }
+        
+        const fetchComments = (q) => {
+            if (unsubscribeComments) {
+                unsubscribeComments();
+            }
+            unsubscribeComments = onSnapshot(q, async (snapshot) => {
+                commentsList.innerHTML = '';
+                snapshot.forEach(doc => {
+                    renderComment(doc);
+                });
+                updateTimestamps();
+                const allDocs = await getDocs(collection(db, 'mens-perfume-comments'));
+                if (snapshot.size < allDocs.size) {
+                    loadAllCommentsBtn.style.display = 'inline-block';
+                } else {
+                    loadAllCommentsBtn.style.display = 'none';
+                }
+            });
+        };
+        
+        fetchComments(query(commentsCollectionRef, orderBy('createdAt', 'desc'), limit(5)));
+        
+        loadAllCommentsBtn.addEventListener('click', () => {
+            fetchComments(query(commentsCollectionRef, orderBy('createdAt', 'desc')));
+        });
 
-        // Handle Comment form submission
         commentForm.addEventListener('submit', async e => {
             e.preventDefault();
             const name = document.getElementById('comment-name').value.trim();
             const text = document.getElementById('comment-text').value.trim();
             if (!name || !text) return;
-            
-            await addDoc(commentsCollectionRef, {
-                name,
-                text,
-                likes: 0,
-                createdAt: serverTimestamp()
-            });
-
-            commentForm.reset();
+            try {
+                await addDoc(commentsCollectionRef, { name, text, likes: 0, createdAt: serverTimestamp() });
+                commentForm.reset();
+            } catch (error) {
+                console.error("Error adding comment: ", error);
+                alert("حدث خطأ أثناء إضافة التعليق. الرجاء المحاولة مرة أخرى.");
+            }
         });
 
-        // Handle clicks on actions (like, reply) using event delegation
         commentsList.addEventListener('click', async e => {
             const target = e.target.closest('button');
             if (!target) return;
-
-            // Handle Like button
             if (target.classList.contains('action-like')) {
                 const id = target.dataset.id;
                 const type = target.dataset.type;
                 const storageKey = `liked_${type}_${id}`;
-
-                if (localStorage.getItem(storageKey)) {
-                    console.log("Already liked this item.");
-                    return; // Already liked
-                }
+                if (localStorage.getItem(storageKey)) return;
 
                 let itemRef;
                 if (type === 'comment') {
@@ -1004,13 +1100,10 @@
                     const commentId = target.dataset.commentId;
                     itemRef = doc(db, 'mens-perfume-comments', commentId, 'replies', id);
                 }
-
                 await updateDoc(itemRef, { likes: increment(1) });
                 localStorage.setItem(storageKey, 'true');
                 target.classList.add('liked');
             }
-
-            // Handle Reply button
             if (target.classList.contains('action-reply')) {
                 const commentId = target.dataset.id;
                 const replyForm = document.getElementById(`reply-form-${commentId}`);
@@ -1018,7 +1111,6 @@
             }
         });
         
-        // Handle Reply form submission
         commentsList.addEventListener('submit', async e => {
             e.preventDefault();
             if (e.target.closest('.reply-form')) {
@@ -1029,36 +1121,42 @@
                 if (!name || !text || !commentId) return;
 
                 const repliesRef = collection(db, 'mens-perfume-comments', commentId, 'replies');
-                await addDoc(repliesRef, {
-                    name,
-                    text,
-                    likes: 0,
-                    createdAt: serverTimestamp()
-                });
+                await addDoc(repliesRef, { name, text, likes: 0, createdAt: serverTimestamp() });
                 
                 form.reset();
                 form.closest('.reply-form').style.display = 'none';
             }
         });
 
-        // --- Product & Misc Logic (No changes below this line, kept for completeness) ---
-
-        // Handle Product Likes
         async function handleLike(btn) {
             const productId = btn.dataset.productId;
             const likedKey = `liked_product_${productId}`;
-            if (localStorage.getItem(likedKey)) { console.log("Already liked"); return; }
+            if (localStorage.getItem(likedKey)) {
+                console.log("Already liked");
+                return;
+            }
             const likeDocRef = doc(db, "product-likes", productId);
-            await updateDoc(likeDocRef, { count: increment(1) });
-            localStorage.setItem(likedKey, 'true');
-            btn.classList.add('liked');
-            btn.querySelector('i').className = 'fas fa-heart';
+            try {
+                const docSnap = await getDoc(likeDocRef);
+                if (docSnap.exists()) {
+                    await updateDoc(likeDocRef, { count: increment(1) });
+                } else {
+                    await setDoc(likeDocRef, { count: 1 });
+                }
+                localStorage.setItem(likedKey, 'true');
+                btn.classList.add('liked');
+                btn.querySelector('i').className = 'fas fa-heart';
+            } catch(e) {
+                console.error("Error handling like: ", e);
+            }
         }
+
         products.forEach(p => {
             const likeDocRef = doc(db, "product-likes", p.id);
             onSnapshot(likeDocRef, (doc) => {
                 const count = doc.exists() ? doc.data().count : 0;
-                document.getElementById(`like-count-${p.id}`).textContent = count;
+                const countEl = document.getElementById(`like-count-${p.id}`);
+                if(countEl) countEl.textContent = count;
                 if (localStorage.getItem(`liked_product_${p.id}`)) {
                     const btn = document.querySelector(`.like-btn[data-product-id="${p.id}"]`);
                     if(btn) {
@@ -1069,14 +1167,13 @@
             });
         });
 
-        // --- Floating Share Buttons Logic ---
+        // --- Floating Share Buttons & Chat Widget (Original Scripts) ---
         const shareText = `الأيقونة للعطور - جودة وأصالة\nعطور رجالية ونسائية وبخور ومستحضرات التجميل.\nيوجد لدينا توصيل الى جميع المحافظات اليمنيه.\n\nاكتشف قسم العطور الرجالية:\n${window.location.href}`;
         document.getElementById('share-fb').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(shareText)}`;
         document.getElementById('share-wa').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
         document.getElementById('share-tg').href = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(shareText)}`;
         document.getElementById('share-tw').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(shareText)}`;
 
-        // --- Chat Widget Logic ---
         const chatIcon = document.getElementById('chat-icon');
         const chatPopup = document.getElementById('chat-popup');
         const closeChatBtn = document.getElementById('close-chat');
@@ -1107,74 +1204,39 @@
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; if (SpeechRecognition) { const recognition = new SpeechRecognition(); recognition.lang = 'ar-SA'; recognition.continuous = false; micBtn.onclick = () => { recognition.start(); micBtn.style.color = '#ff6b6b'; }; recognition.onresult = (event) => { const transcript = event.results[0][0].transcript; chatInput.value = transcript; handleUserInput(); }; recognition.onend = () => { micBtn.style.color = 'var(--gold)'; }; } else { micBtn.style.display = 'none'; }
     });
     
+    // --- Image Slider (Original Script) ---
     const sliderImgs = ["men1.jpg","men2.jpg","men3.jpg","men4.jpg","men5.jpg"];
-  const highImgs = ["men1.png","men2.png","men3.png","men4.png","men5.png"];
-  let mainImg = document.getElementById('mainImg');
-  let thumbs = document.querySelectorAll('.thumb');
-  let sliderIndex = 0;
-  let sliderActive = true;
-  let sliderInterval = setInterval(()=>{
-    if (sliderActive) {
-      sliderIndex = (sliderIndex+1)%sliderImgs.length;
-      mainImg.src = sliderImgs[sliderIndex];
-    }
-  }, 1800);
-
-  thumbs.forEach((thumb,idx)=>{
-    thumb.onclick = ()=>{
-      sliderActive = false;
-      clearInterval(sliderInterval);
-      mainImg.src = highImgs[idx];
-      // ظل للصورة المختارة
-      thumbs.forEach(t=>t.style.boxShadow="none");
-      thumb.style.boxShadow="0 0 12px var(--gold)";
-    };
-  });
-  // إعادة التشغيل عند مغادرة الماوس المربع الكبير
-  mainImg.onmouseleave = ()=>{
-    if(!sliderActive){
-      sliderActive = true;
-      sliderInterval = setInterval(()=>{
+    const highImgs = ["men1.png","men2.png","men3.png","men4.png","men5.png"];
+    let mainImg = document.getElementById('mainImg');
+    let thumbs = document.querySelectorAll('.thumb');
+    let sliderIndex = 0;
+    let sliderActive = true;
+    let sliderInterval = setInterval(()=>{
+      if (sliderActive) {
         sliderIndex = (sliderIndex+1)%sliderImgs.length;
         mainImg.src = sliderImgs[sliderIndex];
+      }
+    }, 1800);
+
+    thumbs.forEach((thumb,idx)=>{
+      thumb.onclick = ()=>{
+        sliderActive = false;
+        clearInterval(sliderInterval);
+        mainImg.src = highImgs[idx];
         thumbs.forEach(t=>t.style.boxShadow="none");
-      }, 1800);
-    }
-  };
-  
-  $('.rateYo').each(function(){
-    $(this).rateYo({
-      rtl:true,
-      rating: $(this).data('rate'),
-      starWidth: "18px",
-      ratedFill: "#D4AF37",
-      normalFill: "#fff2b2",
-      readOnly: true,
-      spacing:"3px"
+        thumb.style.boxShadow="0 0 12px var(--gold)";
+      };
     });
-  });
-
-        // تحميل التعليقات عند فتح الصفحة
-        window.onload = function() {
-            loadComments();
-            loadFAQ();
-            
-            // Lazy loading للصور
-            const lazyImages = document.querySelectorAll('.lazy-load');
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.src = img.dataset.src;
-                        img.classList.add('loaded');
-                        observer.unobserve(img);
-                    }
-                });
-            });
-            
-            lazyImages.forEach(img => imageObserver.observe(img));
-        };
+    mainImg.onmouseleave = ()=>{
+      if(!sliderActive){
+        sliderActive = true;
+        sliderInterval = setInterval(()=>{
+          sliderIndex = (sliderIndex+1)%sliderImgs.length;
+          mainImg.src = sliderImgs[sliderIndex];
+          thumbs.forEach(t=>t.style.boxShadow="none");
+        }, 1800);
+      }
+    };
     </script>
-
 </body>
 </html>
