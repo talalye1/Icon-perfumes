@@ -223,6 +223,13 @@
             transform: translateY(-50%);
             color: var(--gold);
         }
+    
+    /* --- Why Us Section --- */
+        .why-us { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px; margin-top: 40px; }
+        .feature-item { text-align: center; max-width: 250px; }
+        .feature-item .icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 10px; }
+        .feature-item h3 { font-size: 1.3rem; margin-bottom: 5px; }
+        .feature-item p { color: var(--light-gold); font-size: 0.95rem; }
 
         /* --- Products Section --- */
         .products-grid {
@@ -233,8 +240,8 @@
         .product-card {
             background: var(--dark-gray);
             border: 2px solid transparent;
-            border-radius: 5px;
-            padding: 5px;
+            border-radius: 15px;
+            padding: 15px;
             text-align: center;
             transition: all 0.3s ease;
             display: flex;
@@ -302,7 +309,7 @@
             padding: 5px 0;
             margin-bottom: 10px;
         }
-        .cart-item img { width: 80px; height: 70px; border-radius: 8px; margin-left: 5px; }
+        .cart-item img { width: 5px; height: 5px; border-radius: 8px; margin-left: 5px; }
         .cart-item-details { flex-grow: 1; }
         .cart-item-details h4 { color: var(--light-gold); font-size: 1.1rem; }
         .cart-item-details p { color: var(--gold); font-weight: bold; }
@@ -517,6 +524,7 @@
         
         .facebook { background: #3b5998; }
         .instagram { background: #e1306c; }
+        .telegram { background: #1da1f2; }
         .twitter { background: #1da1f2; }
         .whatsapp { background: #25d366; }
         .share-all { background: var(--gold); }
@@ -737,6 +745,28 @@
             border-top: 1px solid rgba(212, 175, 55, 0.3);
         }
   
+      /* --- Floating Share Buttons --- */
+        .floating-share2-buttons {
+            display: flex;
+            bottom: 70px;
+            left: 20px;
+            gap: 10px;
+            z-index: 995;
+        }
+        .floating-share2-buttons a {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            color: white; text-decoration: none; font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .floating-share2-buttons a:hover { transform: scale(1.1); }
+        .share-fb { background: #1877F2; }
+        .share-wa { background: #25D366; }
+        .share-tg { background: #e1306c; }
+        .share-in { background: #1da1f2; }
+        .share-tw { background: #1DA1F2; }
+        .share-all { background: var(--gold); }
+    
         /* --- Floating Chat Widget --- */
         #chat-widget {
             position: fixed;
@@ -820,12 +850,12 @@
     <div class="fixed-share">
         <a href="#" class="fixed-share-btn facebook" onclick="sharePage('facebook')"><i class="fab fa-facebook-f"></i></a>
         <a href="#" class="fixed-share-btn instagram" onclick="sharePage('instagram')"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="fixed-share-btn telegram" onclick="sharePage('telegram')"><i class="fab fa-telegram-plane"></i></a>
         <a href="#" class="fixed-share-btn whatsapp" onclick="sharePage('whatsapp')"><i class="fab fa-whatsapp"></i></a>
         <a href="#" class="fixed-share-btn twitter" onclick="sharePage('twitter')"><i class="fab fa-twitter"></i></a>
         <a href="#" class="fixed-share-btn share-all" onclick="sharePage('all')"><i class="fas fa-share-alt"></i></a>
     </div>
-
-<body>
+    <body>
     <div class="top-bar">
         <div class="nav-buttons">
             <a href="index.html" class="nav-btn">الرئيسية</a>
@@ -961,6 +991,7 @@
         </div>
     </footer>
 </div>
+     </div>
     <div id="chat-widget">
         <div id="chat-popup">
             <div class="chat-header">
@@ -1102,12 +1133,14 @@
                 </div>
                 <div class="total-price">الإجمالي: <span class="total-price-value">${product.price.toLocaleString()}</span> ريال</div>
                 <button class="add-to-cart-btn" data-product-id="${product.id}" data-product-name="${product.name}" data-product-price="${product.price}">أضف إلى السلة</button>
-                <div class="social-share">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}" target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(product.name)}" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(product.name + ' ' + window.location.href)}" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(product.name)}" target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
-                </div>
+                <div class="floating-share2-buttons">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(product.name + ' انصحك بهذا العطر\nفي قسم - العطور الرجالية\n\nرابط العطر↓\n ' + window.location.href + ' الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram/sharer/sharer.php?u=${encodeURIComponent(product.name + '  انصحك بهذا العطر\nفي قسم - العطور الرجالية\n\nرابط العطر↓\n ' + window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')}&text=${encodeURIComponent(product.name + '  انصحك بهذا العطر\nفي قسم - العطور الرجالية\nرابط العطر↓  ')}" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(product.name + '  انصحك بهذا العطر\nفي قسم - العطور الرجالية\n\nرابط العطر↓\n ' + window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://t.me/share/url?url=${encodeURIComponent(product.name + ' انصحك بهذا العطر\nفي قسم - العطور الرجالية\n\nرابط العطر↓\n ' + window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
+                  </div>
+            
             `;
             productsGrid.appendChild(card);
         });
@@ -1346,7 +1379,7 @@
         function speak(text) { if ('speechSynthesis' in window) { const utterance = new SpeechSynthesisUtterance(text); utterance.lang = 'ar-SA'; window.speechSynthesis.speak(utterance); } }
         function addMessage(text, sender) { const messageDiv = document.createElement('div'); messageDiv.className = `chat-message ${sender}-message`; messageDiv.textContent = text; chatMessages.appendChild(messageDiv); chatMessages.scrollTop = chatMessages.scrollHeight; }
 
-        if (userName) { namePrompt.style.display = 'none'; chatInputArea.style.display = 'flex'; const welcomeBackMsg = `أهلاً بعودتك يا ${userName}! كيف أقدر أساعدك اليوم؟ يمكنك طلب تشغيل الموسيقى اكتب كلمة "تشغيل".`; addMessage(welcomeBackMsg, 'bot'); speak(welcomeBackMsg); } else { const welcomeMsg = "أهلاً بك في متجر الأيقونة! أنا مؤظف خدمة العملاء الذكي. لطفاً، أدخل اسمك للبدء."; addMessage(welcomeMsg, 'bot'); speak(welcomeMsg); }
+        if (userName) { namePrompt.style.display = 'none'; chatInputArea.style.display = 'flex'; const welcomeBackMsg = `أهلاً بعودتك يا ${userName}! في قسم العطور الرجالية كيف أقدر أساعدك اليوم؟ يمكنك طلب سماع الموسيقى في ايقونة الدردشة اكتب كلمة "تشغيل".`; addMessage(welcomeBackMsg, 'bot'); speak(welcomeBackMsg); } else { const welcomeMsg = "أهلاً بك في متجر الأيقونة! أنا مؤظف خدمة العملاء الذكي. لطفاً، أدخل اسمك للبدء."; addMessage(welcomeMsg, 'bot'); speak(welcomeMsg); }
         sendNameBtn.onclick = () => { const name = nameInput.value.trim(); if (name) { userName = name; localStorage.setItem('perfume_userName', userName); namePrompt.style.display = 'none'; chatInputArea.style.display = 'flex'; addMessage(`رائع يا ${userName}! كيف أقدر أساعدك؟ يمكنك سماع الموسيقى ارسل كلمة "تشغيل"`, 'bot'); } };
         sendBtn.onclick = handleUserInput;
         chatInput.onkeypress = e => { if (e.key === 'Enter') handleUserInput(); };
@@ -1493,7 +1526,7 @@
 
         // تهيئة المتغيرات
         let allCommentsLoaded = false;
-        const commentsPerPage = 5;
+        const commentsPerPage = 3;
         let currentComments = [];
         let timeUpdater;
 
@@ -1591,7 +1624,7 @@
             const loadMoreBtn = document.getElementById('loadMoreBtn');
             if (limit && currentComments.length > limit) {
                 loadMoreBtn.style.display = 'block';
-                loadMoreBtn.textContent = `تحميل جميع التعليقات (${currentComments.length - commentsPerPage} تعليق إضافي)`;
+                loadMoreBtn.textContent = `تحميل جميع التعليقات يوجد (${currentComments.length - commentsPerPage} تعليق إضافي)`;
             } else {
                 loadMoreBtn.style.display = 'none';
             }
@@ -1677,7 +1710,7 @@
                 name: name,
                 timestamp: Date.now(),
                 content: content,
-                likes: 0,
+                likes: 5,
                 liked: false,
                 replies: []
             };
@@ -1770,7 +1803,7 @@
                     name: name,
                     timestamp: Date.now(),
                     content: content,
-                    likes: 0,
+                    likes: 5,
                     liked: false
                 });
                 
@@ -1870,7 +1903,7 @@ https://m.me/alayqwnt.ll.twr `;
             }
             
             // رسالة المقدمة للذكاء الاصطناعي
-            const prompt = `أنت خدمة عملاء متجر عطور يسمى 'الأيقونة'. قم بالرد على تعليق العميل بطريقة مهذبة ومناسبة. التعليق: "${commentText}". الرد يجب أن يكون باللغة العربية الفصحى، مختصر (جملتين كحد أقصى)، ويشكر العميل ويقدم دعوة للتواصل إذا كان هناك استفسار.`;
+            const prompt = `أنت خدمة عملاء متجر عطور يسمى 'الأيقونة'. طرق للدفع [إيداع بنك الكريمي أو حوالات مصرفية أو إيداع عبر المحافظ الإلكترونية]، مدة التوصيل [مدة التوصيل تتراوح بين 1-3 أيام في المدن الكبرى و3-7 أيام لباقي المناطق]، جودة [جميع منتجاتنا أصلية 100% وذات جودة عالية مع ضمان استرجاع]، عروض [لدينا عروض دورية تابع صفحاتنا على التواصل الاجتماعي لمعرفة أحدث العروض]، سعر [الأسعار موضحة في صفحة كل منتج لأي استفسار عن منتج بعينة اكتب اكتب اسم المنتج]، استبدال [نقدم خدمة استبدال المنتج خلال 7 أيام من الاستلام في حال وجود عيب مصنعي]، توصيل [ لدينا خدمة التوصيل لجميع المحافظات اليمنية]، مصمم [تم تصميم موقع وتطبيق متجر الأيقونة بواسطة المبرمج والمصمم طلال سليمان المقطري للتواصل معه: 774662666]، سعر عطر العود الملكي [5.900 ريال يمني عملة قديم خصم خاص لطلب كميات]، سعر عطر نسيم البحر [4.900 ريال يمني عملة قديم حصم خاص لطلب كميات]، سعر عطر روح الصحراء [5.500 ريال يمني عملة قديم حصم خاص لطلب كميات]، سعر عطر ليالي الشرق [5.200 ريال يمني عملة قديم حصم خاص لطلب كميات]، سعر عطر خرير الماء [4.200 ريال يمني عملة قديم حصم خاص لطلب كميات]، مقرنا الرئيسي في [اليمن محافظة ذمار]، قم بالرد على تعليق العميل بطريقة مهذبة ومناسبة. التعليق: "${commentText}". الرد يجب أن يكون باللغة العربية الفصحى، مختصر (جملتين كحد أقصى)، ويشكر العميل ويقدم دعوة للتواصل إذا كان هناك استفسار.`;
             
             try {
                 const response = await fetch(url, {
@@ -1882,6 +1915,7 @@ https://m.me/alayqwnt.ll.twr `;
                         }]
                     })
                 });
+                
                 
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
