@@ -6,7 +6,7 @@
     <meta property="og:title" content="الأيقونة للعطور - قسم العطور الرجالية">
     <meta property="og:description" content="اكتشف مجموعة من العطور الرجالية التي تعكس القوة والأناقة. ثبات يدوم طويلاً ورائحة تأسر الحواس.">
     <meta property="og:image" content="https://talalye1.github.io/Icon-perfumes/men.jpg">
-    <meta property="og:url" content="https://talalye1.github.io/Icon-perfumes/">
+    <meta property="og:url" content="https://talalye1.github.io/Icon-perfumes/men.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="الأيقونة للعطور - قسم العطور الرجالية">
     <title>الأيقونة للعطور - قسم العطور الرجالية</title>
@@ -859,7 +859,7 @@
     <div class="top-bar">
         <div class="nav-buttons">
             <a href="index.html" class="nav-btn">الرئيسية</a>
-            <a href="index.html" class="nav-btn active">الرجالية</a>
+            <a href="men.html" class="nav-btn active">الرجالية</a>
             <a href="female.html" class="nav-btn">النسائية</a>
             <a href="moan.html" class="nav-btn">بخـور وعود</a>
             <a href="makeup.html" class="nav-btn">مستحضرات</a>
@@ -1111,8 +1111,13 @@
             { id: 'p5', name: 'عطر خرير الماء', price: 4200, image: 'men5.jpg', rating: 4.6 }
         ];
 
+        let likesData = JSON.parse(localStorage.getItem('productLikes')) || {};
+
         const productsGrid = document.getElementById('products-grid');
         products.forEach(product => {
+            if (!likesData[product.id]) {
+                likesData[product.id] = { count: 0, liked: false };
+            }
             const card = document.createElement('div');
             card.className = 'product-card';
             card.dataset.productId = product.id;
@@ -1121,7 +1126,10 @@
                 <h3>${product.name}</h3>
                 <div class="product-info">
                     <div class="rateYo" data-rateyo-rating="${product.rating}" data-rateyo-read-only="true"></div>
-                    <button class="like-btn" data-product-id="${product.id}"><i class="far fa-heart"></i> <span id="like-count-${product.id}"></span></button>
+                    <button class="like-btn ${likesData[product.id].liked ? 'liked' : ''}" data-product-id="${product.id}">
+                        <i class="${likesData[product.id].liked ? 'fas' : 'far'} fa-heart"></i> 
+                        <span class="like-count">${likesData[product.id].count}</span>
+                    </button>
                 </div>
                 <div class="price">
                     <span>${product.price.toLocaleString()} ريال</span>
@@ -1135,12 +1143,11 @@
                 <button class="add-to-cart-btn" data-product-id="${product.id}" data-product-name="${product.name}" data-product-price="${product.price}">أضف إلى السلة</button>
                 <div class="floating-share2-buttons">
                     <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(product.name + ' انصحك بهذا العطر\nفي قسم - العطور الرجالية\n\nرابط العطر↓\n ' + window.location.href + ' الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/sharer.php?u=${encodeURIComponent(product.name + '  انصحك بهذا العطر\nفي قسم - العطور الرجالية\n\nرابط العطر↓\n ' + window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="instagram"><i class="fab fa-instagram"></i></a>
                     <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')}&text=${encodeURIComponent(product.name + '  انصحك بهذا العطر\nفي قسم - العطور الرجالية\nرابط العطر↓  ')}" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
                     <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(product.name + '  انصحك بهذا العطر\nفي قسم - العطور الرجالية\n\nرابط العطر↓\n ' + window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
                     <a href="https://t.me/share/url?url=${encodeURIComponent(product.name + ' انصحك بهذا العطر\nفي قسم - العطور الرجالية\n\nرابط العطر↓\n ' + window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#" class="fixed-share-btn share-all" onclick="sharePage('all')"><i class="fas fa-share-alt"></i></a>
                   </div>
-            
             `;
             productsGrid.appendChild(card);
         });
@@ -1161,7 +1168,7 @@
         const cartBadge = document.getElementById('cart-count-badge');
         const cartItemsContainer = document.getElementById('cart-items-container');
         const emptyCartMsg = document.getElementById('empty-cart-msg');
-        const cartTotalPriceEl = document.getElementById('cart-total-price');
+        const cartSummaryEl = document.getElementById('cart-summary');
         const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
         let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
 
@@ -1174,6 +1181,7 @@
             if (cart.length === 0) {
                 cartItemsContainer.appendChild(emptyCartMsg);
                 emptyCartMsg.style.display = 'block';
+                cartSummaryEl.innerHTML = '';
             } else {
                 emptyCartMsg.style.display = 'none';
                 cart.forEach(item => {
@@ -1193,8 +1201,27 @@
                 });
             }
 
-            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            cartTotalPriceEl.textContent = totalPrice.toLocaleString() + ' ريال';
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            
+            const now = new Date();
+            const discountEndDate = new Date('2026-01-01');
+            let finalTotal = subtotal;
+            let discountMessage = '';
+            let discountAmount = 0;
+
+            if (now < discountEndDate) {
+                discountAmount = subtotal * 0.05;
+                finalTotal = subtotal - discountAmount;
+                discountMessage = `
+                    <h5 style="color: #ff6b6b;">خصم 5% لفترة محدودة: -${discountAmount.toLocaleString()} ريال</h5>
+                `;
+            }
+            
+            cartSummaryEl.innerHTML = `
+                <h4>الإجمالي قبل الخصم: <strong>${subtotal.toLocaleString()} ريال</strong></h4>
+                ${discountMessage}
+                <h4 style="color: var(--gold); border-top: 1px solid var(--gold); padding-top: 5px; margin-top: 5px;">الإجمالي النهائي: <strong>${finalTotal.toLocaleString()} ريال</strong></h4>
+            `;
             
             cartBadge.textContent = cart.reduce((count, item) => count + item.quantity, 0);
             cartBadge.style.display = cart.length > 0 ? 'block' : 'none';
@@ -1243,12 +1270,25 @@
                 alert('سلة التسوق فارغة!');
                 return;
             }
+
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const now = new Date();
+            const discountEndDate = new Date('2026-01-01');
+            let finalTotal = subtotal;
+            let discountInfo = '';
+
+            if (now < discountEndDate) {
+                const discountAmount = subtotal * 0.05;
+                finalTotal = subtotal - discountAmount;
+                discountInfo = `\nالإجمالي قبل الخصم: ${subtotal.toLocaleString()} ريال\nخصم 5%: -${discountAmount.toLocaleString()} ريال`;
+            }
+
             let message = `مرحباً مبيعات الأيقونة للعطور،\nأنا ${customerName}، وأرغب في طلب المنتجات التالية:\n\n`;
             cart.forEach(item => {
                 message += `المنتج: ${item.name}\nالكمية: ${item.quantity}\nالسعر: ${(item.price * item.quantity).toLocaleString()} ريال\n\n`;
             });
-            const totalPrice = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            message += `\nالسعر الإجمالي للطلب: ${totalPrice.toLocaleString()} ريال\n`;
+
+            message += `${discountInfo}\n\nالسعر الإجمالي للطلب: ${finalTotal.toLocaleString()} ريال\n`;
             message += `\nالرابط المرجعي: ${window.location.href}\n\nشكراً لكم.`;
             
             const messengerLink = `https://m.me/alayqwnt.ll.twr?text=${encodeURIComponent(message)}`;
@@ -1258,20 +1298,28 @@
         
         updateCartDisplay();
 
-        // --- Like Button Functionality FIX ---
-        // The handleLike function was missing. I am adding it here.
         function handleLike(likeBtn) {
-            likeBtn.classList.toggle('liked');
+            const productId = likeBtn.dataset.productId;
+            const productLikes = likesData[productId];
             const icon = likeBtn.querySelector('i');
-            const isLiked = likeBtn.classList.contains('liked');
+            const countSpan = likeBtn.querySelector('.like-count');
+
+            productLikes.liked = !productLikes.liked; // Toggle liked state
             
-            if (isLiked) {
+            if (productLikes.liked) {
+                productLikes.count++;
                 icon.classList.remove('far');
                 icon.classList.add('fas');
+                likeBtn.classList.add('liked');
             } else {
+                productLikes.count--;
                 icon.classList.remove('fas');
                 icon.classList.add('far');
+                likeBtn.classList.remove('liked');
             }
+
+            countSpan.textContent = productLikes.count;
+            localStorage.setItem('productLikes', JSON.stringify(likesData));
         }
 
         // --- Product Card Interactivity ---
@@ -1299,9 +1347,9 @@
                 addToCart(productId);
             }
             
-            // This now correctly calls the handleLike function defined above
-            if (e.target.closest('.like-btn')) {
-                handleLike(e.target.closest('.like-btn'));
+            const likeBtn = e.target.closest('.like-btn');
+            if (likeBtn) {
+                handleLike(likeBtn);
             }
         });
         
@@ -1349,7 +1397,7 @@
                 }
             });
         });
-
+        
         // --- Chat Widget Functionality FIX ---
         // The code for the chat icon is correct, the previous error was likely preventing it from running.
         const chatWidgetIcon = document.getElementById('chat-icon');
@@ -1387,7 +1435,7 @@
         const playCommands = ['تشغيل', 'شغل', 'موسيقى', 'طرب', 'اغاني', 'غني'];
         const stopCommands = ['ايقاف', 'إيقاف', 'اغلاق', 'إغلاق', 'طفي', 'صمت'];
         const preDefinedAnswers = { 'دفع': 'نقدم عدة طرق للدفع: إيداع بنك الكريمي، حوالات مصرفية، أو عبر المحافظ الإلكترونية.', 'توصيل': 'مدة التوصيل تتراوح بين 1-3 أيام في المدن الكبرى و3-7 أيام لباقي المناطق.', 'جودة': 'جميع منتجاتنا أصلية 100% وذات جودة عالية مع ضمان استرجاع.', 'عروض': 'لدينا عروض دورية. تابع صفحاتنا على التواصل الاجتماعي لمعرفة أحدث العروض.', 'سعر': 'الأسعار موضحة في صفحة كل منتج. لأي استفسار آخر، أنا في الخدمة.', 'استبدال': 'نقدم خدمة استبدال المنتج خلال 7 أيام من الاستلام في حال وجود عيب مصنعي.', 'عنوان': 'مقرنا الرئيسي في محافظة ذمار، اليمن، ونقوم بالتوصيل لجميع المحافظات.', 'مصمم': 'تم تصميم المتجر بواسطة المبرمج والمصمم طلال سليمان المقطري. للتواصل معه: 774662666.' };
-        async function processQuery(query) { if (playCommands.some(cmd => query.includes(cmd))) { audioPlayer.src = 'http://stream.zeno.fm/ae32e025wp8uv'; audioPlayer.play(); addMessage('تم تشغيل الموسيقى لك 🎶', 'bot'); return; } if (stopCommands.some(cmd => query.includes(cmd))) { audioPlayer.pause(); audioPlayer.src = ''; addMessage('تم إيقاف الموسيقى.', 'bot'); return; } for (const key in preDefinedAnswers) { if (query.includes(key)) { addMessage(preDefinedAnswers[key], 'bot'); speak(preDefinedAnswers[key]); return; } } addMessage('لحظات، خدمة العملاء يكتب الإجابة... 🤔', 'bot'); try { const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ "contents": [{ "parts": [{ "text": `أنت مساعد ذكي وودود في متجر عطور اسمه "الأيقونة". أجب على هذا السؤال من العميل "${userName}": ${query}` }] }] }) }); const data = await response.json(); const botResponse = data.candidates[0].content.parts[0].text; chatMessages.removeChild(chatMessages.lastChild); addMessage(botResponse, 'bot'); speak(botResponse); } catch (error) { console.error("Gemini API Error:", error); chatMessages.removeChild(chatMessages.lastChild); addMessage('عفواً، حدث خطأ ما. حاول مرة أخرى.', 'bot'); } }
+        async function processQuery(query) { if (playCommands.some(cmd => query.includes(cmd))) { audioPlayer.src = 'http://stream.zeno.fm/ae32e025wp8uv'; audioPlayer.play(); addMessage('تم تشغيل الموسيقى لك 🎶', 'bot'); return; } if (stopCommands.some(cmd => query.includes(cmd))) { audioPlayer.pause(); audioPlayer.src = ''; addMessage('تم إيقاف الموسيقى.', 'bot'); return; } for (const key in preDefinedAnswers) { if (query.includes(key)) { addMessage(preDefinedAnswers[key], 'bot'); speak(preDefinedAnswers[key]); return; } } addMessage('لحظات، خدمة العملاء يكتب الإجابة... 🤔', 'bot'); try { const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ "contents": [{ "parts": [{ "text": `أنت خدمة العملاء الذكي في متجر عطور اسمه "الأيقونة". أجب على هذا السؤال من العميل "${userName}": ${query}` }] }] }) }); const data = await response.json(); const botResponse = data.candidates[0].content.parts[0].text; chatMessages.removeChild(chatMessages.lastChild); addMessage(botResponse, 'bot'); speak(botResponse); } catch (error) { console.error("Gemini API Error:", error); chatMessages.removeChild(chatMessages.lastChild); addMessage('عفواً، حدث خطأ ما. حاول مرة أخرى.', 'bot'); } }
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; if (SpeechRecognition) { const recognition = new SpeechRecognition(); recognition.lang = 'ar-SA'; recognition.continuous = false; micBtn.onclick = () => { recognition.start(); micBtn.style.color = '#ff6b6b'; }; recognition.onresult = (event) => { const transcript = event.results[0][0].transcript; chatInput.value = transcript; handleUserInput(); }; recognition.onend = () => { micBtn.style.color = 'var(--gold)'; }; } else { micBtn.style.display = 'none'; }
     });
     
@@ -1696,13 +1744,18 @@
 
         // إضافة تعليق جديد
         function addComment() {
-            const name = document.getElementById('commentName').value.trim();
-            const content = document.getElementById('commentContent').value.trim();
+            const nameInput = document.getElementById('commentName');
+            const contentInput = document.getElementById('commentContent');
+            const name = nameInput.value.trim();
+            const content = contentInput.value.trim();
             
             if (!name || !content) {
                 alert('الرجاء إدخال الاسم والتعليق');
                 return;
             }
+
+            // حفظ الاسم للمستقبل
+            localStorage.setItem('commenterName', name);
             
             // إنشاء تعليق جديد
             const newComment = {
@@ -1720,22 +1773,23 @@
             localStorage.setItem('perfumeComments', JSON.stringify(currentComments));
             
             // عرض رسالة النجاح
-            showSuccessMessage();
+            showSuccessMessage(name);
             
             // إعادة تحميل التعليقات
-            loadComments(commentsPerPage);
+            loadComments(allCommentsLoaded ? null : commentsPerPage);
             
-            // مسح حقول الإدخال
-            document.getElementById('commentName').value = '';
-            document.getElementById('commentContent').value = '';
+            // مسح حقل الإدخال للتعليق فقط
+            contentInput.value = '';
             
+                       
             // توليد رد ذكي باستخدام الذكاء الاصطناعي
             generateAIResponse(newComment.id, content);
         }
 
         // عرض رسالة النجاح
-        function showSuccessMessage() {
+        function showSuccessMessage(name) {
             const successMessage = document.getElementById('successMessage');
+            successMessage.querySelector('p').innerHTML = `<i class="fas fa-check-circle"></i> شكراً لتعليقك يا ${name}! تم النشر بنجاح.`;
             successMessage.style.display = 'block';
             
             setTimeout(() => {
@@ -1783,17 +1837,27 @@
         function toggleReplyForm(commentId) {
             const form = document.getElementById(`replyForm${commentId}`);
             form.style.display = form.style.display === 'none' ? 'block' : 'none';
+             // ملء اسم المستخدم المحفوظ في نموذج الرد
+            const savedName = localStorage.getItem('commenterName');
+            if (savedName) {
+                document.getElementById(`replyName${commentId}`).value = savedName;
+            }
         }
 
         // نشر رد
         function postReply(commentId) {
-            const name = document.getElementById(`replyName${commentId}`).value.trim();
-            const content = document.getElementById(`replyContent${commentId}`).value.trim();
+            const nameInput = document.getElementById(`replyName${commentId}`);
+            const contentInput = document.getElementById(`replyContent${commentId}`);
+            const name = nameInput.value.trim();
+            const content = contentInput.value.trim();
             
             if (!name || !content) {
                 alert('الرجاء إدخال الاسم والرد');
                 return;
             }
+
+            // حفظ الاسم للمستقبل
+            localStorage.setItem('commenterName', name);
             
             const comment = currentComments.find(c => c.id === commentId);
             
@@ -1814,7 +1878,7 @@
                 document.getElementById(`replyForm${commentId}`).style.display = 'none';
                 
                 // عرض رسالة النجاح
-                showSuccessMessage();
+                showSuccessMessage(name);
             }
         }
 
@@ -1826,16 +1890,24 @@
 
         // مشاركة الصفحة
         function sharePage(platform) {
-            const shareText = `الأيقونة للعطور - جودة وأصالة
+            const shareText = ` انصحك بأفضل العطور تجدها
+في قسم - العطور الرجالية↓
+https://talalye1.github.io/Icon-perfumes/men.html
+
+الأيقونة للعطور - جودة وأصالة
+
 عطور رجاليه ونسائيه واجود انواع البخور
+
 يوجد لدينا التوصيل الى جميع المحافظات اليمنيه
 
 ↓روابط الأيقونة للعطور↓
-
 موقع الويب↓
 https://talalye1.github.io/Icon-perfumes
 
-فيسبوك↓ 
+تطبيق المتجر↓
+https://talalye1.github.io/Icon-perfumes/الأيقونة.apk
+
+فيسبوك↓
 https://facebook.com/@alayqwnt.ll.twr
 
 انستجرام↓
