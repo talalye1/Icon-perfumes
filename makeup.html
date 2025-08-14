@@ -244,7 +244,7 @@
             padding: 15px;
             text-align: center;
             transition: all 0.3s ease;
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
@@ -496,17 +496,17 @@
         /* Fixed Share buttons أزرار المشاركة الثابتة */
         .fixed-share {
             position: fixed;
-            left: 400px;
-            bottom: 20px;
+            left: 0px;
+            bottom: 0px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 10px;
             z-index: 1000;
         }
         
         .fixed-share-btn {
-            width: 50px;
-            height: 50px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -721,7 +721,7 @@
             
             .fixed-share {
                 left: 10px;
-                bottom: 70px;
+                bottom: 100px;
             }
             
             .fixed-share-btn {
@@ -748,7 +748,7 @@
       /* --- Floating Share Buttons --- */
         .floating-share2-buttons {
             display: flex;
-            bottom: 70px;
+            bottom: 50px;
             left: 20px;
             gap: 10px;
             z-index: 995;
@@ -783,8 +783,8 @@
         }
         #chat-popup {
             position: absolute;
-            bottom: 80px; right: 0;
-            width: 20px;
+            bottom: 50px; right: 0px;
+            width: 800px;
             background: var(--dark-gray);
             border-radius: 15px;
             box-shadow: 0 5px 25px rgba(0,0,0,0.5);
