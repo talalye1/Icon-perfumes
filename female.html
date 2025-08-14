@@ -1108,7 +1108,7 @@
             { id: 'p4', name: 'عطر نسيم البحر نسائي', price: 4900, image: 'female2.jpg', rating: 4.4 },
             { id: 'p6', name: 'عطر روح الصحراء نسائي', price: 5500, image: 'female3.jpg', rating: 4.6 },
             { id: 'p8', name: 'عطر ليالي الشرق نسائي', price: 5200, image: 'female4.jpg', rating: 4.8 },
-            { id: 'p10', name: 'عطر خرير الماء نسائي', price: 4200, image: 'female5.jpg', rating: 5.1 }
+            { id: 'p10', name: 'عطر خرير الماء نسائي', price: 4200, image: 'female5.jpg', rating: 4.1 }
         ];
 
         let likesData = JSON.parse(localStorage.getItem('productLikes')) || {};
@@ -2038,14 +2038,8 @@ https://m.me/alayqwnt.ll.twr `;
                 }
             }
         }
-    </script>
-</body>
-</html>
-
-    
-    <script>
-    
-    // Check for localStorage support
+        
+        // Check for localStorage support
     if (typeof(Storage) !== "undefined") {
         // Get the current visitor count from localStorage
         let count = localStorage.getItem("visitorCount");
@@ -2055,7 +2049,7 @@ https://m.me/alayqwnt.ll.twr `;
             count = 1;
         } else {
             // Otherwise, increment the count by 1
-            count = parseInt(count) + 1;
+            count = parseInt(count) + 2;
         }
 
         // Store the new count in localStorage
@@ -2067,7 +2061,6 @@ https://m.me/alayqwnt.ll.twr `;
         // Fallback for browsers that don't support localStorage
         document.getElementById("visitorCount").innerHTML = "متصفحك لا يدعم localStorage";
     }
-    
     </script>
 </body>
 </html>
