@@ -1104,11 +1104,11 @@
         };
 
         const products = [
-            { id: 'p1', name: 'بخور العود الملكي', price: 5900, image: 'moan1.jpg', rating: 4.8 },
-            { id: 'p2', name: 'بخور نسيم البحر', price: 4900, image: 'moan2.jpg', rating: 4.5 },
-            { id: 'p3', name: 'بخور روح الصحراء', price: 5500, image: 'moan3.jpg', rating: 4.9 },
-            { id: 'p4', name: 'بخور ليالي الشرق', price: 5200, image: 'moan4.jpg', rating: 4.7 },
-            { id: 'p5', name: 'بخور خرير الماء', price: 4200, image: 'moan5.jpg', rating: 4.6 }
+            { id: 'p11', name: 'بخور العود الملكي', price: 5900, image: 'moan1.jpg', rating: 5.2 },
+            { id: 'p12', name: 'بخور نسيم البحر', price: 4900, image: 'moan2.jpg', rating: 5.3 },
+            { id: 'p13', name: 'بخور روح الصحراء', price: 5500, image: 'moan3.jpg', rating: 5.4 },
+            { id: 'p14', name: 'بخور ليالي الشرق', price: 5200, image: 'moan4.jpg', rating: 5.5 },
+            { id: 'p15', name: 'بخور خرير الماء', price: 4200, image: 'moan5.jpg', rating: 5.6 }
         ];
 
         let likesData = JSON.parse(localStorage.getItem('productLikes')) || {};
@@ -2038,6 +2038,36 @@ https://m.me/alayqwnt.ll.twr `;
                 }
             }
         }
+    </script>
+</body>
+</html>
+
+    
+    <script>
+    
+    // Check for localStorage support
+    if (typeof(Storage) !== "undefined") {
+        // Get the current visitor count from localStorage
+        let count = localStorage.getItem("visitorCount");
+
+        // If it's the first visit, set the count to 1
+        if (count === null) {
+            count = 1;
+        } else {
+            // Otherwise, increment the count by 1
+            count = parseInt(count) + 1;
+        }
+
+        // Store the new count in localStorage
+        localStorage.setItem("visitorCount", count);
+
+        // Display the count on the page
+        document.getElementById("visitorCount").innerHTML = count;
+    } else {
+        // Fallback for browsers that don't support localStorage
+        document.getElementById("visitorCount").innerHTML = "متصفحك لا يدعم localStorage";
+    }
+    
     </script>
 </body>
 </html>
