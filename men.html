@@ -281,7 +281,7 @@
         }
         .modal-content {
             background: var(--dark-gray);
-            padding: 30px; border-radius: 15px;
+            padding: 30px; border-radius: 50px;
             border: 2px solid var(--gold);
             width: 90%; max-width: 450px;
             text-align: center;
@@ -294,8 +294,8 @@
         }
         .modal-btn {
             background: var(--gold); color: var(--black); font-size: 1.1rem;
-            border: none; padding: 12px 24px; border-radius: 8px;
-            cursor: pointer; font-weight: bold; margin: 5px;
+            border: none; padding: 10px 5px; border-radius: 8px;
+            cursor: pointer; font-weight: bold; margin: 0px;
         }
         .modal-btn.close { background: #555; color: white; }
         
@@ -938,26 +938,24 @@
         </div>
 
         <div id="cartModal" class="modal">
-            <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-content" style="max-width: 100%;">
                 <h3>سلة التسوق</h3>
-                <div id="cart-items-container" style="max-height: 400px; overflow-y: auto; padding: 10px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); margin-bottom: 20px; min-height: 100px;">
+                <div id="cart-items-container" style="max-height: 300px; overflow-y: auto; padding: 10px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); margin-bottom: 10px; min-height: 5px;">
                     <p id="empty-cart-msg">سلتك فارغة حالياً.</p>
                 </div>
                 <div id="cart-summary" style="text-align: left; padding: 0 10px;">
                     <h4>الإجمالي: <strong id="cart-total-price">0 ريال</strong></h4>
                 </div>
-                <hr style="border-color: var(--gold); opacity: 0.2; margin: 20px 0;">
+                <hr style="border-color: var(--gold); opacity: 0.2; margin: 5px 0;">
                 <input type="text" id="cartCustomerNameInput" placeholder="الرجاء إدخال اسمك الكريم لإتمام الطلب" required>
-                <button id="cart-checkout-btn" class="modal-btn"><i class="fab fa-facebook-messenger"></i> إتمام الطلب عبر ماسنجر</button>
+                <button id="cart-checkout-btn" class="modal-btn"><i class="fab fa-facebook-messenger"></i>إتمام الطلب </button>
                 <button class="modal-btn close">متابعة التسوق</button>
+                <hr style="border-color: var(--gold); opacity: 5px; margin: 20px 0;">
             </div>
         </div>
         
         <section class="comments-section">
             <h2 class="section-title">آراء عملاء الأيقونة</h2>
-            <button class="show-all-btn" id="loadMoreBtn" onclick="loadMoreComments()"><i class="fas fa-sync"></i> تحميل جميع التعليقات</button>
-            <div class="comments-container" id="commentsContainer">
-                </div>
 
             <div class="add-comment">
                 <h3 style="text-align: center; margin-bottom: 20px; color: var(--gold);">أضف تعليقك</h3>
@@ -971,7 +969,10 @@
                 </div>
                 <button class="submit-btn" onclick="addComment()"><i class="fas fa-paper-plane"></i> نشر التعليق</button>
             </div>
-
+            <button class="show-all-btn" id="loadMoreBtn" onclick="loadMoreComments()"><i class="fas fa-sync"></i> تحميل جميع التعليقات</button>
+            </div>
+            <div class="comments-container" id="commentsContainer">
+                </div>
          </section>
 
     <footer>
@@ -1434,7 +1435,7 @@
         function handleUserInput() { const query = chatInput.value.trim(); if (!query) return; addMessage(query, 'user'); processQuery(query); chatInput.value = ''; }
         const playCommands = ['تشغيل', 'شغل', 'موسيقى', 'طرب', 'اغاني', 'غني'];
         const stopCommands = ['ايقاف', 'إيقاف', 'اغلاق', 'إغلاق', 'طفي', 'صمت'];
-        const preDefinedAnswers = { 'دفع': 'نقدم عدة طرق للدفع: إيداع بنك الكريمي، حوالات مصرفية، أو عبر المحافظ الإلكترونية.', 'توصيل': 'مدة التوصيل تتراوح بين 1-3 أيام في المدن الكبرى و3-7 أيام لباقي المناطق.', 'جودة': 'جميع منتجاتنا أصلية 100% وذات جودة عالية مع ضمان استرجاع.', 'عروض': 'لدينا عروض دورية. تابع صفحاتنا على التواصل الاجتماعي لمعرفة أحدث العروض.', 'سعر': 'الأسعار موضحة في صفحة كل منتج. لأي استفسار آخر، أنا في الخدمة.', 'استبدال': 'نقدم خدمة استبدال المنتج خلال 7 أيام من الاستلام في حال وجود عيب مصنعي.', 'عنوان': 'مقرنا الرئيسي في محافظة ذمار، اليمن، ونقوم بالتوصيل لجميع المحافظات.', 'مصمم': 'تم تصميم المتجر بواسطة المبرمج والمصمم طلال سليمان المقطري. للتواصل معه: 774662666.' };
+        const preDefinedAnswers = { 'دفع': 'نقدم عدة طرق للدفع: إيداع في بنك الكريمي، حوالات مصرفية، أو عبر المحافظ الإلكترونية.', 'توصيل': 'مدة التوصيل تتراوح بين 1-3 أيام في المدن الكبرى و3-7 أيام لباقي المناطق.', 'جودة': 'جميع منتجاتنا أصلية 100% وذات جودة عالية مع ضمان استرجاع.', 'عروض': 'لدينا عروض دورية. تابع صفحاتنا على التواصل الاجتماعي لمعرفة أحدث العروض.', 'سعر': 'الأسعار موضحة في صفحة كل منتج. لأي استفسار آخر، أنا في الخدمة.', 'استبدال': 'نقدم خدمة استبدال المنتج خلال 7 أيام من الاستلام في حال وجود عيب مصنعي.', 'عنوان': 'عنوان الأيقونة الرئيسي في محافظة ذمار، اليمن، ونقوم بالتوصيل لجميع المحافظات اليمنية.', 'مصمم': 'تم تصميم المتجر بواسطة المبرمج والمصمم طلال سليمان المقطري. للتواصل معه: 774662666.' };
         async function processQuery(query) { if (playCommands.some(cmd => query.includes(cmd))) { audioPlayer.src = 'http://stream.zeno.fm/ae32e025wp8uv'; audioPlayer.play(); addMessage('تم تشغيل الموسيقى لك 🎶', 'bot'); return; } if (stopCommands.some(cmd => query.includes(cmd))) { audioPlayer.pause(); audioPlayer.src = ''; addMessage('تم إيقاف الموسيقى.', 'bot'); return; } for (const key in preDefinedAnswers) { if (query.includes(key)) { addMessage(preDefinedAnswers[key], 'bot'); speak(preDefinedAnswers[key]); return; } } addMessage('لحظات، خدمة العملاء يكتب الإجابة... 🤔', 'bot'); try { const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ "contents": [{ "parts": [{ "text": `أنت خدمة العملاء الذكي في متجر عطور اسمه "الأيقونة". أجب على هذا السؤال من العميل "${userName}": ${query}` }] }] }) }); const data = await response.json(); const botResponse = data.candidates[0].content.parts[0].text; chatMessages.removeChild(chatMessages.lastChild); addMessage(botResponse, 'bot'); speak(botResponse); } catch (error) { console.error("Gemini API Error:", error); chatMessages.removeChild(chatMessages.lastChild); addMessage('عفواً، حدث خطأ ما. حاول مرة أخرى.', 'bot'); } }
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; if (SpeechRecognition) { const recognition = new SpeechRecognition(); recognition.lang = 'ar-SA'; recognition.continuous = false; micBtn.onclick = () => { recognition.start(); micBtn.style.color = '#ff6b6b'; }; recognition.onresult = (event) => { const transcript = event.results[0][0].transcript; chatInput.value = transcript; handleUserInput(); }; recognition.onend = () => { micBtn.style.color = 'var(--gold)'; }; } else { micBtn.style.display = 'none'; }
     });
@@ -1475,7 +1476,7 @@
     </script>
         
         <script>
-            // التعليقات الجاهزة
+            // y التعليقات الجاهزة
         const initialComments = [
             {
                 id: 1,
@@ -1572,29 +1573,29 @@
             }
         ];
 
-        // تهيئة المتغيرات
+        // y تهيئة المتغيرات
         let allCommentsLoaded = false;
         const commentsPerPage = 3;
         let currentComments = [];
         let timeUpdater;
 
-        // تهيئة الصفحة عند التحميل
+        // y تهيئة الصفحة عند التحميل
         document.addEventListener('DOMContentLoaded', function() {
-            // تحميل التعليقات المحفوظة أو استخدام التعليقات الابتدائية
+            // y تحميل التعليقات المحفوظة أو استخدام التعليقات الابتدائية
             const savedComments = JSON.parse(localStorage.getItem('perfumeComments'));
             currentComments = savedComments || initialComments;
             
-            // فرز التعليقات من الأحدث إلى الأقدم
+            // y فرز التعليقات من الأحدث إلى الأقدم
             currentComments.sort((a, b) => b.timestamp - a.timestamp);
             
-            // تحميل التعليقات (5 الأولى فقط)
+            // y تحميل التعليقات (5 الأولى فقط)
             loadComments(commentsPerPage);
             
-            // بدء تحديث الوقت
+            // y بدء تحديث الوقت
             startTimeUpdater();
         });
 
-        // دالة لصياغة الوقت المنقضي بشكل مقروء
+        // y دالة لصياغة الوقت المنقضي بشكل مقروء
         function formatTimeAgo(timestamp) {
             const now = Date.now();
             const diff = now - timestamp;
@@ -1617,17 +1618,17 @@
             return `الآن`;
         }
 
-        // بدء تحديث الوقت
+        // y بدء تحديث الوقت
         function startTimeUpdater() {
-            // تحديث الوقت كل 30 ثانية
+            // y تحديث الوقت كل 30 ثانية
             timeUpdater = setInterval(() => {
                 updateTimeElements();
             }, 30000);
         }
 
-        // تحديث عناصر الوقت في الصفحة
+        // y تحديث عناصر الوقت في الصفحة
         function updateTimeElements() {
-            // تحديث تواريخ التعليقات
+            // y تحديث تواريخ التعليقات
             const commentDates = document.querySelectorAll('.comment-date');
             commentDates.forEach(el => {
                 const commentId = parseInt(el.closest('.comment').id.replace('comment', ''));
@@ -1637,7 +1638,7 @@
                 }
             });
             
-            // تحديث تواريخ الردود
+            // y تحديث تواريخ الردود
             const replyDates = document.querySelectorAll('.reply-date');
             replyDates.forEach(el => {
                 const replyId = parseInt(el.closest('.reply').id.replace('reply', ''));
@@ -1651,7 +1652,7 @@
             });
         }
 
-        // تحميل التعليقات
+        // y تحميل التعليقات
         function loadComments(limit = null) {
             const commentsContainer = document.getElementById('commentsContainer');
             commentsContainer.innerHTML = '';
@@ -1668,7 +1669,7 @@
                 commentsContainer.appendChild(commentElement);
             });
             
-            // إظهار/إخفاء زر تحميل المزيد
+            // y إظهار/إخفاء زر تحميل المزيد
             const loadMoreBtn = document.getElementById('loadMoreBtn');
             if (limit && currentComments.length > limit) {
                 loadMoreBtn.style.display = 'block';
@@ -1678,13 +1679,13 @@
             }
         }
 
-        // إنشاء عنصر تعليق
+        // y إنشاء عنصر تعليق
         function createCommentElement(comment) {
             const commentElement = document.createElement('div');
             commentElement.className = 'comment';
             commentElement.id = `comment${comment.id}`;
             
-            // إنشاء الردود
+            // y إنشاء الردود
             let repliesHTML = '';
             if (comment.replies && comment.replies.length > 0) {
                 repliesHTML = `
@@ -1692,10 +1693,10 @@
                         ${comment.replies.map(reply => `
                             <div class="reply ${reply.isAI ? 'ai-reply' : ''}" id="reply${reply.id}">
                                 <div class="reply-header">
-                                    <div class="reply-author">${reply.name} ${reply.isAI ? '<span class="ai-indicator">الأيقونة <i class="fas fa-gem"></i></span>' : ''}</div>
+                                    <div class="reply-author">${reply.name} ${reply.isAI ? '<span class="ai-indicator"> الأيقونة <i class="fas fa-gem"></i></span>' : ''}</div>
                                     <div class="reply-date">${formatTimeAgo(reply.timestamp)}</div>
                                 </div>
-                                <div class="reply-content">${reply.content}</div>
+                               <div class="reply-content">${reply.content}</div>
                                 <div class="reply-actions">
                                     <button class="reply-action" onclick="toggleReplyLike(${comment.id}, ${reply.id})">
                                         <i class="${reply.liked ? 'fas' : 'far'} fa-heart"></i> 
@@ -1742,7 +1743,7 @@
             return commentElement;
         }
 
-        // إضافة تعليق جديد
+        // y إضافة تعليق جديد
         function addComment() {
             const nameInput = document.getElementById('commentName');
             const contentInput = document.getElementById('commentContent');
@@ -1754,10 +1755,10 @@
                 return;
             }
 
-            // حفظ الاسم للمستقبل
+            // y حفظ الاسم للمستقبل
             localStorage.setItem('commenterName', name);
             
-            // إنشاء تعليق جديد
+            // y إنشاء تعليق جديد
             const newComment = {
                 id: Date.now(),
                 name: name,
@@ -1768,25 +1769,25 @@
                 replies: []
             };
             
-            // إضافة التعليق إلى القائمة
+            // y إضافة التعليق إلى القائمة
             currentComments.unshift(newComment);
             localStorage.setItem('perfumeComments', JSON.stringify(currentComments));
             
-            // عرض رسالة النجاح
+            // y عرض رسالة النجاح
             showSuccessMessage(name);
             
-            // إعادة تحميل التعليقات
+            // y إعادة تحميل التعليقات
             loadComments(allCommentsLoaded ? null : commentsPerPage);
             
-            // مسح حقل الإدخال للتعليق فقط
+            // y مسح حقل الإدخال للتعليق فقط
             contentInput.value = '';
             
                        
-            // توليد رد ذكي باستخدام الذكاء الاصطناعي
+            // y توليد رد ذكي باستخدام الذكاء الاصطناعي
             generateAIResponse(newComment.id, content);
         }
 
-        // عرض رسالة النجاح
+        // y عرض رسالة النجاح
         function showSuccessMessage(name) {
             const successMessage = document.getElementById('successMessage');
             successMessage.querySelector('p').innerHTML = `<i class="fas fa-check-circle"></i> شكراً لتعليقك يا ${name}! تم النشر بنجاح.`;
@@ -1797,7 +1798,7 @@
             }, 3000);
         }
 
-        // الإعجاب بالتعليق
+        // y الإعجاب بالتعليق
         function toggleCommentLike(commentId) {
             const comment = currentComments.find(c => c.id === commentId);
             
@@ -1814,7 +1815,7 @@
             }
         }
 
-        // الإعجاب بالرد
+        // y الإعجاب بالرد
         function toggleReplyLike(commentId, replyId) {
             const comment = currentComments.find(c => c.id === commentId);
             if (!comment) return;
@@ -1833,18 +1834,18 @@
             loadComments(allCommentsLoaded ? null : commentsPerPage);
         }
 
-        // عرض/إخفاء نموذج الرد
+        // y عرض/إخفاء نموذج الرد
         function toggleReplyForm(commentId) {
             const form = document.getElementById(`replyForm${commentId}`);
             form.style.display = form.style.display === 'none' ? 'block' : 'none';
-             // ملء اسم المستخدم المحفوظ في نموذج الرد
+             // y ملء اسم المستخدم المحفوظ في نموذج الرد
             const savedName = localStorage.getItem('commenterName');
             if (savedName) {
                 document.getElementById(`replyName${commentId}`).value = savedName;
             }
         }
 
-        // نشر رد
+        // y نشر رد
         function postReply(commentId) {
             const nameInput = document.getElementById(`replyName${commentId}`);
             const contentInput = document.getElementById(`replyContent${commentId}`);
@@ -1856,7 +1857,7 @@
                 return;
             }
 
-            // حفظ الاسم للمستقبل
+            // y حفظ الاسم للمستقبل
             localStorage.setItem('commenterName', name);
             
             const comment = currentComments.find(c => c.id === commentId);
@@ -1874,21 +1875,21 @@
                 localStorage.setItem('perfumeComments', JSON.stringify(currentComments));
                 loadComments(allCommentsLoaded ? null : commentsPerPage);
                 
-                // إخفاء النموذج
+                // y إخفاء النموذج
                 document.getElementById(`replyForm${commentId}`).style.display = 'none';
                 
-                // عرض رسالة النجاح
+                // y عرض رسالة النجاح
                 showSuccessMessage(name);
             }
         }
 
-        // تحميل المزيد من التعليقات
+        // y تحميل المزيد من التعليقات
         function loadMoreComments() {
             allCommentsLoaded = true;
             loadComments();
-        }
+        }            
 
-        // مشاركة الصفحة
+        // y مشاركة الصفحة
         function sharePage(platform) {
             const shareText = ` انصحك بأفضل العطور تجدها
 في قسم - العطور الرجالية↓
