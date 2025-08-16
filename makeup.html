@@ -281,7 +281,7 @@
         }
         .modal-content {
             background: var(--dark-gray);
-            padding: 30px; border-radius: 15px;
+            padding: 30px; border-radius: 50px;
             border: 2px solid var(--gold);
             width: 90%; max-width: 450px;
             text-align: center;
@@ -294,8 +294,8 @@
         }
         .modal-btn {
             background: var(--gold); color: var(--black); font-size: 1.1rem;
-            border: none; padding: 12px 24px; border-radius: 8px;
-            cursor: pointer; font-weight: bold; margin: 5px;
+            border: none; padding: 10px 5px; border-radius: 8px;
+            cursor: pointer; font-weight: bold; margin: 0px;
         }
         .modal-btn.close { background: #555; color: white; }
         
@@ -908,18 +908,22 @@
         </div>
 
         <div id="cartModal" class="modal">
-            <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-content" style="max-width: 100%;">
                 <h3>سلة التسوق</h3>
-                <div id="cart-items-container" style="max-height: 400px; overflow-y: auto; padding: 10px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); margin-bottom: 20px; min-height: 100px;">
+                <div id="cart-items-container" style="max-height: 300px; overflow-y: auto; padding: 10px; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); margin-bottom: 10px; min-height: 5px;">
                     <p id="empty-cart-msg">سلتك فارغة حالياً.</p>
                 </div>
                 <div id="cart-summary" style="text-align: left; padding: 0 10px;">
                     <h4>الإجمالي: <strong id="cart-total-price">0 ريال</strong></h4>
                 </div>
-                <hr style="border-color: var(--gold); opacity: 0.2; margin: 20px 0;">
-                <input type="text" id="cartCustomerNameInput" placeholder="الرجاء إدخال اسمك الكريم لإتمام الطلب" required>
-                <button id="cart-checkout-btn" class="modal-btn"><i class="fab fa-facebook-messenger"></i> إتمام الطلب عبر ماسنجر</button>
-                <button class="modal-btn close">متابعة التسوق</button>
+                <hr style="border-color: var(--gold); opacity: 0.2; margin: 5px 0;">
+                <input type="text" id="cartCustomerNameInput" placeholder="إدخل اسمك الكريم الثلاثي لإتمام الطلب" required>
+                <input type="number" id="cartCustomerNumberInput" placeholder="إدخل رقم هاتفك المحمول لإتمام الطلب" required>
+                <input type="text" id="cartCustomerAddressInput" placeholder="إدخل عنوان تسليم الطلب لإتمام الطلب" required>
+                <input type="text" id="cartCustomerBankInput" placeholder="إسم البنك الذي تتعامل معه (رقم حوالة) لإتمام الطلب" required>
+                <button id="cart-checkout-btn" class="modal-btn"><i class="fab fa-facebook-messenger"></i>إتمام الطلب </button>
+                <button class="modal-btn close">الرجوع لتسوق</button>
+                <hr style="border-color: var(--gold); opacity: 5px; margin: 20px 0;">
             </div>
         </div>
         
@@ -1119,13 +1123,13 @@
                     <input type="number" class="quantity-input" value="1" min="1" readonly>
                     <button class="quantity-plus">+</button>
                 </div>
-                <div class="total-price">الإجمالي: <span class="total-price-value">${product.price.toLocaleString()}</span> ريال</div>
+                <div class="total-price">الإجمالي 🎁: <span class="total-price-value">${product.price.toLocaleString()}</span> ريال 🎁</div>
                 <button class="add-to-cart-btn" data-product-id="${product.id}" data-product-name="${product.name}" data-product-price="${product.price}">أضف إلى السلة</button>
                 <div class="floating-share2-buttons">
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(product.name + ' انصحك بهذا العطر\nفي متجر - الأيقونة للعطور\n\nرابط العطر↓\n ' + window.location.href + ' الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')}&text=${encodeURIComponent(product.name + '  انصحك بهذا العطر\nفي متجر - الأيقونة للعطور\nرابط العطر↓  ')}" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(product.name + '  انصحك بهذا العطر\nفي متجر - الأيقونة للعطور\n\nرابط العطر↓\n ' + window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://t.me/share/url?url=${encodeURIComponent(product.name + ' انصحك بهذا العطر\nفي متجر - الأيقونة للعطور\n\nرابط العطر↓\n ' + window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(product.name + ' دانصحك بهذا المنتج\nفي متجر - الأيقونة للعطور\n\nرابط العطر↓\n ' + window.location.href + ' الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')}&text=${encodeURIComponent(product.name + '  انصحك بهذا المنتج\nفي متجر - الأيقونة للعطور\nرابط العطر↓  ')}" target="_blank" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://api.whatsapp.com/send?text=${encodeURIComponent(product.name + '  انصحك بهذا المنتج\nفي متجر - الأيقونة للعطور\n\nرابط العطر↓\n ' + window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://t.me/share/url?url=${encodeURIComponent(product.name + ' انصحك بهذا المنتج\nفي متجر - الأيقونة للعطور\n\nرابط العطر↓\n ' + window.location.href + '\n\n الأيقونة للعطور - جودة وأصالة\n\nعطور رجاليه ونسائيه واجود انواع البخور\n\nيوجد لدينا التوصيل الى جميع المحافظات اليمنيه\n\n↓روابط الأيقونة للعطور↓\nموقع الويب↓\nhttps://talalye1.github.io/Icon-perfumes\n\nتطبيق المتجر↓\nhttps://talalye1.github.io/Icon-perfumes/الأيقونة.apk\n\nفيسبوك↓\nhttps://facebook.com/@alayqwnt.ll.twr\n\nانستجرام↓\nhttps://www.instagram.com/lyqwn_lltwr\n\nللطلب والإستفسارات راسلنا على الماسنجر↓\nhttps://m.me/alayqwnt.ll.twr ')} " target="_blank" class="telegram"><i class="fab fa-telegram-plane"></i></a>
                     <a href="#" class="fixed-share-btn share-all" onclick="sharePage('all')"><i class="fas fa-share-alt"></i></a>
                   </div>
             `;
@@ -1193,7 +1197,7 @@
                 discountAmount = subtotal * 0.05;
                 finalTotal = subtotal - discountAmount;
                 discountMessage = `
-                    <h5 style="color: #ff6b6b;">خصم 5% لفترة محدودة: -${discountAmount.toLocaleString()} ريال</h5>
+                    <h5 style="color: #ff6b6b;"> 🎁 خصم 5% لفترة محدودة: -${discountAmount.toLocaleString()} ريال</h5>
                 `;
             }
             
@@ -1243,7 +1247,22 @@
         cartCheckoutBtn.onclick = () => {
             const customerName = document.getElementById('cartCustomerNameInput').value.trim();
             if (!customerName) {
-                alert('الرجاء إدخال اسمك لإتمام الطلب.');
+                alert('الرجاء إدخال اسمك الثلاثي لإتمام الطلب.');
+                return;
+            }
+            const customerNumber = document.getElementById('cartCustomerNumberInput').value.trim();
+            if (!customerNumber) {
+                alert('الرجاء إدخال رقم هاتفك لإتمام الطلب.');
+                return;
+            }
+            const customerAddress = document.getElementById('cartCustomerAddressInput').value.trim();
+            if (!customerAddress) {
+                alert('الرجاء إدخل عنوان التسليم لإتمام الطلب.');
+                return;
+                }
+            const customerBank = document.getElementById('cartCustomerBankInput').value.trim();
+            if (!customerBank) {
+                alert('الرجاء إدخل اسم البنك الذي تتعامل معه (ورقم الحوالة ان وجدت) لإتمام الطلب.');
                 return;
             }
             if (cart.length === 0) {
@@ -1260,16 +1279,16 @@
             if (now < discountEndDate) {
                 const discountAmount = subtotal * 0.05;
                 finalTotal = subtotal - discountAmount;
-                discountInfo = `\nالإجمالي قبل الخصم: ${subtotal.toLocaleString()} ريال\nخصم 5%: -${discountAmount.toLocaleString()} ريال`;
+                discountInfo = `\nالإجمالي قبل الخصم 💵: ${subtotal.toLocaleString()} ريال\nخصم 🎁 5%: -${discountAmount.toLocaleString()} ريال`;
             }
 
-            let message = `مرحباً مبيعات الأيقونة للعطور،\nأنا ${customerName}، وأرغب في طلب المنتجات التالية:\n\n`;
+            let message = `👋 مرحباً مبيعات الأيقونة للعطور،\n\n👤انا ${customerName}، \nرقم هاتفي 📱: ${customerNumber}، \nعنوان تسليم الطلبية 🏘️: ${customerAddress}، \nإرسال قيمة الشراء عبر 🏦: ${customerBank}، \n\nأرغب في طلب شراء المنتجات التالية 🔎:\n\n`;
             cart.forEach(item => {
-                message += `المنتج: ${item.name}\nالكمية: ${item.quantity}\nالسعر: ${(item.price * item.quantity).toLocaleString()} ريال\n\n`;
+                message += `المنتج 📦: ${item.name} \n\nرابط القسم 🔗:\n ${window.location.href} \nالكمية ✨: ${item.quantity}\nالسعر 💵: ${(item.price * item.quantity).toLocaleString()} ريال\n`;
             });
 
-            message += `${discountInfo}\n\nالسعر الإجمالي للطلب: ${finalTotal.toLocaleString()} ريال\n`;
-            message += `\nالرابط المرجعي: ${window.location.href}\n\nشكراً لكم.`;
+            message += `${discountInfo}\n\nالسعر الإجمالي للطلب 💵: ${finalTotal.toLocaleString()} ريال\n`;
+            message += `\nالرابط المرجعي الرئيسي 🔗: ${window.location.href}\n\nشكراً لكم ❤️.`;
             
             const messengerLink = `https://m.me/alayqwnt.ll.twr?text=${encodeURIComponent(message)}`;
             window.open(messengerLink, '_blank');
@@ -1870,7 +1889,7 @@
 
         // مشاركة الصفحة
         function sharePage(platform) {
-            const shareText = ` انصحك بأفضل العطور تجدها
+            const shareText = ` انصحك بأفضل العطور والبخور تجدها
 في متجر - الأيقونة للعطور↓
 https://talalye1.github.io/Icon-perfumes/
 
